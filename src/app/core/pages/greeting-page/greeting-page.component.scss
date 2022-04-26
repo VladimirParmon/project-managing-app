@@ -1,0 +1,139 @@
+.greetingPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(153.03deg,
+  rgba(209, 107, 165, 0.3) 18.23%,
+  rgba(134, 168, 231, 0.3) 42.2%,
+  rgba(95, 251, 241, 0.3) 84.95%);
+}
+
+.greetingPage__scrollable-content-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5vw;
+}
+
+.greetingPage__scrollable-content-box_greeting {
+  height: 90vh;
+}
+
+.greetingPage__scrollable-content-box_screenshots {
+  justify-content: flex-start;
+  height: 85vh;
+}
+
+.greetingPage__scrollable-content-box_closure {
+  justify-content: flex-start;
+  margin-bottom: 200px;
+}
+
+.greetingPage__h1 {
+  font-size: 7vh;
+  line-height: 7vh;
+  margin-bottom: 5rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+}
+
+.greetingPage__h2 {
+  font-size: 3vh;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+}
+
+.greetingPage__h2_closure,
+.greetingPage__span_closure {
+  align-self: flex-start;
+}
+
+.greetingPage__input {
+  height: 40px;
+  width: 50vw;
+  border: none;
+  border-radius: 3px;
+  margin-right: 10px;
+  padding: 10px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.greetingPage__input,
+.greetingPage__button {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.greetingPage__wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.greetingPage__wrapper_screenshots {
+  justify-content: center;
+  align-items: center;
+  margin-top: 4vh;
+}
+
+.greetingPage__wrapper_closure {
+  display: flex;
+  flex-direction: column;
+  background-color: #D16BA526;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 4vh;
+}
+
+.greetingPage__span {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  max-width: 900px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+}
+
+.greetingPage__span_greeting-itself {
+  margin-top: 5rem;
+}
+
+.greetingPage__img_screenshot {
+  width: 40%;
+}
+
+.greetingPage__spacer {
+  width: 50px;
+  height: 50px;
+}
+
+@media screen and (max-width: 1000px) {
+  .greetingPage__span {
+    font-size: 1rem;
+  }
+  .greetingPage__h1 {
+    margin-bottom: 2rem;
+  }
+  .greetingPage__span_greeting-itself {
+    margin-top: 2rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .greetingPage__wrapper_closure {
+    padding: 50px;
+  }
+}
+
+app-header {
+  position: sticky;
+  display: block;
+  top: 0;
+  z-index: 100;
+  left: 0;
+}
