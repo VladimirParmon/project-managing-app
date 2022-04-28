@@ -10,5 +10,6 @@ import { Page404Component } from './pages/page404/page404.component';
 @NgModule({
   declarations: [GreetingPageComponent, HeaderComponent, FooterComponent, Page404Component],
   imports: [CommonModule, CoreRoutingModule, SharedModule],
+  exports: [HeaderComponent, FooterComponent],
 })
 export class CoreModule {}
