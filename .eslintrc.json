@@ -16,14 +16,21 @@
       },
       "extends": [
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "airbnb-base",
+        "airbnb-typescript/base",
+        "prettier"
+      ],
+      "plugins": [
+        "import",
+        "prettier"
       ],
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
           {
             "type": "attribute",
-            "prefix": "app",
+            "prefix": "ma",
             "style": "camelCase"
           }
         ],
@@ -31,8 +38,16 @@
           "error",
           {
             "type": "element",
-            "prefix": "app",
+            "prefix": "ma",
             "style": "kebab-case"
+          }
+        ],
+        "import/prefer-default-export": "off",
+        "import/no-default-export": "error",
+        "prettier/prettier": [
+          "error",
+          {
+            "endOfLine": "auto"
           }
         ]
       }
