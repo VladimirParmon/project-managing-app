@@ -1,41 +1,39 @@
-<div class="greetingPage">
-  <app-header></app-header>
-  <div class="greetingPage__scrollable-content-box greetingPage__scrollable-content-box_greeting">
-    <h1 class="greetingPage__h1">PROJECT MANAGING APP</h1>
-    <div class="greetingPage__wrapper greetingPage__wrapper_mail-input">
-      <input class="greetingPage__input" type="email" placeholder="Email" [(ngModel)]="emailInputString">
-      <button class="greetingPage__button" mat-raised-button color="primary" type="button" (click)="submitEmailForRegistration()">Registration</button>
+<div class="greeting-page">
+  <section class="greeting-page__section greeting-page__section_type_greeting">
+    <h1 class="greeting-page__h1">PROJECT MANAGING APP</h1>
+    <div class="greeting-page__wrapper greeting-page__wrapper_type_mail-input">
+      <input class="greeting-page__input" type="email" placeholder="Email" [(ngModel)]="emailInputString">
+      <button class="greeting-page__button" mat-raised-button color="primary" type="button" (click)="submitEmailForRegistration()">Registration</button>
     </div>
-    <span class="greetingPage__span greetingPage__span_greeting-itself">Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office,
+    <span class="greeting-page__span greeting-page__span_type_greeting-itself">Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office,
       the way your team works is unique—accomplish it all with our managing app.
     </span>
-  </div>
+  </section>
 
-  <div class="greetingPage__scrollable-content-box greetingPage__scrollable-content-box_screenshots">
-    <h2 class="greetingPage__h2">IT ALL STARTS TODAY WITH THE NEW TOOLS</h2>
-    <span class="greetingPage__span">Start with our unique board, lists, and cards. Customize and expand with more features as your teamwork grows.
+  <section class="greeting-page__section greeting-page__section_type_screenshots">
+    <h2 class="greeting-page__h2">IT ALL STARTS TODAY WITH THE NEW TOOLS</h2>
+    <span class="greeting-page__span">Start with our unique board, lists, and cards. Customize and expand with more features as your teamwork grows.
       Manage projects, organize tasks, and build team spirit—all in one place.
     </span>
-    <div class="greetingPage__wrapper greetingPage__wrapper_screenshots">
-      <img class="greetingPage__img greetingPage__img_screenshot" src="https://ozen.by/wp-content/uploads/2020/10/placeholder.png" alt="app screenshot">
-      <span class="greetingPage__spacer"></span>
-      <img class="greetingPage__img greetingPage__img_screenshot" src="https://ozen.by/wp-content/uploads/2020/10/placeholder.png" alt="app screenshot">
+    <div class="greeting-page__wrapper greeting-page__wrapper_type_screenshots">
+      <img class="greeting-page__img greeting-page__img_screenshot" src="https://ozen.by/wp-content/uploads/2020/10/placeholder.png" alt="app screenshot">
+      <span class="greeting-page__spacer"></span>
+      <img class="greeting-page__img greeting-page__img_screenshot" src="https://ozen.by/wp-content/uploads/2020/10/placeholder.png" alt="app screenshot">
     </div>
-  </div>
+  </section>
 
-  <div class="greetingPage__scrollable-content-box greetingPage__scrollable-content-box_closure">
-    <h2 class="greetingPage__h2 greetingPage__h2_closure">Features to help your team succeed</h2>
-    <span class="greetingPage__span greetingPage__span_closure">
+  <section class="greeting-page__section greeting-page__section_type_closure">
+    <h2 class="greeting-page__h2 greeting-page__h2_closure">Features to help your team succeed</h2>
+    <span class="greeting-page__span greeting-page__span_type_closure">
       Powering a productive team means using a powerful tool. From meetings and projects to events and goal setting,
       our project managing app’s intuitive features give any team the ability to quickly set up and customize workflows for just about anything.
     </span>
-    <div class="greetingPage__wrapper greetingPage__wrapper_closure">
-      <h2 class="greetingPage__h2">Join us! There are no trial periods and no credit card is required</h2>
-      <div class="greetingPage__wrapper greetingPage__wrapper_mail-input">
-        <input class="greetingPage__input" type="email" placeholder="Email" [(ngModel)]="emailInputString">
-        <button class="greetingPage__button" mat-raised-button color="primary" type="button" (click)="submitEmailForRegistration()">Registration</button>
+    <div class="greeting-page__wrapper greeting-page__wrapper_type_closure">
+      <h2 class="greeting-page__h2">Join us! There are no trial periods and no credit card is required</h2>
+      <div class="greeting-page__wrapper greeting-page__wrapper_type_mail-input">
+        <input class="greeting-page__input" type="email" placeholder="Email" [(ngModel)]="emailInputString">
+        <button class="greeting-page__button" mat-raised-button color="primary" type="button" (click)="submitEmailForRegistration()">Registration</button>
       </div>
     </div>
-  </div>
+  </section>
 </div>
-<app-footer></app-footer>
