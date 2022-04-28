@@ -15,15 +15,15 @@ a {
   }
 }
 
-.footer__dev-info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .footer__icon {
   margin-right: 5px;
   align-self: center;
+}
+
+.footer__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 500px) {
