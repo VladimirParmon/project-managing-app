@@ -6,9 +6,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { CoreRoutingModule } from './core-routing.module';
 import { GreetingPageComponent } from './pages/greeting-page/greeting-page.component';
 import { Page404Component } from './pages/page404/page404.component';
+import { HeaderScrollDirective } from './directives/header-scroll.directive';
 
 @NgModule({
-  declarations: [GreetingPageComponent, HeaderComponent, FooterComponent, Page404Component],
+  declarations: [GreetingPageComponent, HeaderComponent, FooterComponent, Page404Component, HeaderScrollDirective],
   imports: [CommonModule, CoreRoutingModule, SharedModule],
   exports: [HeaderComponent, FooterComponent],
 })

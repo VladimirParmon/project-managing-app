@@ -1,3 +1,5 @@
+@use '../../../../styles.scss';
+
 .header {
   display: flex;
   position: sticky;
@@ -8,10 +10,23 @@
   top: 0;
   z-index: 100;
   left: 0;
+  transition: 1s;
 }
 
 .header__button-container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.header__opacity {
+  background-color: rgba($color: styles.$primary-color, $alpha: 0.4);
+
+  .header__logo-span {
+    color: black;
+  }
+
+  .header__button_login {
+    color: black;
+  }
 }

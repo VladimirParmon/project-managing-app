@@ -1,11 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
+
 $custom-typography: mat.define-typography-config($font-family:'"Raleway", sans-serif');
 
 $custom-theme: mat.define-light-theme((typography: $custom-typography));
 
 @include mat.core($custom-typography);
 @include mat.all-component-themes($custom-theme);
+
+@import "@angular/material/theming";
+$primary-palette: mat-palette($mat-pink, 700, 500, 900);
+$accent-palette:  mat-palette($mat-blue-grey, A200, A100, A400);
+$warn-palette:    mat-palette($mat-red);
+$primary-color: mat-color($primary-palette);
+$accent-color: mat-color($accent-palette);
+$warn-color: mat-color($warn-palette);
 
 * {
   box-sizing: border-box;
