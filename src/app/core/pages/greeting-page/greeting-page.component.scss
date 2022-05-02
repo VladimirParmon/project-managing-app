@@ -1,0 +1,134 @@
+.greeting-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(153.03deg,
+  rgba(209, 107, 165, 0.3) 18.23%,
+  rgba(134, 168, 231, 0.3) 42.2%,
+  rgba(95, 251, 241, 0.3) 84.95%);
+
+  &__section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1em;
+  }
+
+  &__section_type_greeting {
+    height: 90vh;
+  }
+
+  &__section_type_screenshots {
+    justify-content: flex-start;
+    height: 85vh;
+  }
+
+  &__section_type_closure {
+    justify-content: flex-start;
+    margin-bottom: 200px;
+  }
+
+  &__h1 {
+    font-size: 7vh;
+    line-height: 7vh;
+    margin-bottom: 5rem;
+    font-weight: 100;
+  }
+
+  &__h2 {
+    font-size: 3vh;
+    font-weight: 600;
+  }
+
+  &__h2_closure,
+  &__span_type_closure {
+    align-self: flex-start;
+  }
+
+  &__input {
+    height: 40px;
+    width: 50vw;
+    border: none;
+    border-radius: 3px;
+    margin-right: 10px;
+    padding: 10px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__input,
+  &__button {
+    font-weight: 300;
+    font-size: 20px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__wrapper_type_screenshots {
+    justify-content: center;
+    align-items: center;
+    margin-top: 4vh;
+  }
+
+  &__wrapper_type_closure {
+    display: flex;
+    flex-direction: column;
+    background-color: #D16BA526;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 4vh;
+  }
+
+  &__span {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    max-width: 900px;
+    font-weight: 300;
+  }
+
+  &__span_type_greeting-itself {
+    margin-top: 5rem;
+  }
+
+  &__img_screenshot {
+    width: 40%;
+  }
+
+  &__spacer {
+    width: 50px;
+    height: 50px;
+  }
+
+  @media screen and (max-width: 1000px) {
+    &__span {
+      font-size: 1rem;
+    }
+
+    &__h1 {
+      margin-bottom: 2rem;
+    }
+
+    &__span_greeting-itself {
+      margin-top: 2rem;
+    }
+
+    &__input {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    &__wrapper_type_closure {
+      padding: 50px;
+    }
+  }
+}

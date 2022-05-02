@@ -1,0 +1,8 @@
+<mat-toolbar class="footer">
+  <div *ngFor="let developer of developers">
+    <a class="footer__link" href={{developer.gitHubLink}}>
+      <mat-icon aria-hidden="true" class="footer__icon">{{developer.icon}}</mat-icon>
+      <span class="footer__span">{{developer.name}}</span>
+    </a>
+  </div>
+</mat-toolbar>

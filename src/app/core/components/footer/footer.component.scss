@@ -1,0 +1,35 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+}
+
+a {
+  text-decoration: none;
+  &:visited {
+    color: white;
+  }
+  &:hover {
+    color: red;
+  }
+}
+
+.footer__icon {
+  margin-right: 5px;
+  align-self: center;
+}
+
+.footer__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 500px) {
+  .footer__span {
+    font-size: 14px;
+  }
+}
+
+

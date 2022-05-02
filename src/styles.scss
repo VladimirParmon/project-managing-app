@@ -1,4 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+$custom-typography: mat.define-typography-config($font-family:'"Raleway", sans-serif');
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+$custom-theme: mat.define-light-theme((typography: $custom-typography));
+
+@include mat.core($custom-typography);
+@include mat.all-component-themes($custom-theme);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+app-footer {
+  position: relative;
+  bottom: 0;
+  width: 100vw;
+}
+
+//font-family: 'Raleway', sans-serif;
