@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UrlPaths } from './shared/constants/url-paths';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'greeting',
+    redirectTo: UrlPaths.greeting,
     pathMatch: 'full',
   },
   {
@@ -12,11 +13,11 @@ const routes: Routes = [
     loadChildren: () => import('./core/core.module').then((m) => m.CoreModule),
   },
   {
-    path: 'board',
+    path: UrlPaths.board,
     loadChildren: () => import('./board/board.module').then((m) => m.BoardModule),
   },
   {
-    path: 'auth',
+    path: UrlPaths.auth,
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {

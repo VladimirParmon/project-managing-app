@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UrlPaths } from '../shared/constants/url-paths';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { UserSettingsPageComponent } from './pages/user-settings-page/user-settings-page.component';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: UrlPaths.login,
     component: LoginPageComponent,
   },
   {
-    path: 'settings',
+    path: UrlPaths.settings,
     component: UserSettingsPageComponent,
   },
 ];
