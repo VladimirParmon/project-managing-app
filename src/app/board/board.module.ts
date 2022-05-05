@@ -4,14 +4,8 @@ import { CommonModule } from '@angular/common';
 import { BoardRoutingModule } from './board-routing.module';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 
-
 @NgModule({
-  declarations: [
-    MainPageComponent
-  ],
-  imports: [
-    CommonModule,
-    BoardRoutingModule
-  ]
+  declarations: [MainPageComponent],
+  imports: [CommonModule, BoardRoutingModule],
 })
-export class BoardModule { }
+export class BoardModule {}
