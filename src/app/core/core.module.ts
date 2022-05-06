@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../shared/shared.module';
@@ -17,7 +18,13 @@ import { Page404Component } from './pages/page404/page404.component';
     Page404Component,
     LanguageSwitchComponent,
   ],
-  imports: [CommonModule, CoreRoutingModule, SharedModule, TranslateModule.forChild()],
+  imports: [
+    CommonModule,
+    CoreRoutingModule,
+    SharedModule,
+    TranslateModule.forChild(),
+    HttpClientModule,
+  ],
   exports: [HeaderComponent, FooterComponent],
 })
 export class CoreModule {}
