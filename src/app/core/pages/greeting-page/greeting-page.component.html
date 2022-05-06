@@ -1,19 +1,17 @@
 <div class="greeting-page">
   <section class="greeting-page__section greeting-page__section_type_greeting">
-    <h1 class="greeting-page__h1">PROJECT MANAGING APP</h1>
+    <h1 class="greeting-page__h1">{{ 'greetingPage.h1' | translate }}</h1>
     <div class="greeting-page__wrapper greeting-page__wrapper_type_mail-input">
       <input class="greeting-page__input" type="email" placeholder="Email" [(ngModel)]="emailInputString">
-      <button class="greeting-page__button" mat-raised-button color="primary" type="button" (click)="submitEmailForRegistration()">Registration</button>
+      <button class="greeting-page__button" mat-raised-button color="primary" type="button" (click)="submitEmailForRegistration()">{{ 'greetingPage.emailForm.button'| translate }}</button>
     </div>
-    <span class="greeting-page__span greeting-page__span_type_greeting-itself">Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office,
-      the way your team works is unique—accomplish it all with our managing app.
+    <span class="greeting-page__span greeting-page__span_type_greeting-itself">{{ 'greetingPage.greeting' | translate }}
     </span>
   </section>
 
   <section class="greeting-page__section greeting-page__section_type_screenshots">
-    <h2 class="greeting-page__h2">IT ALL STARTS TODAY WITH THE NEW TOOLS</h2>
-    <span class="greeting-page__span">Start with our unique board, lists, and cards. Customize and expand with more features as your teamwork grows.
-      Manage projects, organize tasks, and build team spirit—all in one place.
+    <h2 class="greeting-page__h2">{{ 'greetingPage.screenshots_h2' | translate }}</h2>
+    <span class="greeting-page__span">{{ 'greetingPage.screenshots_span' | translate }}
     </span>
     <div class="greeting-page__wrapper greeting-page__wrapper_type_screenshots">
       <img class="greeting-page__img greeting-page__img_screenshot" src="https://ozen.by/wp-content/uploads/2020/10/placeholder.png" alt="app screenshot">
@@ -23,16 +21,15 @@
   </section>
 
   <section class="greeting-page__section greeting-page__section_type_closure">
-    <h2 class="greeting-page__h2 greeting-page__h2_closure">Features to help your team succeed</h2>
+    <h2 class="greeting-page__h2 greeting-page__h2_closure">{{ 'greetingPage.closure_h2_lead' | translate }}</h2>
     <span class="greeting-page__span greeting-page__span_type_closure">
-      Powering a productive team means using a powerful tool. From meetings and projects to events and goal setting,
-      our project managing app’s intuitive features give any team the ability to quickly set up and customize workflows for just about anything.
+      {{ 'greetingPage.closure_span' | translate }}
     </span>
     <div class="greeting-page__wrapper greeting-page__wrapper_type_closure">
-      <h2 class="greeting-page__h2">Join us! There are no trial periods and no credit card is required</h2>
+      <h2 class="greeting-page__h2">{{ 'greetingPage.closure_h2_finisher' | translate }}</h2>
       <div class="greeting-page__wrapper greeting-page__wrapper_type_mail-input">
         <input class="greeting-page__input" type="email" placeholder="Email" [(ngModel)]="emailInputString">
-        <button class="greeting-page__button" mat-raised-button color="primary" type="button" (click)="submitEmailForRegistration()">Registration</button>
+        <button class="greeting-page__button" mat-raised-button color="primary" type="button" (click)="submitEmailForRegistration()">{{ 'greetingPage.emailForm.button' | translate }}</button>
       </div>
     </div>
   </section>
