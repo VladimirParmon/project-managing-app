@@ -1,7 +1,8 @@
 <mat-toolbar class="header header__opacity" color="primary" appHeaderScroll>
-  <span class="header__logo-span">Managing app</span>
+  <span class="header__logo-span">{{ 'header.logo' | translate }}</span>
   <div class="header__button-container">
-    <button mat-button class="header__button header__button_login">Login</button>
-    <button mat-raised-button class="header__button header__button_sign-up">Sign up</button>
+    <app-language-switch></app-language-switch>
+    <button mat-button class="header__button header__button_login">{{ 'header.button_login' | translate }}</button>
+    <button mat-raised-button class="header__button header__button_sign-up">{{ 'header.button_sign-up' | translate }}</button>
   </div>
 </mat-toolbar>
