@@ -15,7 +15,7 @@ export function storageMetaReducer(reducer: ActionReducer<any>): ActionReducer<a
       return merge(nextState, savedState);
     }
 
-    const stateToSave = pick(nextState, [MAStoreKeys.user]);
+    const stateToSave = <StoreUser>pick(nextState, [MAStoreKeys.user]);
     LocalStorageService.setSavedState(stateToSave, LStorageKeys.user);
 
     return nextState;
