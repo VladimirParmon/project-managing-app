@@ -15,7 +15,7 @@ import { reducers, metaReducers, effects } from './redux';
 import { CoreModule } from './core/core.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
