@@ -1,0 +1,37 @@
+<mat-dialog-content class="create-dialog__content">
+  <h2 mat-dialog-title>Create new board</h2>
+
+  <form
+    [formGroup]="createBoardModelInfo"
+    (ngSubmit)="submit(createBoardModelInfo)"
+    class="create-dialog__form"
+  >
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Board name</mat-label>
+
+      <input #name required formControlName="boardName" matInput />
+    </mat-form-field>
+
+    <p
+      *ngIf=" (boardName?.errors?.['required'] && (boardName?.touched) || (boardName?.invalid && triedToSubmit))"
+    >
+      Please fill the board name!
+    </p>
+
+    <p *ngIf=" (boardName?.dirty) &&boardName?.errors?.['minlength']">
+      The board name is too short!
+    </p>
+
+    <p *ngIf="boardName?.dirty && boardName?.errors?.['maxlength']">The board name is too long!</p>
+
+    <mat-dialog-actions>
+      <button mat-raised-button mat-dialog-close="true">Cancel</button>
+
+      <button mat-raised-button>Create board!</button>
+    </mat-dialog-actions>
+  </form>
+
+  <mat-button class="create-dialog__icon-close icon-close" mat-dialog-close="true">
+    <mat-icon>close</mat-icon>
+  </mat-button>
+</mat-dialog-content>
