@@ -4,4 +4,6 @@ export enum UrlPaths {
   auth = 'auth',
   login = 'login',
   settings = 'settings',
+  notFoundPattern = '**',
+  notFound = '404',
 }

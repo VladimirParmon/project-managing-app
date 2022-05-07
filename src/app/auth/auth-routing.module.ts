@@ -6,6 +6,10 @@ import { UserSettingsPageComponent } from './pages/user-settings-page/user-setti
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: UrlPaths.notFound,
+  },
+  {
     path: UrlPaths.login,
     component: LoginPageComponent,
   },

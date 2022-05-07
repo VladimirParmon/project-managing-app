@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { selectUserId } from 'src/app/redux';
 import { onLogInSubmit, onSignUpSubmit } from 'src/app/redux/actions/user-data.actions';
+import { UrlPaths } from 'src/app/shared/constants/url-paths';
 import { FormMode } from '../../constants/auth-form.constants';
 
 @Component({
@@ -8,12 +12,27 @@ import { FormMode } from '../../constants/auth-form.constants';
   templateUrl: './auth-form.component.html',
   styleUrls: ['./auth-form.component.scss'],
 })
-export class AuthFormComponent {
+export class AuthFormComponent implements OnInit, OnDestroy {
   readonly FormMode = FormMode;
 
   public activeFormMode: FormMode = FormMode.registration;
 
-  constructor(private store: Store) {}
+  private userId$ = this.store.select(selectUserId);
+
+  private subscription = new Subscription();
+
+  constructor(private store: Store, private router: Router) {}
+
+  ngOnInit(): void {
+    this.subscription.add(
+      this.userId$.subscribe((id) => {
+        if (id && id !== '') {
+          // check if user id is already in store we can go to main page
+          this.router.navigate([UrlPaths.board]);
+        }
+      })
+    );
+  }
 
   selectFormMode(mode: FormMode): void {
     this.activeFormMode = mode;
@@ -28,5 +47,9 @@ export class AuthFormComponent {
         ? onSignUpSubmit({ user: user as UserSignUp })
         : onLogInSubmit({ user: user as UserLogIn })
     );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
