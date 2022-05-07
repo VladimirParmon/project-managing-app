@@ -2,7 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { selectUserAuthToken } from 'src/app/redux/selectors/user.selectors';
+import { selectUserAuthToken } from 'src/app/redux';
 import { ApiPaths } from 'src/app/shared/constants/api-paths';
 
 @Injectable()
