@@ -9,4 +9,11 @@ export enum ActionTypes {
 
   throwAuthError = '[AUTH ERROR] throw auth error',
   newAuthError = '[AUTH ERROR] save auth error',
+
+  boardsFetched = '[BOARDS] boards fetched',
+  createBoard = '[BOARDS] create board',
+  deleteBoard = '[BOARDS] delete board',
+  fetchBoards = '[BOARDS] fetch boards',
+  handleDeleteBoard = '[BOARDS] handle delete board',
+  setNewBoard = '[BOARDS] set new board',
 }
