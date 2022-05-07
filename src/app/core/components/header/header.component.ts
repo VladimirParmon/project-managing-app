@@ -1,8 +1,23 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { CreateBoardDialogComponent } from 'src/app/shared/components/create-board-dialog/create-board-dialog.component';
 
 @Component({
-  selector: 'app-header',
+  selector: 'ma-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  constructor(public dialog: MatDialog, private http: HttpClient) {}
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.autoFocus = false;
+    dialogConfig.position = { top: '5%' };
+    dialogConfig.panelClass = 'dialog-container';
+
+    this.dialog.open(CreateBoardDialogComponent, dialogConfig);
+  }
+}
