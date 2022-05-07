@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { MAStoreKeys } from '../constants/store-keys';
+import { StoreError, StoreUser } from '../models/store.model';
 
 const selectUserBlock = createFeatureSelector<StoreUser>(MAStoreKeys.user);
 const selectUserErrorBlock = createFeatureSelector<StoreError>(MAStoreKeys.error);

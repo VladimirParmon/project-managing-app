@@ -6,6 +6,7 @@ import { ApiAuthService } from 'src/app/auth/services/api-auth.service';
 import { throwAuthError } from '../actions/user-error.actions';
 import { addFullUserData } from '../actions/user-data.actions';
 import { ActionTypes } from '../actions/action-types';
+import { SignUpAction } from '../models/actions.model';
 
 @Injectable()
 export class UserSignUpEffect {

@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
+import { StoreError } from '../models/store.model';
 import { ActionTypes } from './action-types';
 
 export const storeAuthError = createAction(

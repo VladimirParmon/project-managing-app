@@ -2,6 +2,7 @@ import { ActionReducer } from '@ngrx/store';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { merge, pick } from 'lodash-es';
 import { LStorageKeys, MAStoreKeys } from '../constants/store-keys';
+import { StoreUser } from '../models/store.model';
 
 export function storageMetaReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   let onInit = true;

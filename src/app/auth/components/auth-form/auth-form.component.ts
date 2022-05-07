@@ -6,6 +6,7 @@ import { selectUserId } from 'src/app/redux';
 import { onLogInSubmit, onSignUpSubmit } from 'src/app/redux/actions/user-data.actions';
 import { UrlPaths } from 'src/app/shared/constants/url-paths';
 import { FormMode } from '../../constants/auth-form.constants';
+import { UserLogIn, UserSignUp } from '../../models/auth.model';
 
 @Component({
   selector: 'ma-auth-form',
