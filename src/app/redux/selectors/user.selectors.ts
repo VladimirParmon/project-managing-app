@@ -6,5 +6,6 @@ const selectUserErrorBlock = createFeatureSelector<StoreError>(MAStoreKeys.error
 
 const selectAuthErrorMessage = createSelector(selectUserErrorBlock, (error) => error.message);
 const selectUserAuthToken = createSelector(selectUserBlock, (user) => user.token);
+const selectUserId = createSelector(selectUserBlock, (user) => user.id);
 
-export { selectAuthErrorMessage, selectUserAuthToken };
+export { selectAuthErrorMessage, selectUserAuthToken, selectUserId };
