@@ -1,0 +1,13 @@
+<mat-dialog-content class="confirmation-modal__content">
+  <h2 mat-dialog-title>Please confirm your action!</h2>
+
+  <mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close="true" (click)="deleteBoard()" mat-button>
+      Confirm
+    </button>
+
+    <mat-button class="confirmation-modal__icon-close icon-close" mat-dialog-close="true">
+      <mat-icon>close</mat-icon>
+    </mat-button>
+  </mat-dialog-actions>
+</mat-dialog-content>
