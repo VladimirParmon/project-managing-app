@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
+import { Action } from '@ngrx/store';
 
-interface ErrorAction extends Action {
+export interface ErrorAction extends Action {
   err: HttpErrorResponse;
 }
