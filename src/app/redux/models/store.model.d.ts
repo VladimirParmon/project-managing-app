@@ -12,5 +12,5 @@ interface StoreError {
 
 interface MAStore {
   user: StoreUser;
-  userApiError: StoreError;
+  appError: StoreError;
 }
