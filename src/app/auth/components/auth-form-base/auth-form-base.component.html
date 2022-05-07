@@ -32,6 +32,7 @@
       (click)="isPassHidden = !isPassHidden"
       [attr.aria-label]="'isPassVisible password'"
       [attr.aria-pressed]="isPassHidden"
+      type="button"
     >
       <mat-icon>{{ isPassHidden ? 'visibility_off' : 'visibility' }}</mat-icon>
     </button>
