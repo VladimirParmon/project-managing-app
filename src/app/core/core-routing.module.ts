@@ -1,16 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UrlPaths } from '../shared/constants/url-paths';
 import { GreetingPageComponent } from './pages/greeting-page/greeting-page.component';
 import { Page404Component } from './pages/page404/page404.component';
 
 const routes: Routes = [
   {
     path: '',
+    redirectTo: UrlPaths.greeting,
+    pathMatch: 'full',
+  },
+  {
+    path: UrlPaths.greeting,
+    component: GreetingPageComponent,
+  },
+  {
+    path: UrlPaths.notFound,
     component: Page404Component,
   },
   {
-    path: 'greeting',
-    component: GreetingPageComponent,
+    path: UrlPaths.notFoundPattern,
+    redirectTo: UrlPaths.notFound,
   },
 ];
 

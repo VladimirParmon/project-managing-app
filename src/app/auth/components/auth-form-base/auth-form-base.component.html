@@ -1,0 +1,52 @@
+<form class="form" *ngIf="Form" [formGroup]="Form" (ngSubmit)="onFormSubmit()">
+  <mat-form-field *ngIf="isRegistrationForm" appearance="outline" class="form__field">
+    <mat-label>Enter your name</mat-label>
+    <input matInput placeholder="John Doe" [formControlName]="FormControls.name" required />
+    <mat-error *ngIf="isFieldInvalid(FormControls.name)">{{
+      getErrorMessageText(FormControls.name)
+    }}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form__field">
+    <mat-label>Enter your login</mat-label>
+    <input
+      matInput
+      placeholder="example@mail.com"
+      [formControlName]="FormControls.login"
+      required
+    />
+    <mat-error *ngIf="isFieldInvalid(FormControls.login)">{{
+      getErrorMessageText(FormControls.login)
+    }}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form__field">
+    <mat-label>Enter your password</mat-label>
+    <input
+      matInput
+      [type]="isPassHidden ? 'password' : 'text'"
+      [formControlName]="FormControls.pass"
+      required
+    />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="isPassHidden = !isPassHidden"
+      [attr.aria-label]="'isPassVisible password'"
+      [attr.aria-pressed]="isPassHidden"
+      type="button"
+    >
+      <mat-icon>{{ isPassHidden ? 'visibility_off' : 'visibility' }}</mat-icon>
+    </button>
+    <mat-error *ngIf="isFieldInvalid(FormControls.pass)">{{
+      getErrorMessageText(FormControls.pass)
+    }}</mat-error>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    class="form__submit"
+    color="primary"
+    type="submit"
+    [disabled]="this.Form.invalid"
+  >
+    {{ this.isRegistrationForm ? 'Sign Up' : 'Log In' }}
+  </button>
+</form>

@@ -1,27 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { UrlPaths } from './shared/constants/url-paths';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'greeting',
-    pathMatch: 'full',
-  },
-  {
-    path: '',
-    loadChildren: () => import('./core/core.module').then((m) => m.CoreModule),
-  },
-  {
-    path: 'board',
-    loadChildren: () => import('./board/board.module').then((m) => m.BoardModule),
-  },
-  {
-    path: 'auth',
+    path: UrlPaths.auth,
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
   },
   {
-    path: '**',
+    path: UrlPaths.board,
+    loadChildren: () => import('./board/board.module').then((m) => m.BoardModule),
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
+  },
+  {
+    path: '',
     loadChildren: () => import('./core/core.module').then((m) => m.CoreModule),
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
   },
 ];
 
