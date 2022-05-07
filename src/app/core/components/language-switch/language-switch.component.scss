@@ -1,0 +1,14 @@
+.language-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  &__slide {
+    margin: 0 10px;
+  }
+}

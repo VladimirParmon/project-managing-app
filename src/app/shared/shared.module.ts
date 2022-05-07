@@ -6,10 +6,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar';
 // ================
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
@@ -22,6 +25,9 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     MatButtonToggleModule,
     MatSnackBarModule,
+    MatSlideToggleModule,
+    FormsModule,
+    MatToolbarModule,
   ],
   exports: [
     MatFormFieldModule,
@@ -31,6 +37,9 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     MatButtonToggleModule,
     MatSnackBarModule,
+    MatSlideToggleModule,
+    FormsModule,
+    MatToolbarModule,
   ],
 })
 export class SharedModule {}
