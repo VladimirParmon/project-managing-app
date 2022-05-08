@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class LanguageService {
-  language$ = new BehaviorSubject('');
+  public language$ = new BehaviorSubject('');
 
   applyLang(lang: string) {
     this.language$.next(lang);

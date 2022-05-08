@@ -8,7 +8,7 @@ export const initialState: MAStore = {
     login: '',
     token: '',
   },
-  userApiError: {
+  appError: {
     code: 0,
     message: '',
   },

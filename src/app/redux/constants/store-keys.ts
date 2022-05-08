@@ -1,6 +1,6 @@
 export enum MAStoreKeys {
   user = 'user',
-  error = 'userApiError',
+  error = 'appError',
   boards = 'boards',
 }
 

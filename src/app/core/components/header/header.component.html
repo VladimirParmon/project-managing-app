@@ -9,7 +9,7 @@
     <button mat-button class="header__button header__button_login">
       {{ 'header.button_login' | translate }}
     </button>
-    <button mat-raised-button class="header__button header__button_sign-up">
+    <button mat-raised-button class="header__button header__button_sign-up" (click)="goToAuth()">
       {{ 'header.button_sign-up' | translate }}
     </button>
   </div>

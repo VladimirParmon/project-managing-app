@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateBoardDialogComponent } from 'src/app/shared/components/create-board-dialog/create-board-dialog.component';
+import { Router } from '@angular/router';
+import { UrlPaths } from 'src/app/shared/constants/url-paths';
 
 @Component({
   selector: 'ma-header',
@@ -9,7 +11,7 @@ import { CreateBoardDialogComponent } from 'src/app/shared/components/create-boa
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  constructor(public dialog: MatDialog, private http: HttpClient) {}
+  constructor(public dialog: MatDialog, private http: HttpClient, private router: Router) {}
 
   openDialog() {
     const dialogConfig = new MatDialogConfig();
@@ -19,5 +21,9 @@ export class HeaderComponent {
     dialogConfig.panelClass = 'dialog-container';
 
     this.dialog.open(CreateBoardDialogComponent, dialogConfig);
+  }
+
+  goToAuth(): void {
+    this.router.navigate([UrlPaths.auth, UrlPaths.login]);
   }
 }

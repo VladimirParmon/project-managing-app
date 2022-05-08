@@ -9,9 +9,11 @@ export class BaseUrlInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(
-      request.clone({
-        url: `${this.BASE_URL}/${request.url}`,
-      })
+      request.url.includes('.json')
+        ? request
+        : request.clone({
+            url: `${this.BASE_URL}/${request.url}`,
+          })
     );
   }
 }
