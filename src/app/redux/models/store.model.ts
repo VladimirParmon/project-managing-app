@@ -15,7 +15,7 @@ export interface StoreError {
 export interface MAStore {
   boards: TBoards;
   user: StoreUser;
-  userApiError: StoreError;
+  appError: StoreError;
 }
 
 export type TBoards = IBoard[];

@@ -1,9 +1,10 @@
 /* eslint-disable ngrx/prefer-effect-callback-in-block-statement */
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, mergeMap, switchMap } from 'rxjs';
+import { catchError, map, mergeMap, switchMap } from 'rxjs';
 import { BoardService } from 'src/app/board/services/board.service';
 import { ActionTypes } from '../actions/action-types';
+import { throwAppError } from '../actions/app-error.actions';
 
 @Injectable()
 export class BoardsEffects {
@@ -15,7 +16,8 @@ export class BoardsEffects {
           map((boards) => ({
             type: ActionTypes.boardsFetched,
             boards,
-          }))
+          })),
+          catchError(async (err) => throwAppError({ err }))
         )
       )
     )
@@ -25,9 +27,10 @@ export class BoardsEffects {
     this.actions$.pipe(
       ofType(ActionTypes.createBoard),
       switchMap(({ title }) =>
-        this.boardService
-          .createBoard(title)
-          .pipe(map(({ id }) => ({ type: ActionTypes.setNewBoard, id, title })))
+        this.boardService.createBoard(title).pipe(
+          map(({ id }) => ({ type: ActionTypes.setNewBoard, id, title })),
+          catchError(async (err) => throwAppError({ err }))
+        )
       )
     )
   );
@@ -36,7 +39,10 @@ export class BoardsEffects {
     this.actions$.pipe(
       ofType(ActionTypes.handleDeleteBoard),
       switchMap(({ id }) =>
-        this.boardService.deleteBoard(id).pipe(map(() => ({ type: ActionTypes.deleteBoard, id })))
+        this.boardService.deleteBoard(id).pipe(
+          map(() => ({ type: ActionTypes.deleteBoard, id })),
+          catchError(async (err) => throwAppError({ err }))
+        )
       )
     )
   );
