@@ -16,5 +16,10 @@
     "logo": "Managing app",
     "button_login": "Login",
     "button_sign-up": "Sign up"
+  },
+  "page404": {
+    "sorry_message": "We are extremely sorry that something went wrong, but this page does not seem to exist",
+    "link_span": "Here's your link to the ",
+    "link": "main page"
   }
 }

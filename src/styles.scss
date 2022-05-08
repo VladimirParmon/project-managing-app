@@ -16,6 +16,13 @@ $primary-color: mat-color($primary-palette);
 $accent-color: mat-color($accent-palette);
 $warn-color: mat-color($warn-palette);
 
+$header-height: 65px;
+$footer-height: 65px;
+$bg-gradient: linear-gradient(153.03deg,
+rgba(209, 107, 165, 0.3) 18.23%,
+rgba(134, 168, 231, 0.3) 42.2%,
+rgba(95, 251, 241, 0.3) 84.95%);
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,5 +34,13 @@ app-footer {
   bottom: 0;
   width: 100vw;
 }
+
+.page-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - ($header-height + $footer-height));
+}
+
 
 //font-family: 'Raleway', sans-serif;

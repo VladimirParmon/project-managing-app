@@ -1,0 +1,51 @@
+@use '../../../../styles.scss';
+
+.page-content__page404 {
+  animation: bg-shift 5s ease-in-out infinite alternate;
+  background: styles.$bg-gradient;
+  background-size: 400% 400%;
+  padding-bottom: 5vh;
+}
+
+.page404 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__span_type_decoration {
+    align-self: center;
+    font-size: 30vh;
+    line-height: 30vh;
+    max-width: 90vw;
+
+  }
+
+  &__span_type_message {
+    align-self: center;
+    margin: 1vh;
+    font-size: 2vh;
+    text-align: justify;
+  }
+
+  &__link {
+    font-weight: 700;
+    color: black;
+
+    &:hover {
+      color: styles.$warn-color;
+    }
+  }
+}
+
+@keyframes bg-shift {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
