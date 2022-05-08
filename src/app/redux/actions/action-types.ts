@@ -7,6 +7,6 @@ export enum ActionTypes {
 
   afterLoggedIn = '[AUTH SUCCEED] fill user data properties after log in',
 
-  throwAuthError = '[AUTH ERROR] throw auth error',
-  newAuthError = '[AUTH ERROR] save auth error',
+  throwAppError = '[ERROR] throw some error',
+  newAppError = '[ERROR] save code and message of error',
 }

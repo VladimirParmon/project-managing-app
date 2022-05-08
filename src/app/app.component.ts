@@ -8,7 +8,8 @@ import { LanguageService } from './core/services/language.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'project-managing-app';
+  readonly title = 'project-managing-app';
+
   constructor(private languageService: LanguageService, private translate: TranslateService) {
     this.languageService.language$.subscribe((lang) => {
       if (lang) {

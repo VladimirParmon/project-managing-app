@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, exhaustMap, map, switchMap } from 'rxjs';
 import { ApiAuthService } from 'src/app/auth/services/api-auth.service';
 import { ApiUsersService } from 'src/app/core/services/api-users.service';
-import { throwAuthError } from '../actions/user-error.actions';
+import { throwAppError } from '../actions/app-error.actions';
 import { addDataAfterSignIn, addPartUserData } from '../actions/user-data.actions';
 import { ActionTypes } from '../actions/action-types';
 
@@ -27,7 +27,7 @@ export class UserLogInEffect {
             addPartUserData({ part: { login, token } }),
             addDataAfterSignIn({ login }),
           ]),
-          catchError(async (err) => throwAuthError({ err }))
+          catchError(async (err) => throwAppError({ err }))
         );
       })
     );

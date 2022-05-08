@@ -3,23 +3,23 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map } from 'rxjs';
 import { ActionTypes } from '../actions/action-types';
-import { storeAuthError } from '../actions/user-error.actions';
+import { storeAppError } from '../actions/app-error.actions';
 import { ErrorAction } from '../models/imported-actions.model';
 
 @Injectable()
-export class UserErrorEffect {
+export class ErrorEffect {
   constructor(private actions$: Actions) {}
 
-  onAuthError$ = createEffect(() => {
+  onAppError$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType<ErrorAction>(ActionTypes.throwAuthError),
+      ofType<ErrorAction>(ActionTypes.throwAppError),
       map(({ err }) => {
         const error =
           typeof err.error === 'string'
             ? { code: err.status, message: err.error }
             : { code: err.error.code, message: err.error.message };
 
-        return storeAuthError({ error });
+        return storeAppError({ error });
       })
     );
   });

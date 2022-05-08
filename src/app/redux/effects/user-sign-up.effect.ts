@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap } from 'rxjs';
 import { ApiAuthService } from 'src/app/auth/services/api-auth.service';
-import { throwAuthError } from '../actions/user-error.actions';
+import { throwAppError } from '../actions/app-error.actions';
 import { addFullUserData } from '../actions/user-data.actions';
 import { ActionTypes } from '../actions/action-types';
 
@@ -23,7 +23,7 @@ export class UserSignUpEffect {
               .singIn({ login, password })
               .pipe(map(({ token }) => addFullUserData({ user: { id, name, login, token } })))
           ),
-          catchError(async (err) => throwAuthError({ err }))
+          catchError(async (err) => throwAppError({ err }))
         );
       })
     );

@@ -2,12 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
 import { ActionTypes } from './action-types';
 
-export const storeAuthError = createAction(
-  ActionTypes.newAuthError,
-  props<{ error: StoreError }>()
-);
+export const storeAppError = createAction(ActionTypes.newAppError, props<{ error: StoreError }>());
 
-export const throwAuthError = createAction(
-  ActionTypes.throwAuthError,
+export const throwAppError = createAction(
+  ActionTypes.throwAppError,
   props<{ err: HttpErrorResponse }>()
 );

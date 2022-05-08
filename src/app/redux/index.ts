@@ -3,7 +3,7 @@ import { reducers, metaReducers } from './reducers';
 import {
   selectUserAuthToken,
   selectUserId,
-  selectAuthErrorMessage,
+  selectAppErrorMessage,
 } from './selectors/user.selectors';
 
 export {
@@ -12,5 +12,5 @@ export {
   metaReducers,
   selectUserAuthToken,
   selectUserId,
-  selectAuthErrorMessage,
+  selectAppErrorMessage,
 };
