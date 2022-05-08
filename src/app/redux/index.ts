@@ -4,6 +4,7 @@ import {
   selectUserAuthToken,
   selectUserId,
   selectAppErrorMessage,
+  selectUserName,
 } from './selectors/user.selectors';
 
 export {
@@ -13,4 +14,5 @@ export {
   selectUserAuthToken,
   selectUserId,
   selectAppErrorMessage,
+  selectUserName,
 };

@@ -8,6 +8,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatMenuModule } from '@angular/material/menu';
 // ================
 
 import { NgModule } from '@angular/core';
@@ -28,6 +30,8 @@ import { FormsModule } from '@angular/forms';
     MatSlideToggleModule,
     FormsModule,
     MatToolbarModule,
+    MatChipsModule,
+    MatMenuModule,
   ],
   exports: [
     MatFormFieldModule,
@@ -40,6 +44,8 @@ import { FormsModule } from '@angular/forms';
     MatSlideToggleModule,
     FormsModule,
     MatToolbarModule,
+    MatChipsModule,
+    MatMenuModule,
   ],
 })
 export class SharedModule {}
