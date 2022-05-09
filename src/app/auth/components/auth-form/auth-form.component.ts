@@ -2,8 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { selectUserId } from 'src/app/redux';
-import { onLogInSubmit, onSignUpSubmit } from 'src/app/redux/actions/user-data.actions';
+import { selectUserId, onLogInSubmit, onSignUpSubmit } from 'src/app/redux';
 import { UrlPaths } from 'src/app/shared/constants/url-paths';
 import { FormMode } from '../../constants/auth-form.constants';
 

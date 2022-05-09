@@ -11,4 +11,13 @@ const onSignUpSubmit = createAction(ActionTypes.signUpSubmit, props<{ user: User
 
 const onLogInSubmit = createAction(ActionTypes.logInSubmit, props<{ user: UserLogIn }>());
 
-export { addFullUserData, onSignUpSubmit, onLogInSubmit, addPartUserData, addDataAfterSignIn };
+const onLogOutSubmit = createAction(ActionTypes.logOutSubmit);
+
+export {
+  addFullUserData,
+  onSignUpSubmit,
+  onLogInSubmit,
+  addPartUserData,
+  addDataAfterSignIn,
+  onLogOutSubmit,
+};

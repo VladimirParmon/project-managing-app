@@ -2,11 +2,24 @@
   <span class="header__logo-span">{{ 'header.logo' | translate }}</span>
   <div class="header__button-container">
     <app-language-switch></app-language-switch>
-    <button mat-button class="header__button header__button_login">
-      {{ 'header.button_login' | translate }}
-    </button>
-    <button mat-raised-button class="header__button header__button_sign-up" (click)="goToAuth()">
-      {{ 'header.button_sign-up' | translate }}
-    </button>
+    <ng-container *ngIf="isAuthActionsVisible">
+      <button mat-raised-button class="header__button header__button_sign-up" (click)="goToAuth()">
+        {{ 'header.button_login' | translate }}
+      </button>
+    </ng-container>
+    <ng-container *ngIf="userName && userName.length > 0">
+      <mat-chip class="header__name-chip" [matMenuTriggerFor]="userActions">
+        <span class="header__name-chip__label">{{ userName[0] }}</span>
+        {{ userName }}
+      </mat-chip>
+      <mat-menu #userActions="matMenu">
+        <button mat-menu-item (click)="goToSettings()">
+          {{ 'header.user.button_settings' | translate }}
+        </button>
+        <button mat-menu-item (click)="logOut()">
+          {{ 'header.user.button_log-out' | translate }}
+        </button>
+      </mat-menu>
+    </ng-container>
   </div>
 </mat-toolbar>

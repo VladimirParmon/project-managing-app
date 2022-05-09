@@ -3,6 +3,7 @@ import { appErrorReducer } from './app-error.reducer';
 import { userReducer } from './user-data.reducer';
 import { storageMetaReducer } from './user-data.metareducer';
 import { MAStoreKeys } from '../constants/store-keys';
+import { resetMetaReducer } from './user-data-reset.metareducer';
 
 const reducers: ActionReducerMap<MAStore> = {
   [MAStoreKeys.user]: userReducer,
@@ -10,7 +11,7 @@ const reducers: ActionReducerMap<MAStore> = {
 };
 
 const metaReducers = {
-  metaReducers: [storageMetaReducer],
+  metaReducers: [storageMetaReducer, resetMetaReducer],
 };
 
 export { reducers, metaReducers };

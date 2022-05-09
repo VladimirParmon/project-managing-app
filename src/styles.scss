@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
 
 $custom-typography: mat.define-typography-config($font-family:'"Raleway", sans-serif');
@@ -22,6 +21,8 @@ $bg-gradient: linear-gradient(153.03deg,
 rgba(209, 107, 165, 0.3) 18.23%,
 rgba(134, 168, 231, 0.3) 42.2%,
 rgba(95, 251, 241, 0.3) 84.95%);
+$d-black: #000000;
+$a-light: #ffffff;
 
 * {
   box-sizing: border-box;
@@ -50,8 +51,11 @@ input {
   &:-webkit-autofill::first-line {
     transition: background-color 5000s;
     font-family: 'Raleway', sans-serif;
-    -webkit-text-fill-color: white;
+    -webkit-text-fill-color: $a-light;
   }
 }
 
-//font-family: 'Raleway', sans-serif;
+@mixin color($prop, $pallet, $inst) {
+  #{$prop}: mat.get-color-from-palette($pallet, $inst);
+}
+

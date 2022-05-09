@@ -1,4 +1,4 @@
-@use '../../../../styles.scss';
+@use '../../../../styles';
 
 .header {
   display: flex;
@@ -12,22 +12,50 @@
   left: 0;
   transition: 1s;
   height: styles.$header-height;
-}
 
-.header__button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.header__opacity {
-  background-color: rgba($color: styles.$primary-color, $alpha: 0.4);
-
-  .header__logo-span {
-    color: black;
+  &__button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1.5em;
   }
 
-  .header__button_login {
-    color: black;
+  &__opacity {
+    background-color: rgba($color: styles.$primary-color, $alpha: 0.4);
+  }
+
+  &__logo-span {
+    color: styles.$d-black;
+  }
+
+  &__button_login {
+    color: styles.$d-black;
+  }
+
+  &__name-chip {
+    display: flex;
+    justify-content: center;
+    padding: 0.5em 1em;
+    align-items: center;
+    border-radius: 4px;
+    user-select: none;
+    @include styles.color(background-color, styles.$accent-palette, 400);
+
+    &__label {
+      display: flex;
+      height: 2em;
+      width: 2em;
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+      margin-right: 0.5em;
+      @include styles.color(background-color, styles.$primary-palette, 200);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
