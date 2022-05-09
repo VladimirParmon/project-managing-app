@@ -1,13 +1,12 @@
 @use '../../../../styles.scss';
 
-.page-content__page404 {
+.page404 {
   animation: bg-shift 5s ease-in-out infinite alternate;
   background: styles.$bg-gradient;
   background-size: 400% 400%;
   padding-bottom: 5vh;
-}
-
-.page404 {
+  width: 100vw;
+  min-height: calc(100vh - (styles.$header-height + styles.$footer-height));
   display: flex;
   flex-direction: column;
   justify-content: center;
