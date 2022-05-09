@@ -21,10 +21,10 @@
 
   &__opacity {
     background-color: rgba($color: $primary-color, $alpha: 0.4);
-  }
 
-  &__logo-span {
-    color: $d-black;
+    .header__logo-span {
+      color: $d-black;
+    }
   }
 
   &__button_login {
