@@ -16,4 +16,13 @@ export enum ActionTypes {
   fetchBoards = '[BOARDS] fetch boards',
   handleDeleteBoard = '[BOARDS] handle delete board',
   setNewBoard = '[BOARDS] set new board',
+
+  boardFetched = '[BOARD] board fetched',
+  createColumn = '[BOARD] create board',
+  deleteColumn = '[BOARD] delete column',
+  fetchBoard = '[BOARD] fetch board',
+  fixColumnOrder = '[BOARD] fix column order',
+  handleDeleteColumn = '[BOARD] handle delete column',
+  handleFixColumnOrder = '[BOARD] handle fix column order',
+  setNewColumn = '[BOARD] set new column',
 }
