@@ -1,3 +1,12 @@
+import { storeAppError, throwAppError } from './actions/app-error.actions';
+import {
+  addFullUserData,
+  onSignUpSubmit,
+  onLogInSubmit,
+  addPartUserData,
+  addDataAfterSignIn,
+  onLogOutSubmit,
+} from './actions/user-data.actions';
 import { effects } from './effects/index';
 import { reducers, metaReducers } from './reducers';
 import {
@@ -15,4 +24,12 @@ export {
   selectUserId,
   selectAppErrorMessage,
   selectUserName,
+  storeAppError,
+  throwAppError,
+  addFullUserData,
+  onSignUpSubmit,
+  onLogInSubmit,
+  addPartUserData,
+  addDataAfterSignIn,
+  onLogOutSubmit,
 };
