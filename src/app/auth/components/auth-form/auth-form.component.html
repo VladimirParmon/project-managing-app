@@ -6,20 +6,19 @@
       (change)="selectFormMode($event.value)"
       class="auth-block__actions__group"
     >
-      <mat-button-toggle class="auth-block__action" [value]="FormMode.login">
-        Log In
+      <mat-button-toggle class="auth-block__action" [value]="FormMode.login" [checked]="activeFormMode === FormMode.login">
+        {{ 'auth.log_in' | translate }}
       </mat-button-toggle>
       <mat-button-toggle
         class="auth-block__action"
         [value]="FormMode.registration"
-        [checked]="activeFormMode === FormMode.registration"
       >
-        Registration
+        {{ 'auth.registration' | translate }}
       </mat-button-toggle>
     </mat-button-toggle-group>
   </mat-card-actions>
   <mat-card-title>
-    <h2 class="auth-block__header">{{ activeFormMode }}</h2>
+    <h2 class="auth-block__header">{{ activeFormMode | translate }}</h2>
   </mat-card-title>
   <mat-card-content>
     <ma-auth-form-base (formSubmit)="authFormSubmit($event)" [mode]="activeFormMode">

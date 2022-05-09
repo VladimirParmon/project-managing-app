@@ -21,5 +21,43 @@
     "sorry_message": "We are extremely sorry that something went wrong, but this page does not seem to exist",
     "link_span": "Here's your link to the ",
     "link": "main page"
+  },
+  "auth": {
+    "enter_your": "Enter your",
+    "name": "name",
+    "login": "login",
+    "password": "password",
+    "registration": "Registration",
+    "log_in": "Log in",
+    "sign_up": "Sign up",
+    "placeholders": {
+      "name": "John Doe",
+      "email": "example@gmail.com"
+    }
+  },
+  "error_messages": {
+    "name": {
+      "req": "Please enter your name",
+      "minLength": "The name must be at least {{value}} characters long",
+      "unknown": "There is a problem with your name"
+    },
+    "login": {
+      "req": "Please enter a login email",
+      "email": "Please enter a correct email address",
+      "unknown": "There is a problem with your login email"
+    },
+    "password": {
+      "req": "You must enter a valid password",
+      "minlength": "Your password must contain at least {{value}} symbols",
+      "pattern": "Some problem with pattern",
+      "weak": {
+        "base": "Your password isn't strong enough",
+        "digit": "Please add digit",
+        "upperCase": "Please add uppercase letter",
+        "lowerCase": "Please add lowercase letter",
+        "symbol": "Please add special symbol: -+_!@#$%^&*.,?"
+      },
+      "unknown": "There is a problem with your password"
+    }
   }
 }
