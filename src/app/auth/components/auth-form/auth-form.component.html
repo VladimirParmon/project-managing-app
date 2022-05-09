@@ -6,13 +6,12 @@
       (change)="selectFormMode($event.value)"
       class="auth-block__actions__group"
     >
-      <mat-button-toggle class="auth-block__action" [value]="FormMode.login">
+      <mat-button-toggle class="auth-block__action" [value]="FormMode.login" [checked]="activeFormMode === FormMode.login">
         {{ 'auth.log_in' | translate }}
       </mat-button-toggle>
       <mat-button-toggle
         class="auth-block__action"
         [value]="FormMode.registration"
-        [checked]="activeFormMode === FormMode.registration"
       >
         {{ 'auth.registration' | translate }}
       </mat-button-toggle>

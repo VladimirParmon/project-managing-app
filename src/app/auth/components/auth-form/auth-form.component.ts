@@ -15,7 +15,7 @@ import { FormMode } from '../../constants/auth-form.constants';
 export class AuthFormComponent implements OnInit, OnDestroy {
   readonly FormMode = FormMode;
 
-  public activeFormMode: FormMode = FormMode.registration;
+  public activeFormMode: FormMode = FormMode.login;
 
   private userId$ = this.store.select(selectUserId);
 
