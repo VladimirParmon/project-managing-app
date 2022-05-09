@@ -20,10 +20,10 @@
   }
 
   &__opacity {
-    background-color: rgba($color: $primary-color, $alpha: 0.4);
+    background-color: rgba($color: styles.$primary-color, $alpha: 0.4);
 
     .header__logo-span {
-      color: $d-black;
+      color: styles.$d-black;
     }
   }
 
