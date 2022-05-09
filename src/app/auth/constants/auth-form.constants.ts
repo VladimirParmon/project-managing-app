@@ -1,6 +1,6 @@
 export enum FormMode {
-  login = 'login',
-  registration = 'registration',
+  login = 'auth.log_in',
+  registration = 'auth.registration',
 }
 
 export const FORMS_PATTERNS = {
@@ -23,26 +23,27 @@ export enum FormControls {
 
 export const ERROR_MESSAGES: ErrorsBase = {
   name: {
-    req: 'Please enter your name',
-    unknown: 'There is a problem with your name',
+    req: 'error_messages.name.req',
+    minlength: 'error_messages.name.minLength',
+    unknown: 'error_messages.name.unknown',
   },
   login: {
-    req: 'Please enter a login email',
-    email: 'Please enter a correct email address',
-    unknown: 'There is a problem with your login email',
+    req: 'error_messages.login.req',
+    email: 'error_messages.login.email',
+    unknown: 'error_messages.login.unknown',
   },
   password: {
-    req: 'You must enter the password',
-    minlength: `Your password must contain at least ${LoginFormLimits.passMinLen} symbols`,
-    pattern: 'Some problem with pattern',
+    req: 'error_messages.password.req',
+    minlength: 'error_messages.password.minlength',
+    pattern: 'error_messages.password.pattern',
     weak: {
-      base: "Your password isn't strong enough",
-      digit: 'add digit',
-      upperCase: 'add uppercase letter',
-      lowerCase: 'add lowercase letter',
-      symbol: 'add special symbol: -+_!@#$%^&*.,?',
+      base: 'error_messages.password.weak.base',
+      digit: 'error_messages.password.weak.digit',
+      upperCase: 'error_messages.password.weak.upperCase',
+      lowerCase: 'error_messages.password.weak.lowerCase',
+      symbol: 'error_messages.password.weak.symbol',
     },
-    unknown: 'There is a problem with your password',
+    unknown: 'error_messages.password.unknown',
   },
 };
 

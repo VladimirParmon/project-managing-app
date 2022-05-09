@@ -11,6 +11,7 @@ import { UserSettingsPageComponent } from './pages/user-settings-page/user-setti
 import { AuthFormComponent } from './components/auth-form/auth-form.component';
 import { AuthFormBaseComponent } from './components/auth-form-base/auth-form-base.component';
 import { SharedModule } from '../shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 // ================
 
 @NgModule({
@@ -20,6 +21,12 @@ import { SharedModule } from '../shared/shared.module';
     AuthFormComponent,
     AuthFormBaseComponent,
   ],
-  imports: [CommonModule, SharedModule, AuthRoutingModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    AuthRoutingModule,
+    ReactiveFormsModule,
+    TranslateModule.forChild(),
+  ],
 })
 export class AuthModule {}

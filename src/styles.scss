@@ -28,4 +28,16 @@ app-footer {
   width: 100vw;
 }
 
+input {
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active
+  &:-webkit-autofill::first-line {
+    transition: background-color 5000s;
+    font-family: 'Raleway', sans-serif;
+    -webkit-text-fill-color: white;
+  }
+}
+
 //font-family: 'Raleway', sans-serif;
