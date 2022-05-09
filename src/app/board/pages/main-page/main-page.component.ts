@@ -38,7 +38,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
   handleDeleteBoard(id: string): void {
     const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.data = { id };
+    dialogConfig.data = { id, entity: 'board' };
     dialogConfig.panelClass = 'dialog-container';
     dialogConfig.position = { top: '5%' };
 

@@ -20,6 +20,18 @@ export class HeaderComponent {
     dialogConfig.position = { top: '5%' };
     dialogConfig.panelClass = 'dialog-container';
 
+    dialogConfig.data = (() => {
+      const title = 'Create new board';
+      const operation = title.split(' ')[0];
+      const label = title.split(' ')[2];
+
+      return {
+        title,
+        operation,
+        label,
+      };
+    })();
+
     this.dialog.open(CreateBoardDialogComponent, dialogConfig);
   }
 
