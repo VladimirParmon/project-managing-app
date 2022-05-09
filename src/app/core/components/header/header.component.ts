@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { filter, Subscription, tap } from 'rxjs';
-import { selectUserName } from 'src/app/redux';
+import { selectUserName, onLogOutSubmit } from 'src/app/redux';
 import { UrlPaths } from 'src/app/shared/constants/url-paths';
 
 @Component({
@@ -15,7 +15,7 @@ export class HeaderComponent implements OnDestroy {
 
   public userName: string | undefined = '';
 
-  private user$ = this.store.select(selectUserName);
+  private userName$ = this.store.select(selectUserName);
 
   private subscription = new Subscription();
 
@@ -35,7 +35,7 @@ export class HeaderComponent implements OnDestroy {
     );
 
     this.subscription.add(
-      this.user$.subscribe((name) => {
+      this.userName$.subscribe((name) => {
         this.userName = name;
       })
     );
@@ -43,6 +43,15 @@ export class HeaderComponent implements OnDestroy {
 
   goToAuth(): void {
     this.router.navigate([UrlPaths.auth, UrlPaths.login]);
+  }
+
+  goToSettings(): void {
+    this.router.navigate([UrlPaths.auth, UrlPaths.settings]);
+  }
+
+  logOut(): void {
+    this.store.dispatch(onLogOutSubmit());
+    this.router.navigate([UrlPaths.greeting]);
   }
 
   ngOnDestroy(): void {

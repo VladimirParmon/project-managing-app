@@ -8,13 +8,17 @@
       </button>
     </ng-container>
     <ng-container *ngIf="userName && userName.length > 0">
-      <mat-chip class="header__name-chip" [matMenuTriggerFor]="userActions"
-        ><span class="header__name-chip__label">{{ userName[0] }}</span
-        >{{ userName }}</mat-chip
-      >
+      <mat-chip class="header__name-chip" [matMenuTriggerFor]="userActions">
+        <span class="header__name-chip__label">{{ userName[0] }}</span>
+        {{ userName }}
+      </mat-chip>
       <mat-menu #userActions="matMenu">
-        <button mat-menu-item>{{ 'header.user.button_settings' | translate }}</button>
-        <button mat-menu-item>{{ 'header.user.button_log-out' | translate }}</button>
+        <button mat-menu-item (click)="goToSettings()">
+          {{ 'header.user.button_settings' | translate }}
+        </button>
+        <button mat-menu-item (click)="logOut()">
+          {{ 'header.user.button_log-out' | translate }}
+        </button>
       </mat-menu>
     </ng-container>
   </div>
