@@ -63,5 +63,9 @@
       },
       "unknown": "There is a problem with your password"
     }
+  },
+  "mainPage": {
+    "h1": "Your boards",
+    "create_button": "Create new board"
   }
 }

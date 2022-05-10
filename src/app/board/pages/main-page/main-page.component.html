@@ -1,7 +1,7 @@
 <div class="main-page">
   <div class="container main-page-container">
     <div class="content main-page__content">
-      <h1 class="main-page__heading">My boards</h1>
+      <h1 class="main-page__heading">{{ 'mainPage.h1' | translate }}</h1>
 
       <ul class="list main-page-boards__list">
         <li *ngFor="let board of boards" class="item main-page-boards__item">
@@ -16,4 +16,7 @@
       </ul>
     </div>
   </div>
+  <button mat-raised-button (click)="openDialog()" class="button main-page__button_type_new-board">
+    {{ 'mainPage.create_button' | translate}}
+  </button>
 </div>

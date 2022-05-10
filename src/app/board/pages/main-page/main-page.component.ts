@@ -8,6 +8,12 @@ import { fetchBoards } from 'src/app/redux/actions/board.actions';
 import { selectBoards } from 'src/app/redux/selectors/boards.selectors';
 import { MAStore, TBoards } from 'src/app/redux/models/store.model';
 import { BoardService } from '../../services/board.service';
+import {
+  DialogDataLabels,
+  DialogDataOperations,
+  DialogDataTitles,
+} from 'src/app/shared/constants/dialog.constants';
+import { CreateBoardDialogComponent } from 'src/app/shared/components/create-board-dialog/create-board-dialog.component';
 
 @Component({
   selector: 'ma-main-page',
@@ -43,5 +49,20 @@ export class MainPageComponent implements OnInit, OnDestroy {
     dialogConfig.position = { top: '5%' };
 
     this.dialog.open(ConfirmationModalComponent, dialogConfig);
+  }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.autoFocus = false;
+    dialogConfig.position = { top: '5%' };
+    dialogConfig.panelClass = 'dialog-container';
+    dialogConfig.data = {
+      title: DialogDataTitles.board,
+      operation: DialogDataOperations.create,
+      label: DialogDataLabels.board,
+    };
+
+    this.dialog.open(CreateBoardDialogComponent, dialogConfig);
   }
 }

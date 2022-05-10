@@ -1,4 +1,5 @@
 export enum UrlPaths {
+  home = '',
   board = 'board',
   greeting = 'greeting',
   auth = 'auth',
