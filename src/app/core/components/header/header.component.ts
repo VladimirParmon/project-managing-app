@@ -54,21 +54,6 @@ export class HeaderComponent implements OnDestroy {
     );
   }
 
-  openDialog() {
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.autoFocus = false;
-    dialogConfig.position = { top: '5%' };
-    dialogConfig.panelClass = 'dialog-container';
-    dialogConfig.data = {
-      title: DialogDataTitles.board,
-      operation: DialogDataOperations.create,
-      label: DialogDataLabels.board,
-    };
-
-    this.dialog.open(CreateBoardDialogComponent, dialogConfig);
-  }
-
   goToAuth(): void {
     this.router.navigate([UrlPaths.auth, UrlPaths.login]);
   }
@@ -80,6 +65,10 @@ export class HeaderComponent implements OnDestroy {
   logOut(): void {
     this.store.dispatch(onLogOutSubmit());
     this.router.navigate([UrlPaths.greeting]);
+  }
+
+  goHome(): void {
+    this.router.navigate([UrlPaths.home]);
   }
 
   ngOnDestroy(): void {

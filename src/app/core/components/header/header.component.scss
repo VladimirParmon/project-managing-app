@@ -13,19 +13,38 @@
   transition: 1s;
   height: styles.$header-height;
 
+  &__logo-span_type_short {
+    display: none;
+  }
+
   &__button-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    column-gap: 1.5em;
-  }
-
-  &__opacity {
-    background-color: rgba($color: styles.$primary-color, $alpha: 0.4);
+    column-gap: 1rem;
   }
 
   &__logo-span {
-    color: styles.$d-black;
+    transition: 0.5s;
+    cursor: pointer;
+    font-size: 1.4rem;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+
+  &__opacity {
+    background-color: rgba($color: styles.$primary-color, $alpha: 0.4);
+
+    .header__logo-span {
+      color: styles.$d-black;
+
+      &:hover {
+        filter: invert(100%);
+      }
+    }
   }
 
   &__button_login {
@@ -39,7 +58,7 @@
     align-items: center;
     border-radius: 4px;
     user-select: none;
-    @include styles.color(background-color, styles.$accent-palette, 400);
+    @include styles.color(background-color, styles.$accent-palette, 800);
 
     &__label {
       display: flex;
@@ -57,5 +76,15 @@
     &:hover {
       cursor: pointer;
     }
+  }
+}
+
+@media  screen and (max-width: 600px) {
+  .header__logo-span_type_long {
+    display: none;
+  }
+
+  .header__logo-span_type_short {
+    display: block;
   }
 }
