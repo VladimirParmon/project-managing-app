@@ -5,11 +5,11 @@ import { MAStoreKeys } from '../constants/store-keys';
 import { MAStore } from '../models/store.model';
 import { boardsReducer } from './board.reducer';
 import { appErrorReducer } from './app-error.reducer';
-import { boardReducer } from './column.reducer';
+import { columnReducer } from './column.reducer';
 
 const reducers: ActionReducerMap<MAStore> = {
   [MAStoreKeys.user]: userReducer,
-  [MAStoreKeys.boardInfo]: boardReducer,
+  [MAStoreKeys.boardInfo]: columnReducer,
   [MAStoreKeys.boards]: boardsReducer,
   [MAStoreKeys.error]: appErrorReducer,
 };

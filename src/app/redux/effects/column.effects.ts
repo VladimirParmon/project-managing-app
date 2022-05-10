@@ -6,10 +6,10 @@ import { BoardService } from 'src/app/board/services/board.service';
 import { ActionTypes } from '../actions/action-types';
 import { throwAppError } from '../actions/app-error.actions';
 import { deleteColumn, fixColumnOrder, handleFixColumnOrder } from '../actions/column.actions';
-import { findAscendingOrderIndexColumns } from '../reducers/column.reducer';
+import { findAscendingOrderIndexColumns } from '../utils/columns-order';
 
 @Injectable()
-export class BoardEffects {
+export class ColumnEffects {
   constructor(private actions$: Actions, private boardService: BoardService) {}
 
   fetchBoard$ = createEffect(() =>

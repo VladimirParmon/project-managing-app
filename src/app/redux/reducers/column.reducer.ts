@@ -1,5 +1,4 @@
 import { createReducer, on } from '@ngrx/store';
-import { IColumn } from 'src/app/shared/models/board.model';
 import {
   boardFetched,
   deleteColumn,
@@ -9,13 +8,7 @@ import {
 import { initialState } from '../models/init';
 import { TColumns } from '../models/store.model';
 
-export function findAscendingOrderIndexColumns(columns: TColumns, currentColumnId: string) {
-  const currentColumn = columns.find(({ id }) => id === currentColumnId) as IColumn;
-
-  return columns.filter(({ order }) => order > currentColumn.order);
-}
-
-export const boardReducer = createReducer(
+export const columnReducer = createReducer(
   initialState.boardInfo,
 
   on(boardFetched, (_, { columns }): TColumns => columns),
