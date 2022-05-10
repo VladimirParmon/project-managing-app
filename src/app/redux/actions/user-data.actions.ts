@@ -1,4 +1,6 @@
 import { createAction, props } from '@ngrx/store';
+import { UserSignUp, UserLogIn } from 'src/app/auth/models/auth.model';
+import { StoreUser } from '../models/store.model';
 import { ActionTypes } from './action-types';
 
 const addFullUserData = createAction(ActionTypes.addFullUserData, props<{ user: StoreUser }>());

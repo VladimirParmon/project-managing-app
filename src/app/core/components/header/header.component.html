@@ -1,7 +1,11 @@
-<mat-toolbar class="header header__opacity" color="primary" appHeaderScroll>
+<mat-toolbar class="header header__opacity" color="primary" maHeaderScroll>
   <span class="header__logo-span">{{ 'header.logo' | translate }}</span>
+  <button mat-button (click)="openDialog()" class="header__button header__button_new-board">
+    Create new board
+  </button>
+
   <div class="header__button-container">
-    <app-language-switch></app-language-switch>
+    <ma-language-switch></ma-language-switch>
     <ng-container *ngIf="isAuthActionsVisible">
       <button mat-raised-button class="header__button header__button_sign-up" (click)="goToAuth()">
         {{ 'header.button_login' | translate }}

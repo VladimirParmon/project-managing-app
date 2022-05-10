@@ -24,12 +24,14 @@ export class TokenInterceptor implements HttpInterceptor, OnDestroy {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    const authHeader = request.url.includes(ApiPaths.auth)
+      ? { setHeaders: { Authorization: `Bearer ${this.token}` } }
+      : {};
+
     return next.handle(
       request.clone({
         url: request.url.replace(ApiPaths.auth, ''),
-        setHeaders: {
-          Authorization: `Bearer ${this.token}`,
-        },
+        ...authHeader,
       })
     );
   }

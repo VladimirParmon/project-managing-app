@@ -1,0 +1,35 @@
+.main-page {
+  &__content {
+    padding: 2rem 0;
+    flex-direction: column;
+  }
+
+  &-boards {
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2.5rem;
+      justify-content: flex-start;
+    }
+
+    &__item {
+      position: relative;
+      flex-direction: column;
+      width: max-content;
+      max-width: calc(100% / 3 - 2.5rem);
+      padding: 0.5rem 3.5rem 0.5rem 1rem;
+      box-shadow: 0 0 10px -7px #c2185b;
+      border-radius: 0.4rem;
+      transition: 0.25s;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #c2185b12;
+
+        .icon-close {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

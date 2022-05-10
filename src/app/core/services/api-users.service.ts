@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ApiUserSignUpResp } from 'src/app/auth/models/auth.model';
 import { ApiPaths } from 'src/app/shared/constants/api-paths';
 
 @Injectable({

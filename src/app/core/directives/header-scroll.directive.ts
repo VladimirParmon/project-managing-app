@@ -2,10 +2,11 @@ import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { thresholdForHeaderColorChangeInPX } from '../constants/UIConstants';
 
 @Directive({
-  selector: '[appHeaderScroll]',
+  selector: '[maHeaderScroll]',
 })
 export class HeaderScrollDirective {
   constructor(private el: ElementRef, private renderer: Renderer2) {}
+
   @HostListener('window: scroll', [])
   onScroll() {
     const pixelsFromTheTopOfThePage =

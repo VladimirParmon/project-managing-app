@@ -3,7 +3,15 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { filter, Subscription, tap } from 'rxjs';
 import { selectUserName, onLogOutSubmit } from 'src/app/redux';
+import { HttpClient } from '@angular/common/http';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { CreateBoardDialogComponent } from 'src/app/shared/components/create-board-dialog/create-board-dialog.component';
 import { UrlPaths } from 'src/app/shared/constants/url-paths';
+import {
+  DialogDataLabels,
+  DialogDataOperations,
+  DialogDataTitles,
+} from 'src/app/shared/constants/dialog.constants';
 
 @Component({
   selector: 'ma-header',
@@ -19,7 +27,12 @@ export class HeaderComponent implements OnDestroy {
 
   private subscription = new Subscription();
 
-  constructor(private router: Router, private store: Store) {
+  constructor(
+    private router: Router,
+    private store: Store,
+    public dialog: MatDialog,
+    private http: HttpClient
+  ) {
     this.subscription.add(
       this.router.events
         .pipe(
@@ -39,6 +52,21 @@ export class HeaderComponent implements OnDestroy {
         this.userName = name;
       })
     );
+  }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.autoFocus = false;
+    dialogConfig.position = { top: '5%' };
+    dialogConfig.panelClass = 'dialog-container';
+    dialogConfig.data = {
+      title: DialogDataTitles.board,
+      operation: DialogDataOperations.create,
+      label: DialogDataLabels.board,
+    };
+
+    this.dialog.open(CreateBoardDialogComponent, dialogConfig);
   }
 
   goToAuth(): void {

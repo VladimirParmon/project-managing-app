@@ -1,7 +1,6 @@
 // Angular Material
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -10,14 +9,19 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 // ================
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { CreateBoardDialogComponent } from './components/create-board-dialog/create-board-dialog.component';
+import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [CreateBoardDialogComponent, ConfirmationModalComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -32,6 +36,8 @@ import { FormsModule } from '@angular/forms';
     MatToolbarModule,
     MatChipsModule,
     MatMenuModule,
+    ReactiveFormsModule,
+    MatDialogModule,
   ],
   exports: [
     MatFormFieldModule,
@@ -46,6 +52,10 @@ import { FormsModule } from '@angular/forms';
     MatToolbarModule,
     MatChipsModule,
     MatMenuModule,
+    MatToolbarModule,
+    MatDialogModule,
+    ReactiveFormsModule,
   ],
+  providers: [{ provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }],
 })
 export class SharedModule {}

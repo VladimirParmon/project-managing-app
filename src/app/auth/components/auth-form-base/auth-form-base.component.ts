@@ -14,6 +14,7 @@ import {
   FORMS_PATTERNS,
   LoginFormLimits,
 } from '../../constants/auth-form.constants';
+import { UserLogIn, UserSignUp } from '../../models/auth.model';
 import { AuthFormsUtils } from '../../utils/auth-forms-utils';
 
 @Component({

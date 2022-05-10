@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiPaths } from 'src/app/shared/constants/api-paths';
+import { ApiUserLogInResp, ApiUserSignUpResp, UserLogIn, UserSignUp } from '../models/auth.model';
 
 @Injectable({
   providedIn: 'root',

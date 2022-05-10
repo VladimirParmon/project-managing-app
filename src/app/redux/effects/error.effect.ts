@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map } from 'rxjs';
 import { ActionTypes } from '../actions/action-types';
 import { storeAppError } from '../actions/app-error.actions';
-import { ErrorAction } from '../models/imported-actions.model';
+import { ErrorAction } from '../models/actions.model';
 
 @Injectable()
 export class ErrorEffect {

@@ -1,0 +1,38 @@
+.create-dialog {
+  &__content {
+    position: relative;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__icon {
+    &-close {
+      position: absolute;
+      right: 0.5rem;
+      top: 0;
+      opacity: 1;
+    }
+  }
+}
+
+::ng-deep .dialog-container {
+  .mat-dialog-container {
+    background-color: white;
+    color: black;
+  }
+
+  .mat-form-field-flex {
+    background-color: #f9f9f9;
+  }
+
+  .mat-dialog-content {
+    overflow: initial;
+  }
+
+  .mat-form-field-label {
+    color: black;
+  }
+}

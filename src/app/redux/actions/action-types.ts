@@ -11,4 +11,20 @@ export enum ActionTypes {
 
   throwAppError = '[ERROR] throw some error',
   newAppError = '[ERROR] save code and message of error',
+
+  fetchBoards = '[BOARDS] fetch boards',
+  boardsFetched = '[BOARDS SUCCEED] boards fetched',
+  createBoard = '[BOARDS] create board',
+  setNewBoard = '[BOARDS] set new board',
+  handleDeleteBoard = '[BOARDS] handle delete board',
+  deleteBoard = '[BOARDS HANDLED] delete board',
+
+  createColumn = '[COLUMN] create new column',
+  setNewColumn = '[COLUMN] set new columns',
+  handleDeleteColumn = '[COLUMN] handle delete column',
+  deleteColumn = '[COLUMN HANDLED] delete column',
+  fetchBoard = '[COLUMN] fetch column in board',
+  boardFetched = '[COLUMN SUCCEED] columns in board fetched',
+  handleFixColumnOrder = '[COLUMN] handle fix column order',
+  fixColumnOrder = '[COLUMN HANDLED] fix handled column order',
 }

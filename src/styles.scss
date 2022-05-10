@@ -1,16 +1,22 @@
 @use '@angular/material' as mat;
 
-$custom-typography: mat.define-typography-config($font-family:'"Raleway", sans-serif');
+$custom-typography: mat.define-typography-config(
+  $font-family: '"Raleway", sans-serif',
+);
 
-$custom-theme: mat.define-light-theme((typography: $custom-typography));
+$custom-theme: mat.define-light-theme(
+  (
+    typography: $custom-typography,
+  )
+);
 
 @include mat.core($custom-typography);
 @include mat.all-component-themes($custom-theme);
 
-@import "@angular/material/theming";
+@import '@angular/material/theming';
 $primary-palette: mat-palette($mat-pink, 700, 500, 900);
-$accent-palette:  mat-palette($mat-blue-grey, A200, A100, A400);
-$warn-palette:    mat-palette($mat-red);
+$accent-palette: mat-palette($mat-blue-grey, A200, A100, A400);
+$warn-palette: mat-palette($mat-red);
 $primary-color: mat-color($primary-palette);
 $accent-color: mat-color($accent-palette);
 $warn-color: mat-color($warn-palette);
@@ -59,3 +65,68 @@ input {
   #{$prop}: mat.get-color-from-palette($pallet, $inst);
 }
 
+//font-family: 'Raleway', sans-serif;
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.content {
+  display: flex;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.button {
+  background-color: initial;
+  border: none;
+}
+
+.icon {
+  &-close {
+    position: absolute;
+    right: 0.5rem;
+    opacity: 0;
+    transition: 0.25s;
+    cursor: pointer;
+
+    &:hover {
+      transform: rotate(10deg) scale(1.1);
+    }
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+}
+
+.ng {
+  &-invalid {
+    color: red;
+  }
+}

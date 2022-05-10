@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { StoreUser } from 'src/app/redux/models/store.model';
 
 @Injectable({ providedIn: 'root' })
 export class LocalStorageService {

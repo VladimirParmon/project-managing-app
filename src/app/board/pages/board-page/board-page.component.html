@@ -1,0 +1,27 @@
+<div class="board-page">
+  <div class="container">
+    <div class="board-page-container">
+      <div class="content board-page__content">
+        <h1 class="heading board-page__heading">Board heading</h1>
+
+        <ul class="list board-page__column-list">
+          <li *ngFor="let column of columns" class="item board-page__column">
+            <h3 class="heading board-page__heading">{{ column.title }}</h3>
+
+            <button (click)="handleDeleteColumn(column.id)" class="button icon-close">
+              <mat-icon>close</mat-icon>
+            </button>
+          </li>
+
+          <li (click)="createColumn()" class="item board-page__column column_type_creator">
+            <h3 class="heading board-page__heading">Create new column</h3>
+
+            <span class="icon icon_type_add-column" mat-button>
+              <mat-icon>plus_one</mat-icon>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
