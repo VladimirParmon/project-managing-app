@@ -1,40 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
-import { IColumn } from 'src/app/shared/models/board.model';
-import { boardFetched, deleteColumn, fixColumnOrder, setNewColumn } from '../actions/board.actions';
+import { setNewBoard, deleteBoard, boardsFetched } from '../actions/board.actions';
 import { initialState } from '../models/init';
-import { TColumns } from '../models/store.model';
+import { TBoards } from '../models/store.model';
 
-export function findAscendingOrderIndexColumns(columns: TColumns, currentColumnId: string) {
-  const currentColumn = columns.find(({ id }) => id === currentColumnId) as IColumn;
+export const boardsReducer = createReducer(
+  initialState.boards,
+  on(setNewBoard, (state, { id, title }): TBoards => [...state, { title, id }]),
 
-  const ascendingColumns = columns.filter(({ order }) => order > currentColumn?.order!);
+  on(deleteBoard, (state, { id }) => state.filter((board) => board.id !== id)),
 
-  return {
-    currentColumn,
-    ascendingColumns,
-  };
-}
-
-export const boardReducer = createReducer(
-  initialState.boardInfo,
-
-  on(boardFetched, (_, { columns }): TColumns => columns),
-
-  on(setNewColumn, (columns, { id, order, title }): TColumns => [...columns, { id, order, title }]),
-
-  on(deleteColumn, (columns, { columnId }) => columns.filter((column) => column.id !== columnId)),
-
-  on(fixColumnOrder, (columns, { columnId }) => {
-    const fixingColumn = columns.find(({ id }) => id === columnId) as IColumn;
-
-    const pureColumns = columns.filter(({ id }) => id !== fixingColumn.id);
-
-    return [
-      ...pureColumns,
-      {
-        ...fixingColumn,
-        order: fixingColumn.order - 1,
-      },
-    ];
-  })
+  on(boardsFetched, (_, { boards }): TBoards => boards)
 );

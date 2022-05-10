@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { UserSignUp, UserLogIn } from 'src/app/auth/models/auth.model';
 import { StoreUser } from './store.model';
 
@@ -15,4 +16,8 @@ export interface LogInAction extends Action {
 
 export interface StoreUserDataAction extends Action {
   dataPart: StoreUser;
+}
+
+export interface ErrorAction extends Action {
+  err: HttpErrorResponse;
 }

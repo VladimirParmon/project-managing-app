@@ -1,13 +1,13 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { select, Store } from '@ngrx/store';
-import { BoardService } from 'src/app/board/services/board.service';
-import { createBoard } from 'src/app/redux/actions/boards.actions';
-import { createColumn } from 'src/app/redux/actions/board.actions';
+import { Store } from '@ngrx/store';
+import { createBoard } from 'src/app/redux/actions/board.actions';
+import { createColumn } from 'src/app/redux/actions/column.actions';
 import { Subscription } from 'rxjs';
-import { MAStore } from 'src/app/redux/models/store.model';
 import { selectColumns } from 'src/app/redux/selectors/board.selector';
+import { DialogData } from '../../models/dialog.model';
+import { DialogDataTitles, DialogFormControls } from '../../constants/dialog.constants';
 
 @Component({
   selector: 'ma-create-board-dialog',
@@ -15,36 +15,28 @@ import { selectColumns } from 'src/app/redux/selectors/board.selector';
   styleUrls: ['./create-board-dialog.component.scss'],
 })
 export class CreateBoardDialogComponent implements OnInit, OnDestroy {
-  modelInfo!: FormGroup;
+  public modelForm: FormGroup | null = null;
 
-  triedToSubmit = false;
+  public triedToSubmit = false;
 
-  observer$!: Subscription;
+  private columns$ = this.store.select(selectColumns);
 
-  columnsCount!: number;
+  private columnsCount: number = 0;
 
-  dialogData = {
-    boardId: '',
-    label: '',
-    title: '',
-    operation: '',
-  };
+  private observer$ = new Subscription();
 
   constructor(
-    fb: FormBuilder,
-    public boardService: BoardService,
     public dialog: MatDialog,
     private store: Store,
     @Inject(MAT_DIALOG_DATA)
-    public data: { label: string; title: string; operation: string; boardId: string }
+    readonly dialogData: DialogData
   ) {
-    this.boardService = boardService;
-
-    this.dialogData = data;
-
-    this.modelInfo = fb.group(
+    this.modelForm = new FormGroup(
       {
-        title: ['', [Validators.minLength(3), Validators.maxLength(100)]],
+        [DialogFormControls.title]: new FormControl('', [
+          Validators.minLength(3),
+          Validators.maxLength(100),
+        ]),
       },
       {
         updateOn: 'blur',
@@ -52,26 +44,24 @@ export class CreateBoardDialogComponent implements OnInit, OnDestroy {
     );
   }
 
+  get title(): AbstractControl | null {
+    return this.modelForm!.get(DialogFormControls.title);
+  }
+
   ngOnInit(): void {
-    this.observer$ = (this.store as Store<MAStore>)
-      .pipe(select(selectColumns))
-      .subscribe((columns) => {
-        this.columnsCount = columns.length;
-      });
+    this.observer$ = this.columns$.subscribe((columns) => {
+      this.columnsCount = columns.length;
+    });
   }
 
-  get title() {
-    return this.modelInfo.get('title');
-  }
-
-  submit(f: FormGroup) {
+  submit(): void {
     if (!this.triedToSubmit) {
       this.triedToSubmit = true;
     }
 
-    if (f.invalid) return;
+    if (this.modelForm?.invalid) return;
 
-    const title = this.title?.value as string;
+    const title = this.title?.value;
     const { boardId } = this.dialogData;
 
     this.switchActionType(title, boardId);
@@ -81,18 +71,20 @@ export class CreateBoardDialogComponent implements OnInit, OnDestroy {
 
   switchActionType(title: string, boardId: string) {
     switch (this.dialogData.title) {
-      case 'Create new board': {
-        return this.store.dispatch(createBoard({ title }));
+      case DialogDataTitles.board: {
+        this.store.dispatch(createBoard({ title }));
+        break;
       }
 
-      case 'Create new column': {
+      case DialogDataTitles.column: {
         const order = this.columnsCount + 1;
 
-        return this.store.dispatch(createColumn({ boardId, title, order }));
+        this.store.dispatch(createColumn({ boardId, title, order }));
+        break;
       }
 
       default: {
-        return null;
+        break;
       }
     }
   }

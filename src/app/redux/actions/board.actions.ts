@@ -1,35 +1,21 @@
 import { createAction, props } from '@ngrx/store';
-import { IColumn } from 'src/app/shared/models/board.model';
-import { TColumns } from '../models/store.model';
+import { TBoards } from '../models/store.model';
 import { ActionTypes } from './action-types';
 
-export const fetchBoardInfo = createAction(ActionTypes.fetchBoard, props<{ id: string }>());
+export const fetchBoards = createAction(ActionTypes.fetchBoards);
 
-export const boardFetched = createAction(ActionTypes.boardFetched, props<{ columns: TColumns }>());
+export const boardsFetched = createAction(ActionTypes.boardsFetched, props<{ boards: TBoards }>());
 
-export const createColumn = createAction(
-  ActionTypes.createColumn,
-  props<{ title: string; boardId: string; order: number }>()
+export const createBoard = createAction(ActionTypes.createBoard, props<{ title: string }>());
+
+export const setNewBoard = createAction(
+  ActionTypes.setNewBoard,
+  props<{ id: string; title: string }>()
 );
 
-export const setNewColumn = createAction(
-  ActionTypes.setNewColumn,
-  props<{ id: string; order: number; title: string }>()
+export const handleDeleteBoard = createAction(
+  ActionTypes.handleDeleteBoard,
+  props<{ id: string }>()
 );
 
-export const handleDeleteColumn = createAction(
-  ActionTypes.handleDeleteColumn,
-  props<{ boardId: string; columnId: string; columns: TColumns }>()
-);
-
-export const deleteColumn = createAction(ActionTypes.deleteColumn, props<{ columnId: string }>());
-
-export const handleFixColumnOrder = createAction(
-  ActionTypes.handleFixColumnOrder,
-  props<{ boardId: string; column: IColumn }>()
-);
-
-export const fixColumnOrder = createAction(
-  ActionTypes.fixColumnOrder,
-  props<{ columnId: string }>()
-);
+export const deleteBoard = createAction(ActionTypes.deleteBoard, props<{ id: string }>());

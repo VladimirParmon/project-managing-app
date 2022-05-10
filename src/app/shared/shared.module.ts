@@ -7,14 +7,14 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 // ================
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-import { MatInputModule } from '@angular/material/input';
 import { CreateBoardDialogComponent } from './components/create-board-dialog/create-board-dialog.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 

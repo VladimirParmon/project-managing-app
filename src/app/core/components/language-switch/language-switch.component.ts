@@ -3,7 +3,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
-  selector: 'app-language-switch',
+  selector: 'ma-language-switch',
   templateUrl: './language-switch.component.html',
   styleUrls: ['./language-switch.component.scss'],
 })

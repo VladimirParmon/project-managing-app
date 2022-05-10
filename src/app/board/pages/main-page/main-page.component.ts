@@ -4,7 +4,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { ConfirmationModalComponent } from 'src/app/shared/components/confirmation-modal/confirmation-modal.component';
-import { fetchBoards } from 'src/app/redux/actions/boards.actions';
+import { fetchBoards } from 'src/app/redux/actions/board.actions';
 import { selectBoards } from 'src/app/redux/selectors/boards.selectors';
 import { MAStore, TBoards } from 'src/app/redux/models/store.model';
 import { BoardService } from '../../services/board.service';

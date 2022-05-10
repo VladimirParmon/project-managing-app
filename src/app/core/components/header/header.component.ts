@@ -4,6 +4,11 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateBoardDialogComponent } from 'src/app/shared/components/create-board-dialog/create-board-dialog.component';
 import { Router } from '@angular/router';
 import { UrlPaths } from 'src/app/shared/constants/url-paths';
+import {
+  DialogDataLabels,
+  DialogDataOperations,
+  DialogDataTitles,
+} from 'src/app/shared/constants/dialog.constants';
 
 @Component({
   selector: 'ma-header',
@@ -19,18 +24,11 @@ export class HeaderComponent {
     dialogConfig.autoFocus = false;
     dialogConfig.position = { top: '5%' };
     dialogConfig.panelClass = 'dialog-container';
-
-    dialogConfig.data = (() => {
-      const title = 'Create new board';
-      const operation = title.split(' ')[0];
-      const label = title.split(' ')[2];
-
-      return {
-        title,
-        operation,
-        label,
-      };
-    })();
+    dialogConfig.data = {
+      title: DialogDataTitles.board,
+      operation: DialogDataOperations.create,
+      label: DialogDataLabels.board,
+    };
 
     this.dialog.open(CreateBoardDialogComponent, dialogConfig);
   }

@@ -13,9 +13,9 @@ export interface StoreError {
 }
 
 export interface MAStore {
-  boardInfo: TColumns;
-  boards: TBoards;
   user: StoreUser;
+  boards: TBoards;
+  boardInfo: TColumns;
   appError: StoreError;
 }
 

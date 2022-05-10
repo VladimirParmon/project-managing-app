@@ -1,33 +1,35 @@
 <mat-dialog-content class="create-dialog__content">
   <h2 mat-dialog-title>{{ dialogData.title }}</h2>
 
-  <form [formGroup]="modelInfo" (ngSubmit)="submit(modelInfo)" class="create-dialog__form">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>{{ dialogData.label }} name</mat-label>
+  <ng-container *ngIf="modelForm">
+    <form [formGroup]="modelForm" (ngSubmit)="submit()" class="create-dialog__form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>{{ dialogData.label }} name</mat-label>
 
-      <input #name required formControlName="title" matInput />
-    </mat-form-field>
+        <input #name required formControlName="title" matInput />
+      </mat-form-field>
 
-    <p
-      *ngIf=" (title?.errors?.['required'] && (title?.touched) || (title?.invalid && triedToSubmit))"
-    >
-      Please fill the {{ dialogData.label }} name!
-    </p>
+      <p
+        *ngIf="(title?.errors?.['required'] && (title?.touched) || (title?.invalid && triedToSubmit))"
+      >
+        Please fill the {{ dialogData.label }} name!
+      </p>
 
-    <p *ngIf=" (title?.dirty) &&title?.errors?.['minlength']">
-      The {{ dialogData.label }} name is too short!
-    </p>
+      <p *ngIf="(title?.dirty) && title?.errors?.['minlength']">
+        The {{ dialogData.label }} name is too short!
+      </p>
 
-    <p *ngIf="title?.dirty && title?.errors?.['maxlength']">
-      The {{ dialogData.label }} name is too long!
-    </p>
+      <p *ngIf="title?.dirty && title?.errors?.['maxlength']">
+        The {{ dialogData.label }} name is too long!
+      </p>
 
-    <mat-dialog-actions>
-      <button mat-raised-button mat-dialog-close="true">Cancel</button>
+      <mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close="true">Cancel</button>
 
-      <button mat-raised-button>Create {{ dialogData.label }}!</button>
-    </mat-dialog-actions>
-  </form>
+        <button mat-raised-button>Create {{ dialogData.label }}!</button>
+      </mat-dialog-actions>
+    </form>
+  </ng-container>
 
   <mat-button class="create-dialog__icon-close icon-close" mat-dialog-close="true">
     <mat-icon>close</mat-icon>

@@ -1,12 +1,13 @@
 /* eslint-disable ngrx/avoid-dispatching-multiple-actions-sequentially */
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { handleDeleteColumn } from 'src/app/redux/actions/board.actions';
-import { handleDeleteBoard } from 'src/app/redux/actions/boards.actions';
-import { MAStore, TColumns } from 'src/app/redux/models/store.model';
+import { handleDeleteBoard } from 'src/app/redux/actions/board.actions';
+import { handleDeleteColumn } from 'src/app/redux/actions/column.actions';
+import { TColumns } from 'src/app/redux/models/store.model';
 import { selectColumns } from 'src/app/redux/selectors/board.selector';
+import { DialogDataLabels } from '../../constants/dialog.constants';
 
 @Component({
   selector: 'ma-confirmation-modal',
@@ -14,44 +15,46 @@ import { selectColumns } from 'src/app/redux/selectors/board.selector';
   styleUrls: ['./confirmation-modal.component.scss'],
 })
 export class ConfirmationModalComponent implements OnInit, OnDestroy {
-  columns!: TColumns;
+  private columns: TColumns = [];
 
-  observer$!: Subscription;
+  private columns$ = this.store.select(selectColumns);
+
+  private observer$ = new Subscription();
 
   constructor(
     private store: Store,
     @Inject(MAT_DIALOG_DATA)
-    public data: { id: string; entity: string; columnId: string; boardId: string }
+    readonly data: { id: string; entity: string; columnId: string; boardId: string }
   ) {}
 
   ngOnInit(): void {
-    this.observer$ = (this.store as Store<MAStore>)
-      .pipe(select(selectColumns))
-      .subscribe((columns) => {
-        this.columns = columns;
-      });
+    this.observer$ = this.columns$.subscribe((columns) => {
+      this.columns = columns;
+    });
   }
 
-  deleteBoard() {
+  deleteBoard(): void {
     const { id } = this.data;
     this.switchActionType(id);
   }
 
   switchActionType(id: string) {
     switch (this.data.entity) {
-      case 'board': {
-        return this.store.dispatch(handleDeleteBoard({ id }));
+      case DialogDataLabels.board: {
+        this.store.dispatch(handleDeleteBoard({ id }));
+        break;
       }
 
-      case 'column': {
+      case DialogDataLabels.column: {
         const { boardId, columnId } = this.data;
         const { columns } = this;
 
-        return this.store.dispatch(handleDeleteColumn({ boardId, columnId, columns }));
+        this.store.dispatch(handleDeleteColumn({ boardId, columnId, columns }));
+        break;
       }
 
       default: {
-        return null;
+        break;
       }
     }
   }
