@@ -13,8 +13,28 @@
   transition: 1s;
   height: styles.$header-height;
 
-  &__logo-span_type_short {
+  &__nav-tools-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__button_type_go-back_size_big {
+    @include styles.color(background-color, styles.$accent-palette, 800);
+  }
+
+  &__icon_type_arrow-back {
     display: none;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__span_type_go-back-button-description {
+    margin-left: 0.5rem;
   }
 
   &__button-container {
@@ -33,7 +53,6 @@
       transform: scale(1.05);
     }
   }
-
 
   &__opacity {
     background-color: rgba($color: styles.$primary-color, $alpha: 0.4);
@@ -80,11 +99,11 @@
 }
 
 @media  screen and (max-width: 600px) {
-  .header__logo-span_type_long {
+  .header__nav-tools-container {
     display: none;
   }
 
-  .header__logo-span_type_short {
+  .header__icon_type_arrow-back {
     display: block;
   }
 }
