@@ -4,8 +4,8 @@
       <h1 class="main-page__heading">{{ 'mainPage.h1' | translate }}</h1>
 
       <ul class="list main-page-boards__list">
-        <li *ngFor="let board of boards" class="item main-page-boards__item">
-          <a class="link main-page-boards__link" routerLink="{{ board.id }}">
+        <li *ngFor="let board of boards" class="item main-page-boards__item" routerLink="{{ board.id }}">
+          <a class="link main-page-boards__link">
             <h3 class="main-page-boards__item-heading">{{ board.title }}</h3>
           </a>
 
