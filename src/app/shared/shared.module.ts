@@ -53,8 +53,8 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     MatChipsModule,
     MatMenuModule,
     MatToolbarModule,
-    MatDialogModule,
     ReactiveFormsModule,
+    MatDialogModule,
   ],
   providers: [{ provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }],
 })
