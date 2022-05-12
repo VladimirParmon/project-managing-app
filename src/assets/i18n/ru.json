@@ -16,6 +16,7 @@
     "logo": "Менеджер проектов",
     "button_login": "Войти",
     "button_sign-up": "Регистрация",
+    "button_go-back": "Назад",
     "user": {
       "button_settings": "Настройки",
       "button_log-out": "Выйти"

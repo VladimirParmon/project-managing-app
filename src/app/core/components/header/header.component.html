@@ -1,5 +1,11 @@
 <mat-toolbar class="header header__opacity" color="primary" maHeaderScroll>
-  <span class="header__logo-span header__logo-span_type_long" (click)="goHome()">{{ 'header.logo' | translate }}</span>
+  <div class="header__nav-tools-container">
+    <span class="header__logo-span header__logo-span_type_long" (click)="goHome()">{{ 'header.logo' | translate }}</span>
+    <button *ngIf="isAbleToGoBack" mat-raised-button (click)="goBack()" class="header__button header__button_type_go-back_size_big">
+      <mat-icon aria-hidden="true" class="header__icon header__icon_type_arrow-back_visivble">west</mat-icon>
+      <span class="header__span header__span_type_go-back-button-description"> {{ 'header.button_go-back' | translate }}</span>
+    </button>
+  </div>
   <div class="header__button-container">
     <ma-language-switch></ma-language-switch>
     <ng-container *ngIf="isAuthActionsVisible">
@@ -22,5 +28,5 @@
       </mat-menu>
     </ng-container>
   </div>
-  <span class="header__logo-span header__logo-span_type_short" (click)="goHome()">MA</span>
+  <mat-icon *ngIf="isAbleToGoBack" aria-hidden="true" class="header__icon header__icon_type_arrow-back" (click)="goBack()">west</mat-icon>
 </mat-toolbar>

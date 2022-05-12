@@ -3,15 +3,8 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { filter, Subscription, tap } from 'rxjs';
 import { selectUserName, onLogOutSubmit } from 'src/app/redux';
-import { HttpClient } from '@angular/common/http';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { CreateBoardDialogComponent } from 'src/app/shared/components/create-board-dialog/create-board-dialog.component';
 import { UrlPaths } from 'src/app/shared/constants/url-paths';
-import {
-  DialogDataLabels,
-  DialogDataOperations,
-  DialogDataTitles,
-} from 'src/app/shared/constants/dialog.constants';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'ma-header',
@@ -27,21 +20,22 @@ export class HeaderComponent implements OnDestroy {
 
   private subscription = new Subscription();
 
-  constructor(
-    private router: Router,
-    private store: Store,
-    public dialog: MatDialog,
-    private http: HttpClient
-  ) {
+  public isAbleToGoBack: boolean = false;
+
+  constructor(private router: Router, private store: Store, private location: Location) {
     this.subscription.add(
       this.router.events
         .pipe(
           filter((event): event is NavigationEnd => event instanceof NavigationEnd),
           tap((data) => {
             const currentPageUrl = data.urlAfterRedirects;
+            const removeForwardSlash = currentPageUrl.slice(1);
             if (!this.userName) {
               this.isAuthActionsVisible = !currentPageUrl.includes(UrlPaths.auth);
             }
+            this.isAbleToGoBack = !(
+              removeForwardSlash === UrlPaths.board || removeForwardSlash === UrlPaths.greeting
+            );
           })
         )
         .subscribe()
@@ -69,6 +63,10 @@ export class HeaderComponent implements OnDestroy {
 
   goHome(): void {
     this.router.navigate([UrlPaths.home]);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
   ngOnDestroy(): void {

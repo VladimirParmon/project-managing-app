@@ -16,6 +16,7 @@
     "logo": "Managing app",
     "button_login": "Login",
     "button_sign-up": "Sign up",
+    "button_go-back": "Previous page",
     "user": {
       "button_settings": "Settings",
       "button_log-out": "Log out"
