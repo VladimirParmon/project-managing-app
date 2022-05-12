@@ -18,4 +18,8 @@ export class LocalStorageService {
   static getIndividualKey(localStorageKey: string): StoreUser | null {
     return JSON.parse(localStorage.getItem(localStorageKey) || '');
   }
+
+  static clearSavedState(localStorageKey: string): void {
+    localStorage.removeItem(localStorageKey);
+  }
 }
