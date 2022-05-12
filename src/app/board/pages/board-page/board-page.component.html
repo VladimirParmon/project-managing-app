@@ -1,12 +1,12 @@
 <div class="board-page">
   <div class="container">
     <div class="board-page-container">
-      <div class="content board-page__content">
+      <div class="content board-page__content" maHorizontalScroll>
         <h1 class="heading board-page__heading">Board heading</h1>
 
         <ul class="list board-page__column-list">
           <li *ngFor="let column of columns" class="item board-page__column">
-            <h3 class="heading board-page__heading">{{ column.title }}</h3>
+            <h3 class="heading board-page__heading_type_column">{{ column.title }}</h3>
 
             <button (click)="handleDeleteColumn(column.id)" class="button icon-close">
               <mat-icon>close</mat-icon>
