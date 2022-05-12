@@ -3,7 +3,7 @@
     <span class="header__logo-span header__logo-span_type_long" (click)="goHome()">{{ 'header.logo' | translate }}</span>
     <button *ngIf="isAbleToGoBack" mat-raised-button (click)="goBack()" class="header__button header__button_type_go-back_size_big">
       <mat-icon aria-hidden="true" class="header__icon header__icon_type_arrow-back_visivble">west</mat-icon>
-      <span class="header__span header__span_type_go-back-button-description"> {{ 'header.button_go-back' | translate }}</span>
+      <span class="header__span header__span_type_go-back-button-description">Previous page</span>
     </button>
   </div>
   <div class="header__button-container">
