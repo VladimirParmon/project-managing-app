@@ -68,5 +68,9 @@
   "mainPage": {
     "h1": "Your boards",
     "create_button": "Create new board"
+  },
+  "boardPage": {
+    "addTask": "Add a task",
+    "createColumn": "Create new column"
   }
 }

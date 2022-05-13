@@ -9,7 +9,7 @@
             <h3 class="heading board-page__heading_type_column">{{ column.title }}</h3>
             <hr class="board-page__hr">
 
-            <button mat-stroked-button (click)="createTask(column.id)">Add a task</button>
+            <button mat-stroked-button (click)="createTask(column.id)">{{ 'boardPage.addTask' | translate }}</button>
 
             <button (click)="handleDeleteColumn(column.id)" class="button icon-close">
               <mat-icon>close</mat-icon>
@@ -17,7 +17,7 @@
           </li>
 
           <li (click)="createColumn()" class="item board-page__column column_type_creator">
-            <h3 class="heading board-page__heading">Create new column</h3>
+            <h3 class="heading board-page__heading">{{ 'boardPage.createColumn' | translate }}</h3>
 
             <span class="icon icon_type_add-column" mat-button>
               <mat-icon>plus_one</mat-icon>
