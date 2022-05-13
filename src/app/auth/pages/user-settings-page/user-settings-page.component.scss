@@ -1,0 +1,35 @@
+.settings-card {
+  min-width: 460px;
+  min-height: 220px;
+
+  &__title {
+    width: 100%;
+    text-align: center;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 1em;
+  }
+}
+
+.property {
+  display: flex;
+  align-items: center;
+  column-gap: 1.5em;
+
+  &__title {
+    margin-bottom: 0;
+  }
+
+  &__editable-field {
+    padding-top: 0.8em;
+  }
+}
+
+::ng-deep .mat-snack-bar-custom {
+  background-color: #c2185b;
+  color: white;
+}
