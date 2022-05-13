@@ -72,5 +72,32 @@
   "boardPage": {
     "addTask": "Add a task",
     "createColumn": "Create new column"
+  },
+  "createTask": {
+    "createNew": "Create a new task",
+    "title": "Task title",
+    "description": "Task description",
+    "status": "Status",
+    "statusOptions": {
+      "todo": "🚀 Todo",
+      "pending": "🛑 Pending",
+      "inProgress": "⛏️ In Progress",
+      "done": "👍 Done",
+      "bug": "🐛 Bug / need help",
+      "refactor": "🔄 Refactor",
+      "ready": "🤞 Ready, needs approval",
+      "issues": "🤔 Works but has issues"
+    },
+    "priority": "Priority",
+    "priorityOptions": {
+      "low": "Low priority",
+      "medium": "Medium priority",
+      "high": "High priority"
+    },
+    "deadline": "Deadline",
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Save"
+    }
   }
 }

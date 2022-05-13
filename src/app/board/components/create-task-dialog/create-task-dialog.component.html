@@ -1,41 +1,41 @@
-<h2 mat-dialog-title>Create a new task</h2>
+<h2 mat-dialog-title>{{ 'createTask.createNew' | translate }}</h2>
 <mat-dialog-content class="dialog-content">
   <form>
   <mat-form-field appearance="fill" class="dialog-content__form-field">
-    <mat-label>Task title</mat-label>
+    <mat-label>{{ 'createTask.title' | translate }}</mat-label>
     <input matInput class="input dialog-content__input" [(ngModel)]="formValues.title" name="title">
   </mat-form-field>
 
     <mat-form-field appearance="fill" class="dialog-content__form-field">
-      <mat-label>Task description</mat-label>
+      <mat-label>{{ 'createTask.description' | translate }}</mat-label>
       <textarea matInput [(ngModel)]="formValues.description" name="description"></textarea>
     </mat-form-field>
 
   <mat-form-field appearance="fill" class="dialog-content__form-field">
-    <mat-label>Status</mat-label>
+    <mat-label>{{ 'createTask.status' | translate }}</mat-label>
     <mat-select [(ngModel)]="formValues.status" name="status">
-      <mat-option value="one">🚀 Todo</mat-option>
-      <mat-option value="two">🛑 Pending</mat-option>
-      <mat-option value="tree">⛏️ In Progress</mat-option>
-      <mat-option value="four">👍 Done</mat-option>
-      <mat-option value="five">🐛 Bug / need help</mat-option>
-      <mat-option value="six">🔄 Refactor</mat-option>
-      <mat-option value="seven">🤞 Ready, needs approval</mat-option>
-      <mat-option value="eight">🤔 Works but has issues</mat-option>
+      <mat-option value="one">{{ 'createTask.statusOptions.todo' | translate }}</mat-option>
+      <mat-option value="two">{{ 'createTask.statusOptions.pending' | translate }}</mat-option>
+      <mat-option value="tree">{{ 'createTask.statusOptions.inProgress' | translate }}</mat-option>
+      <mat-option value="four">{{ 'createTask.statusOptions.done' | translate }}</mat-option>
+      <mat-option value="five">{{ 'createTask.statusOptions.bug' | translate }}</mat-option>
+      <mat-option value="six">{{ 'createTask.statusOptions.refactor' | translate }}</mat-option>
+      <mat-option value="seven">{{ 'createTask.statusOptions.ready' | translate }}</mat-option>
+      <mat-option value="eight">{{ 'createTask.statusOptions.issues' | translate }}</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="dialog-content__form-field">
-    <mat-label>Priority</mat-label>
+    <mat-label>{{ 'createTask.priority' | translate }}</mat-label>
     <mat-select [(ngModel)]="formValues.priority" name="priority">
-      <mat-option value="one">Low</mat-option>
-      <mat-option value="two">Medium</mat-option>
-      <mat-option value="tree">High</mat-option>
+      <mat-option value="one">{{ 'createTask.priorityOptions.low' | translate }}</mat-option>
+      <mat-option value="two">{{ 'createTask.priorityOptions.medium' | translate }}</mat-option>
+      <mat-option value="tree">{{ 'createTask.priorityOptions.high' | translate }}</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="dialog-content__form-field">
-    <mat-label>Deadline</mat-label>
+    <mat-label>{{ 'createTask.deadline' | translate }}</mat-label>
     <input matInput [matDatepicker]="picker" disabled [matDatepickerFilter]="filterPastDays" [(ngModel)]="formValues.deadline" name="deadline">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker disabled="false"></mat-datepicker>
@@ -54,6 +54,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="formValues" cdkFocusInitial>Save</button>
+  <button mat-button mat-dialog-close>{{ 'createTask.buttons.cancel' | translate }}</button>
+  <button mat-button [mat-dialog-close]="formValues" cdkFocusInitial>{{ 'createTask.buttons.save' | translate }}</button>
 </mat-dialog-actions>
