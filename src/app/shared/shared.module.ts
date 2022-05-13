@@ -11,6 +11,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 // ================
 
 import { NgModule } from '@angular/core';
@@ -37,6 +40,9 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     MatChipsModule,
     MatMenuModule,
     ReactiveFormsModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatDialogModule,
   ],
   exports: [
@@ -54,6 +60,9 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     MatMenuModule,
     MatToolbarModule,
     ReactiveFormsModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatDialogModule,
   ],
   providers: [{ provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }],
