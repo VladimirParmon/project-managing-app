@@ -21,6 +21,7 @@ export class HeaderComponent implements OnDestroy {
   private subscription = new Subscription();
 
   public isAbleToGoBack: boolean = false;
+
   public isGreetingPage: boolean = false;
 
   constructor(private router: Router, private store: Store, private location: Location) {
