@@ -1,0 +1,15 @@
+.dialog-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1;
+
+  margin: 0 2rem;
+
+  &__form-field {
+    width: 100%;
+  }
+}
+

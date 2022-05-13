@@ -7,9 +7,10 @@ import { SharedModule } from '../shared/shared.module';
 import { BoardPageComponent } from './pages/board-page/board-page.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { HorizontalScrollDirective } from './directives/horizontal-scroll.directive';
+import { CreateTaskDialogComponent } from './components/create-task-dialog/create-task-dialog.component';
 
 @NgModule({
-  declarations: [MainPageComponent, BoardPageComponent, HorizontalScrollDirective],
+  declarations: [MainPageComponent, BoardPageComponent, HorizontalScrollDirective, CreateTaskDialogComponent],
   imports: [CommonModule, BoardRoutingModule, SharedModule, TranslateModule.forChild()],
 })
 export class BoardModule {}
