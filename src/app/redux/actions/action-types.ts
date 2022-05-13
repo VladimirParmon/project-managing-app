@@ -27,4 +27,7 @@ export enum ActionTypes {
   boardFetched = '[COLUMN SUCCEED] columns in board fetched',
   handleFixColumnOrder = '[COLUMN] handle fix column order',
   fixColumnOrder = '[COLUMN HANDLED] fix handled column order',
+
+  handleSaveOpenedBoardName = '[BOARDS] save board title in local storage for routing',
+  saveOpenedBoardName = '[BOARDS] save board title in app store to display it on the page',
 }

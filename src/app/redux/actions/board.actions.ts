@@ -8,6 +8,16 @@ export const boardsFetched = createAction(ActionTypes.boardsFetched, props<{ boa
 
 export const createBoard = createAction(ActionTypes.createBoard, props<{ title: string }>());
 
+export const handleSaveOpenedBoardName = createAction(
+  ActionTypes.handleSaveOpenedBoardName,
+  props<{ title: string }>()
+);
+
+export const saveOpenedBoardName = createAction(
+  ActionTypes.saveOpenedBoardName,
+  props<{ title: string }>()
+);
+
 export const setNewBoard = createAction(
   ActionTypes.setNewBoard,
   props<{ id: string; title: string }>()
