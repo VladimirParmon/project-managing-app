@@ -3,7 +3,7 @@ import { StoreUser } from 'src/app/redux/models/store.model';
 
 @Injectable({ providedIn: 'root' })
 export class LocalStorageService {
-  static setSavedState(state: StoreUser, localStorageKey: string): void {
+  static setSavedState(state: StoreUser | string, localStorageKey: string): void {
     localStorage.setItem(localStorageKey, JSON.stringify(state));
   }
 
