@@ -6,6 +6,8 @@ import {
   addPartUserData,
   addDataAfterSignIn,
   onLogOutSubmit,
+  updateUserData,
+  deleteUser,
 } from './actions/user-data.actions';
 import { effects } from './effects/index';
 import { reducers, metaReducers } from './reducers';
@@ -14,6 +16,7 @@ import {
   selectUserId,
   selectAppErrorMessage,
   selectUserName,
+  selectUserLogin,
 } from './selectors/user.selectors';
 
 export {
@@ -24,6 +27,7 @@ export {
   selectUserId,
   selectAppErrorMessage,
   selectUserName,
+  selectUserLogin,
   storeAppError,
   throwAppError,
   addFullUserData,
@@ -32,4 +36,6 @@ export {
   addPartUserData,
   addDataAfterSignIn,
   onLogOutSubmit,
+  updateUserData,
+  deleteUser,
 };

@@ -2,6 +2,10 @@ export enum ActionTypes {
   addFullUserData = '[USER DATA] store all user data properties',
   addPartUserData = '[USER DATA] store some user data properties',
 
+  updateUserData = '[USER DATA] update some user data properties',
+
+  deleteUser = '[USER DATA] delete user',
+
   signUpSubmit = '[AUTH SIGNUP] user sign up',
   logInSubmit = '[AUTH LOGIN] user log in',
 

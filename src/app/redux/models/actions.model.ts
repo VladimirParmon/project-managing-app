@@ -32,3 +32,14 @@ export interface TaskDeleteAction extends Action {
   columnId: string;
   taskId: string;
 }
+
+export interface UpdateAction extends Action {
+  user: UpdateUserDataType;
+}
+
+export interface UpdateUserDataType {
+  name: string;
+  login: string[];
+  password: string;
+  newPassword: string | undefined;
+}

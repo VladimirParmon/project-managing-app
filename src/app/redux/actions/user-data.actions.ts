@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { UserSignUp, UserLogIn } from 'src/app/auth/models/auth.model';
+import { UserSignUp, UserLogIn, ApiUserDeleteRequest } from 'src/app/auth/models/auth.model';
+import { UpdateUserDataType } from '../models/actions.model';
 import { StoreUser } from '../models/store.model';
 import { ActionTypes } from './action-types';
 
@@ -15,6 +16,16 @@ const onLogInSubmit = createAction(ActionTypes.logInSubmit, props<{ user: UserLo
 
 const onLogOutSubmit = createAction(ActionTypes.logOutSubmit);
 
+const updateUserData = createAction(
+  ActionTypes.updateUserData,
+  props<{ user: UpdateUserDataType }>()
+);
+
+const deleteUser = createAction(
+  ActionTypes.deleteUser,
+  props<{ user: Omit<ApiUserDeleteRequest, 'id'> }>()
+);
+
 export {
   addFullUserData,
   onSignUpSubmit,
@@ -22,4 +33,6 @@ export {
   addPartUserData,
   addDataAfterSignIn,
   onLogOutSubmit,
+  updateUserData,
+  deleteUser,
 };
