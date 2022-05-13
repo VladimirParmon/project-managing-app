@@ -1,10 +1,12 @@
 /* eslint-disable ngrx/prefer-effect-callback-in-block-statement */
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap, switchMap } from 'rxjs';
+import { catchError, map, mergeMap, switchMap, tap } from 'rxjs';
 import { BoardService } from 'src/app/board/services/board.service';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { ActionTypes } from '../actions/action-types';
 import { throwAppError } from '../actions/app-error.actions';
+import { LStorageKeys } from '../constants/store-keys';
 
 @Injectable()
 export class BoardsEffects {
@@ -43,6 +45,16 @@ export class BoardsEffects {
           map(() => ({ type: ActionTypes.deleteBoard, id })),
           catchError(async (err) => throwAppError({ err }))
         )
+      )
+    )
+  );
+
+  storeOpenedBoardTitle$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ActionTypes.handleSaveOpenedBoardName),
+      map(({ title }) => ({ type: ActionTypes.saveOpenedBoardName, title })),
+      tap(({ title }) =>
+        LocalStorageService.setIndividualKey(title, LStorageKeys.currentBoardTitle)
       )
     )
   );
