@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>Confirm your edition by password</h1>
+<div mat-dialog-content>
+  <ng-container *ngIf="confirmPassForm">
+    <form [formGroup]="confirmPassForm" class="confirm-pass-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Enter Your Password</mat-label>
+        <input
+          matInput
+          [formControlName]="FormKey.currentPass"
+          [type]="isPassHidden ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="isPassHidden = !isPassHidden"
+          [attr.aria-label]="'isPassVisible password'"
+          [attr.aria-pressed]="isPassHidden"
+          type="button"
+        >
+          <mat-icon>{{ isPassHidden ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="isFieldInvalid(FormKey.currentPass)">{{
+          getErrorMessageText()! | translate
+        }}</mat-error>
+      </mat-form-field>
+      <ng-container *ngIf="confirmPassForm.controls[FormKey.newPass]">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter New Password</mat-label>
+          <input
+            matInput
+            [formControlName]="FormKey.newPass"
+            [type]="isPassHidden ? 'password' : 'text'"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="isPassHidden = !isPassHidden"
+            [attr.aria-label]="'isPassVisible password'"
+            [attr.aria-pressed]="isPassHidden"
+            type="button"
+          >
+            <mat-icon>{{ isPassHidden ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="isFieldInvalid(FormKey.newPass)">{{
+            getErrorMessageText()! | translate
+          }}</mat-error>
+        </mat-form-field>
+      </ng-container>
+    </form>
+  </ng-container>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button (click)="toCancel()">Cancel</button>
+  <button mat-stroked-button (click)="sendPassword()" cdkFocusInitial>Ok</button>
+</div>

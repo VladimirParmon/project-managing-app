@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { AuthRoutingModule } from './auth-routing.module';
 // ================
 
@@ -11,7 +12,7 @@ import { UserSettingsPageComponent } from './pages/user-settings-page/user-setti
 import { AuthFormComponent } from './components/auth-form/auth-form.component';
 import { AuthFormBaseComponent } from './components/auth-form-base/auth-form-base.component';
 import { SharedModule } from '../shared/shared.module';
-import { TranslateModule } from '@ngx-translate/core';
+import { PassConfirmationComponent } from './components/pass-confirmation/pass-confirmation.component';
 // ================
 
 @NgModule({
@@ -20,6 +21,7 @@ import { TranslateModule } from '@ngx-translate/core';
     UserSettingsPageComponent,
     AuthFormComponent,
     AuthFormBaseComponent,
+    PassConfirmationComponent,
   ],
   imports: [
     CommonModule,
