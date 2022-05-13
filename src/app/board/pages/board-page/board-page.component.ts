@@ -13,6 +13,8 @@ import {
   DialogDataOperations,
   DialogDataTitles,
 } from 'src/app/shared/constants/dialog.constants';
+import { selectCurrentOpenedBoardTitle } from 'src/app/redux/selectors/title.selectors';
+import { CreateTaskDialogComponent } from '../../components/create-task-dialog/create-task-dialog.component';
 
 @Component({
   selector: 'ma-board-page',
@@ -27,6 +29,7 @@ export class BoardPageComponent implements OnInit, OnDestroy {
   private observer$: Subscription;
 
   private columns$ = this.store.select(selectColumns);
+  public currentBoardTitle$ = this.store.select(selectCurrentOpenedBoardTitle);
 
   constructor(private store: Store, private route: ActivatedRoute, public dialog: MatDialog) {
     this.observer$ = this.columns$.subscribe((columns) => {
@@ -56,6 +59,24 @@ export class BoardPageComponent implements OnInit, OnDestroy {
     };
 
     this.dialog.open(CreateBoardDialogComponent, dialogConfig);
+  }
+
+  createTask(parentColumnId: string) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.autoFocus = false;
+    dialogConfig.position = { top: '5%' };
+    dialogConfig.panelClass = 'dialog-container';
+    dialogConfig.width = '100%';
+    dialogConfig.maxWidth = '1000px';
+    dialogConfig.data = {
+      columnId: parentColumnId,
+    };
+
+    const dialogRef = this.dialog.open(CreateTaskDialogComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+    });
   }
 
   handleDeleteColumn(columnId: string) {
