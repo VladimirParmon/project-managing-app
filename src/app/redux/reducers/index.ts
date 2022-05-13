@@ -7,12 +7,14 @@ import { MAStore } from '../models/store.model';
 import { boardsReducer } from './board.reducer';
 import { appErrorReducer } from './app-error.reducer';
 import { columnReducer } from './column.reducer';
+import { titleReducer } from './title.reducer';
 
 const reducers: ActionReducerMap<MAStore> = {
   [MAStoreKeys.user]: userReducer,
   [MAStoreKeys.boardInfo]: columnReducer,
   [MAStoreKeys.boards]: boardsReducer,
   [MAStoreKeys.error]: appErrorReducer,
+  [MAStoreKeys.currentBoardTitle]: titleReducer,
 };
 
 const metaReducers = {

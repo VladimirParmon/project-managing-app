@@ -17,6 +17,7 @@ export interface MAStore {
   boards: TBoards;
   boardInfo: TColumns;
   appError: StoreError;
+  currentBoardTitle: string;
 }
 
 export type TBoards = IBoard[];

@@ -13,4 +13,5 @@ export const initialState: MAStore = {
     code: 0,
     message: '',
   },
+  currentBoardTitle: '',
 };
