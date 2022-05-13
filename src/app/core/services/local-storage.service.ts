@@ -10,4 +10,8 @@ export class LocalStorageService {
   static getSavedState(localStorageKey: string): StoreUser | Object {
     return JSON.parse(localStorage.getItem(localStorageKey) || '{}');
   }
+
+  static setIndividualKey(data: string, localStorageKey: string): void {
+    localStorage.setItem(localStorageKey, data);
+  }
 }
