@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { postNewTask } from 'src/app/redux/actions/task.actions';
+import { ITaskCreate } from 'src/app/shared/models/board.model';
 
 @Component({
   selector: 'ma-create-task-dialog',
@@ -7,17 +10,30 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./create-task-dialog.component.scss'],
 })
 export class CreateTaskDialogComponent implements OnInit {
-  public formValues = {
-    title: '',
-    description: '',
+  public descriptionProps = {
     status: '',
     priority: '',
-    deadline: '',
+    deadline: new Date(),
   };
 
-  constructor() {}
+  public taskData: ITaskCreate = {
+    title: '',
+    order: 0,
+    description: JSON.stringify(this.descriptionProps),
+    boardId: this.data.boardId,
+    columnId: this.data.columnId,
+  };
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: { boardId: string; columnId: string },
+    private store: Store
+  ) {}
 
   ngOnInit(): void {}
+
+  onClickingSave(): void {
+    this.store.dispatch(postNewTask({ taskData: this.taskData }));
+  }
 
   filterPastDays = (d: Date | null): boolean => {
     const date = d || new Date();

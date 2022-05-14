@@ -3,17 +3,18 @@
   <form>
   <mat-form-field appearance="fill" class="dialog-content__form-field">
     <mat-label>{{ 'createTask.title' | translate }}</mat-label>
-    <input matInput class="input dialog-content__input" [(ngModel)]="formValues.title" name="title">
+    <input matInput class="input dialog-content__input" [(ngModel)]="taskData.title" name="title" #title="ngModel" required minlength="3">
+    <mat-error *ngIf="title.invalid">{{ 'createTask.errors.titleLength' | translate }}</mat-error>
   </mat-form-field>
 
     <mat-form-field appearance="fill" class="dialog-content__form-field">
       <mat-label>{{ 'createTask.description' | translate }}</mat-label>
-      <textarea matInput [(ngModel)]="formValues.description" name="description"></textarea>
+      <textarea matInput [(ngModel)]="taskData.description" name="description" #description="ngModel" required minlength="3"></textarea>
     </mat-form-field>
 
   <mat-form-field appearance="fill" class="dialog-content__form-field">
     <mat-label>{{ 'createTask.status' | translate }}</mat-label>
-    <mat-select [(ngModel)]="formValues.status" name="status">
+    <mat-select [(ngModel)]="descriptionProps.status" name="status">
       <mat-option value="todo">{{ 'createTask.statusOptions.todo' | translate }}</mat-option>
       <mat-option value="pending">{{ 'createTask.statusOptions.pending' | translate }}</mat-option>
       <mat-option value="inProgress">{{ 'createTask.statusOptions.inProgress' | translate }}</mat-option>
@@ -27,16 +28,16 @@
 
   <mat-form-field appearance="fill" class="dialog-content__form-field">
     <mat-label>{{ 'createTask.priority' | translate }}</mat-label>
-    <mat-select [(ngModel)]="formValues.priority" name="priority">
-      <mat-option value="one">{{ 'createTask.priorityOptions.low' | translate }}</mat-option>
-      <mat-option value="two">{{ 'createTask.priorityOptions.medium' | translate }}</mat-option>
-      <mat-option value="tree">{{ 'createTask.priorityOptions.high' | translate }}</mat-option>
+    <mat-select [(ngModel)]="descriptionProps.priority" name="priority">
+      <mat-option value="low">{{ 'createTask.priorityOptions.low' | translate }}</mat-option>
+      <mat-option value="medium">{{ 'createTask.priorityOptions.medium' | translate }}</mat-option>
+      <mat-option value="high">{{ 'createTask.priorityOptions.high' | translate }}</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="dialog-content__form-field">
     <mat-label>{{ 'createTask.deadline' | translate }}</mat-label>
-    <input matInput [matDatepicker]="picker" disabled [matDatepickerFilter]="filterPastDays" [(ngModel)]="formValues.deadline" name="deadline">
+    <input matInput [matDatepicker]="picker" disabled [matDatepickerFilter]="filterPastDays" [(ngModel)]="descriptionProps.deadline" name="deadline">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker disabled="false"></mat-datepicker>
   </mat-form-field>
@@ -54,6 +55,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>{{ 'createTask.buttons.cancel' | translate }}</button>
-  <button mat-button [mat-dialog-close]="formValues" cdkFocusInitial>{{ 'createTask.buttons.save' | translate }}</button>
+  <button mat-button [mat-dialog-close]>{{ 'createTask.buttons.cancel' | translate }}</button>
+  <button mat-raised-button [disabled]="title.invalid || description.invalid" (click)="onClickingSave()" [mat-dialog-close]="taskData" cdkFocusInitial>{{ 'createTask.buttons.save' | translate }}</button>
 </mat-dialog-actions>

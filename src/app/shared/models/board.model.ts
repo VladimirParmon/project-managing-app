@@ -13,3 +13,5 @@ export interface ITask extends IColumn {
   boardId: string;
   columnId: string;
 }
+
+export type ITaskCreate = Omit<ITask, 'id' | 'userId'>;

@@ -5,4 +5,5 @@ export enum ApiPaths {
   boards = 'boards',
   columns = 'columns',
   auth = ':auth',
+  tasks = 'tasks',
 }

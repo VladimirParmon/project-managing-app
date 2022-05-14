@@ -70,13 +70,11 @@ export class BoardPageComponent implements OnInit, OnDestroy {
     dialogConfig.width = '100%';
     dialogConfig.maxWidth = '1000px';
     dialogConfig.data = {
+      boardId: this.boardId,
       columnId: parentColumnId,
     };
 
-    const dialogRef = this.dialog.open(CreateTaskDialogComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
-    });
+    this.dialog.open(CreateTaskDialogComponent, dialogConfig);
   }
 
   handleDeleteColumn(columnId: string) {
