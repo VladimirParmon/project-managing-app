@@ -4,6 +4,18 @@ $save-space: 110px;
 
 .board-page {
 
+  &__task {
+    position: relative;
+    @include styles.color(background-color, styles.$accent-palette, 100);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    width: 100%;
+
+    & p {
+      white-space: pre-line;
+    }
+  }
+
   &__heading {
     margin: 1rem;
     text-align: center;
@@ -38,7 +50,7 @@ $save-space: 110px;
   }
 
   &__column {
-    min-width: 290px;
+    width: 290px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -51,6 +63,10 @@ $save-space: 110px;
 
     &:hover .icon-close {
       opacity: 1;
+    }
+
+    & ul:not(:last-of-type) {
+      margin-bottom: 1rem;
     }
 
     &:not(:last-of-type)::after {

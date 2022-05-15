@@ -15,6 +15,8 @@ import {
 } from 'src/app/shared/constants/dialog.constants';
 import { selectCurrentOpenedBoardTitle } from 'src/app/redux/selectors/title.selectors';
 import { CreateTaskDialogComponent } from '../../components/create-task-dialog/create-task-dialog.component';
+import { selectTasks } from 'src/app/redux/selectors/tasks.selector';
+import { IDescriptionProps } from 'src/app/shared/models/board.model';
 
 @Component({
   selector: 'ma-board-page',
@@ -30,6 +32,7 @@ export class BoardPageComponent implements OnInit, OnDestroy {
 
   private columns$ = this.store.select(selectColumns);
   public currentBoardTitle$ = this.store.select(selectCurrentOpenedBoardTitle);
+  public tasks$ = this.store.select(selectTasks);
 
   constructor(private store: Store, private route: ActivatedRoute, public dialog: MatDialog) {
     this.observer$ = this.columns$.subscribe((columns) => {
@@ -70,13 +73,11 @@ export class BoardPageComponent implements OnInit, OnDestroy {
     dialogConfig.width = '100%';
     dialogConfig.maxWidth = '1000px';
     dialogConfig.data = {
+      boardId: this.boardId,
       columnId: parentColumnId,
     };
 
-    const dialogRef = this.dialog.open(CreateTaskDialogComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
-    });
+    this.dialog.open(CreateTaskDialogComponent, dialogConfig);
   }
 
   handleDeleteColumn(columnId: string) {
@@ -93,5 +94,19 @@ export class BoardPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.observer$.unsubscribe();
+  }
+
+  parseJSON(whatToParse: string): IDescriptionProps {
+    return JSON.parse(whatToParse);
+  }
+
+  handleDeleteTask(boardId: string, columnId: string, taskId: string) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = { boardId, columnId, taskId, entity: 'task' };
+    dialogConfig.panelClass = 'dialog-container';
+    dialogConfig.position = { top: '5%' };
+
+    this.dialog.open(ConfirmationModalComponent, dialogConfig);
   }
 }

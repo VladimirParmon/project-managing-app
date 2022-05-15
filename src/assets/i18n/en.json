@@ -98,6 +98,9 @@
     "buttons": {
       "cancel": "Cancel",
       "save": "Save"
+    },
+    "errors": {
+      "titleLength": "The title must be at least 3 characters long"
     }
   }
 }

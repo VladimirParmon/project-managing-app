@@ -3,6 +3,7 @@ import { UserLogInEffect } from './user-log-in.effect';
 import { UserSignUpEffect } from './user-sign-up.effect';
 import { ErrorEffect } from './error.effect';
 import { ColumnEffects } from './column.effects';
+import { TaskEffects } from './task.effects';
 
 export const effects = [
   UserSignUpEffect,
@@ -10,4 +11,5 @@ export const effects = [
   ErrorEffect,
   BoardsEffects,
   ColumnEffects,
+  TaskEffects,
 ];

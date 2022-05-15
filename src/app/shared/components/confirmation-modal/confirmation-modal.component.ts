@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { handleDeleteBoard } from 'src/app/redux/actions/board.actions';
 import { handleDeleteColumn } from 'src/app/redux/actions/column.actions';
+import { deleteTaskOnServer } from 'src/app/redux/actions/task.actions';
 import { TColumns } from 'src/app/redux/models/store.model';
 import { selectColumns } from 'src/app/redux/selectors/board.selector';
 import { DialogDataLabels } from '../../constants/dialog.constants';
@@ -24,7 +25,7 @@ export class ConfirmationModalComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store,
     @Inject(MAT_DIALOG_DATA)
-    readonly data: { id: string; entity: string; columnId: string; boardId: string }
+    readonly data: { id: string; entity: string; columnId: string; boardId: string; taskId: string }
   ) {}
 
   ngOnInit(): void {
@@ -50,6 +51,13 @@ export class ConfirmationModalComponent implements OnInit, OnDestroy {
         const { columns } = this;
 
         this.store.dispatch(handleDeleteColumn({ boardId, columnId, columns }));
+        break;
+      }
+
+      case DialogDataLabels.task: {
+        const { boardId, columnId, taskId } = this.data;
+
+        this.store.dispatch(deleteTaskOnServer({ boardId, columnId, taskId }));
         break;
       }
 

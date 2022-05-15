@@ -1,4 +1,4 @@
-import { IBoard, IColumn } from 'src/app/shared/models/board.model';
+import { IBoard, IColumn, ITask } from 'src/app/shared/models/board.model';
 
 export interface StoreUser {
   id?: string;
@@ -16,6 +16,7 @@ export interface MAStore {
   user: StoreUser;
   boards: TBoards;
   boardInfo: TColumns;
+  tasks: TTasks;
   appError: StoreError;
   currentBoardTitle: string;
 }
@@ -23,3 +24,5 @@ export interface MAStore {
 export type TBoards = IBoard[];
 
 export type TColumns = IColumn[];
+
+export type TTasks = ITask[];

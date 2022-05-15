@@ -17,7 +17,7 @@ export class ColumnEffects {
       ofType(ActionTypes.fetchBoard),
       switchMap(({ id }) =>
         this.boardService.fetchColumnsById(id).pipe(
-          map((columns) => ({ type: ActionTypes.boardFetched, columns })),
+          map((columns) => ({ type: ActionTypes.boardFetched, columns, boardId: id })),
           catchError(async (err) => throwAppError({ err }))
         )
       )

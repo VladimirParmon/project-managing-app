@@ -14,4 +14,8 @@ export class LocalStorageService {
   static setIndividualKey(data: string, localStorageKey: string): void {
     localStorage.setItem(localStorageKey, data);
   }
+
+  static getIndividualKey(localStorageKey: string): StoreUser | null {
+    return JSON.parse(localStorage.getItem(localStorageKey) || '');
+  }
 }

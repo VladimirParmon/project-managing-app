@@ -3,6 +3,7 @@ import { MAStore } from './store.model';
 export const initialState: MAStore = {
   boardInfo: [],
   boards: [],
+  tasks: [],
   user: {
     id: '',
     name: '',

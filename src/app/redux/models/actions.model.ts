@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserSignUp, UserLogIn } from 'src/app/auth/models/auth.model';
+import { ITaskCreate } from 'src/app/shared/models/board.model';
 import { StoreUser } from './store.model';
 
 export interface Action {
@@ -20,4 +21,14 @@ export interface StoreUserDataAction extends Action {
 
 export interface ErrorAction extends Action {
   err: HttpErrorResponse;
+}
+
+export interface TaskDataAction extends Action {
+  taskData: ITaskCreate;
+}
+
+export interface TaskDeleteAction extends Action {
+  boardId: string;
+  columnId: string;
+  taskId: string;
 }

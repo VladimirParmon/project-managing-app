@@ -9,6 +9,7 @@ export enum DialogDataOperations {
 export enum DialogDataLabels {
   board = 'board',
   column = 'column',
+  task = 'task',
 }
 
 export enum DialogDataTitles {

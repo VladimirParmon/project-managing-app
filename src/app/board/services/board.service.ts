@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TBoards, TColumns } from 'src/app/redux/models/store.model';
+import { TBoards, TColumns, TTasks } from 'src/app/redux/models/store.model';
 import { ApiPaths } from 'src/app/shared/constants/api-paths';
-import { IBoard, IColumn } from 'src/app/shared/models/board.model';
+import { IBoard, IColumn, ITask, ITaskCreate } from 'src/app/shared/models/board.model';
 
 @Injectable({
   providedIn: 'root',
@@ -46,5 +46,29 @@ export class BoardService {
       title,
       order,
     });
+  }
+
+  createTask(taskData: ITaskCreate, id: string | undefined) {
+    return this.http.post<ITask>(
+      `${this.baseReqUrl}/${taskData.boardId}/${ApiPaths.columns}/${taskData.columnId}/${ApiPaths.tasks}`,
+      {
+        title: taskData.title,
+        order: taskData.order,
+        description: taskData.description,
+        userId: id,
+      }
+    );
+  }
+
+  getAllTasks(taskData: ITaskCreate | { boardId: string; columnId: string }) {
+    return this.http.get<TTasks>(
+      `${this.baseReqUrl}/${taskData.boardId}/${ApiPaths.columns}/${taskData.columnId}/${ApiPaths.tasks}`
+    );
+  }
+
+  deleteTask(boardId: string, columnId: string, taskId: string) {
+    return this.http.delete<TTasks>(
+      `${this.baseReqUrl}/${boardId}/${ApiPaths.columns}/${columnId}/${ApiPaths.tasks}/${taskId}`
+    );
   }
 }

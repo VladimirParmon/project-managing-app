@@ -13,3 +13,12 @@ export interface ITask extends IColumn {
   boardId: string;
   columnId: string;
 }
+
+export type ITaskCreate = Omit<ITask, 'id' | 'userId'>;
+
+export interface IDescriptionProps {
+  status: string;
+  priority: string;
+  deadline: Date | string;
+  actualDescription: string;
+}

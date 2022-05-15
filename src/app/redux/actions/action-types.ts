@@ -30,4 +30,10 @@ export enum ActionTypes {
 
   handleSaveOpenedBoardName = '[BOARDS] save board title in local storage for routing',
   saveOpenedBoardName = '[BOARDS] save board title in app store to display it on the page',
+
+  postNewTask = '[TASK] post a new task to server',
+  storeNewTask = '[TASK] save a new task to store',
+  deleteTaskOnServer = '[TASK] delete a task from server',
+  deleteTaskInStore = '[TASK] delete a task from store',
+  storeAllBoardTasks = '[TASK] store all tasks that are presented in the columns of opened board',
 }
