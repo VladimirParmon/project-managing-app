@@ -11,6 +11,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // ================
 
 import { NgModule } from '@angular/core';
@@ -38,6 +39,7 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     MatMenuModule,
     ReactiveFormsModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     MatFormFieldModule,
@@ -54,6 +56,7 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     MatMenuModule,
     MatToolbarModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
   ],
   providers: [{ provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }],

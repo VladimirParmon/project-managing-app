@@ -1,11 +1,13 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { fetchBoardInfo } from 'src/app/redux/actions/column.actions';
+import { fetchBoardInfo, handleDragColumn } from 'src/app/redux/actions/column.actions';
 import { TColumns } from 'src/app/redux/models/store.model';
 import { selectColumns } from 'src/app/redux/selectors/board.selector';
+import { selectIsLoading } from 'src/app/redux/selectors/loading.selector';
 import { ConfirmationModalComponent } from 'src/app/shared/components/confirmation-modal/confirmation-modal.component';
 import { CreateBoardDialogComponent } from 'src/app/shared/components/create-board-dialog/create-board-dialog.component';
 import {
@@ -13,6 +15,8 @@ import {
   DialogDataOperations,
   DialogDataTitles,
 } from 'src/app/shared/constants/dialog.constants';
+import { IColumn } from 'src/app/shared/models/board.model';
+import { OPERATIONS } from '../../constants/operations';
 
 @Component({
   selector: 'ma-board-page',
@@ -23,6 +27,8 @@ export class BoardPageComponent implements OnInit, OnDestroy {
   private boardId: string | null = '';
 
   public columns: TColumns = [];
+
+  public isLoading$ = this.store.select(selectIsLoading);
 
   private observer$: Subscription;
 
@@ -56,6 +62,44 @@ export class BoardPageComponent implements OnInit, OnDestroy {
     };
 
     this.dialog.open(CreateBoardDialogComponent, dialogConfig);
+  }
+
+  handleDrop(event: CdkDragDrop<IColumn[]>) {
+    const { previousIndex, currentIndex } = event;
+
+    if (previousIndex !== currentIndex) {
+      moveItemInArray(this.columns, event.previousIndex, event.currentIndex);
+
+      let operation = '';
+
+      const { columns } = this;
+
+      const fixableOrderColumns =
+        previousIndex < currentIndex
+          ? columns.filter(({ order }) => {
+              if (!operation) operation = OPERATIONS.DECREMENT;
+
+              return previousIndex + 1 < order && currentIndex + 1 >= order;
+            })
+          : columns.filter(({ order }) => {
+              if (!operation) operation = OPERATIONS.INCREMENT;
+              return currentIndex + 1 <= order && previousIndex + 1 > order;
+            });
+
+      const boardId = this.boardId as string;
+
+      const currentDragColumn = columns.find(({ order }) => order === previousIndex + 1)!;
+
+      this.store.dispatch(
+        handleDragColumn({
+          boardId,
+          fixableOrderColumns,
+          currentIndex,
+          currentDragColumn,
+          operation,
+        })
+      );
+    }
   }
 
   handleDeleteColumn(columnId: string) {
