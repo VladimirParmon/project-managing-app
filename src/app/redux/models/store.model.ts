@@ -17,8 +17,11 @@ export interface MAStore {
   boards: TBoards;
   boardInfo: TColumns;
   appError: StoreError;
+  isLoading: TLoading;
 }
 
 export type TBoards = IBoard[];
 
 export type TColumns = IColumn[];
+
+export type TLoading = boolean;

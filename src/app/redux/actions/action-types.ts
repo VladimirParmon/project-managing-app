@@ -27,4 +27,12 @@ export enum ActionTypes {
   boardFetched = '[COLUMN SUCCEED] columns in board fetched',
   handleFixColumnOrder = '[COLUMN] handle fix column order',
   fixColumnOrder = '[COLUMN HANDLED] fix handled column order',
+  handleDragColumn = '[COLUMN] handle drag column',
+  dragColumn = '[COLUMN] drag column',
+  fixOrderHelper = '[COLUMN] fix order helper',
+  fixDragColumnOrder = '[COLUMN] fix drag column order',
+  fixSortingByOrder = '[COLUMN] fix sorting by order',
+
+  setIsLoading = '[LOADING] set isLoading',
+  handleSetIsLoading = '[LOADING] handle set isLoading',
 }
