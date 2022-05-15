@@ -4,10 +4,12 @@
       <h1 class="main-page__heading">{{ 'mainPage.h1' | translate }}</h1>
 
       <ul class="list main-page-boards__list">
-        <li *ngFor="let board of boards" class="item main-page-boards__item" (click)="handleRouting(board.title, board.id)">
-          <a class="link main-page-boards__link">
-            <h3 class="main-page-boards__item-heading">{{ board.title }}</h3>
-          </a>
+        <li *ngFor="let board of boards" class="item main-page-boards__item">
+          <div class="main-page__clickable-container" (click)="handleRouting(board.title, board.id)">
+            <a class="link main-page-boards__link">
+              <h3 class="main-page-boards__item-heading">{{ board.title }}</h3>
+            </a>
+          </div>
 
           <button (click)="handleDeleteBoard(board.id)" class="button icon-close">
             <mat-icon>close</mat-icon>

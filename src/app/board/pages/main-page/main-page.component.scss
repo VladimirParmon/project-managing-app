@@ -7,6 +7,12 @@ $save-space: 120px;
   position: relative;
   min-height: calc(100vh - (styles.$header-height + styles.$footer-height));
 
+  &__clickable-container {
+    height: 100%;
+    width: 100%;
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+  }
+
   &__button_type_new-board {
     position: absolute;
     bottom: 1rem;
@@ -54,7 +60,6 @@ $save-space: 120px;
       width: max-content;
       max-width: calc(100% / 3 - 2.5rem);
       min-width: 250px;
-      padding: 0.5rem 3.5rem 0.5rem 1rem;
       box-shadow: 0 0 10px -7px #c2185b;
       border-radius: 0.4rem;
       transition: 0.25s;
@@ -62,6 +67,7 @@ $save-space: 120px;
       white-space: wrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      padding-top: 0.5rem;
 
       &:hover {
         background-color: #c2185b12;
