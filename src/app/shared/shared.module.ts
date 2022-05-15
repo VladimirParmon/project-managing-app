@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { TranslateModule } from '@ngx-translate/core';
 // ================
 
 import { NgModule } from '@angular/core';
@@ -43,6 +44,7 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    TranslateModule,
     MatDialogModule,
   ],
   exports: [

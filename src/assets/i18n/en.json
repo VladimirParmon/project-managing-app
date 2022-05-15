@@ -102,5 +102,10 @@
     "errors": {
       "titleLength": "The title must be at least 3 characters long"
     }
+  },
+  "deletionDialog": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "question": "Do you really want to delete it?"
   }
 }
