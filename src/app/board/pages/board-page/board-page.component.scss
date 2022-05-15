@@ -50,6 +50,7 @@ $save-space: 110px;
   }
 
   &__column {
+    min-width: 290px;
     width: 290px;
     position: relative;
     display: flex;

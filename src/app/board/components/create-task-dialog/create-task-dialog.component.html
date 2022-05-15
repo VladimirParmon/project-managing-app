@@ -14,7 +14,7 @@
 
   <mat-form-field appearance="fill" class="dialog-content__form-field">
     <mat-label>{{ 'createTask.status' | translate }}</mat-label>
-    <mat-select [(ngModel)]="descriptionProps.status" name="status" (selectionChange)="selectedValue($event)">
+    <mat-select [(ngModel)]="descriptionProps.status" name="status" (selectionChange)="selectedValueHandler($event, 'status')">
       <mat-option value="todo">{{ 'createTask.statusOptions.todo' | translate }}</mat-option>
       <mat-option value="pending">{{ 'createTask.statusOptions.pending' | translate }}</mat-option>
       <mat-option value="inProgress">{{ 'createTask.statusOptions.inProgress' | translate }}</mat-option>
@@ -28,7 +28,7 @@
 
   <mat-form-field appearance="fill" class="dialog-content__form-field">
     <mat-label>{{ 'createTask.priority' | translate }}</mat-label>
-    <mat-select [(ngModel)]="descriptionProps.priority" name="priority">
+    <mat-select [(ngModel)]="descriptionProps.priority" name="priority" (selectionChange)="selectedValueHandler($event, 'priority')">
       <mat-option value="low">{{ 'createTask.priorityOptions.low' | translate }}</mat-option>
       <mat-option value="medium">{{ 'createTask.priorityOptions.medium' | translate }}</mat-option>
       <mat-option value="high">{{ 'createTask.priorityOptions.high' | translate }}</mat-option>

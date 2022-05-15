@@ -17,11 +17,11 @@
                   <mat-icon>close</mat-icon>
                 </button>
                 <li>
-                  <h3><b>Title:</b> {{task.title}}</h3>
+                  <h3><b>{{ 'createTask.title' | translate }}:</b> {{task.title}}</h3>
                   <p>{{(parseJSON(task.description)).actualDescription}}</p>
-                  <p><b>Status:</b> {{(parseJSON(task.description)).status}}</p>
-                  <p><b>Priority:</b> {{(parseJSON(task.description)).priority}}</p>
-                  <p><b>Deadline:</b> {{(parseJSON(task.description)).deadline | date: 'longDate'}}</p>
+                  <p *ngIf="(parseJSON(task.description)).status"><b>{{ 'createTask.status' | translate }}:</b> {{(parseJSON(task.description)).status}}</p>
+                  <p *ngIf="(parseJSON(task.description)).priority"><b>{{ 'createTask.priority' | translate }}:</b> {{(parseJSON(task.description)).priority}}</p>
+                  <p *ngIf="(parseJSON(task.description)).deadline"><b>{{ 'createTask.deadline' | translate }}:</b> {{(parseJSON(task.description)).deadline | date: 'shortDate'}}</p>
                 </li>
               </ul>
             </ng-container>

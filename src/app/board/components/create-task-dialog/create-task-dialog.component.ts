@@ -14,7 +14,7 @@ export class CreateTaskDialogComponent implements OnInit {
   public descriptionProps: IDescriptionProps = {
     status: '',
     priority: '',
-    deadline: new Date(),
+    deadline: '',
     actualDescription: '',
   };
 
@@ -57,11 +57,15 @@ export class CreateTaskDialogComponent implements OnInit {
     return dataToBeSent;
   }
 
-  selectedValue(event: MatSelectChange) {
-    let selectedData = {
-      value: event.value,
-      text: event.source.triggerValue,
-    };
-    console.log(selectedData);
+  selectedValueHandler(event: MatSelectChange, selectorType: string): void {
+    const valueToEmit = event.source.triggerValue;
+    switch (selectorType) {
+      case 'status':
+        this.descriptionProps.status = valueToEmit;
+        break;
+      case 'priority':
+        this.descriptionProps.priority = valueToEmit;
+        break;
+    }
   }
 }
