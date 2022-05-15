@@ -13,6 +13,9 @@
 
             <ng-container *ngFor="let task of tasks$ | async">
               <ul class="list board-page__task" *ngIf="task.columnId === column.id">
+                <button (click)="handleDeleteTask(task.boardId, task.columnId, task.id)" class="button icon-close">
+                  <mat-icon>close</mat-icon>
+                </button>
                 <li>
                   <h3><b>Title:</b> {{task.title}}</h3>
                   <p>{{(parseJSON(task.description)).actualDescription}}</p>

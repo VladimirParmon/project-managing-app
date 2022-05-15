@@ -99,4 +99,14 @@ export class BoardPageComponent implements OnInit, OnDestroy {
   parseJSON(whatToParse: string): IDescriptionProps {
     return JSON.parse(whatToParse);
   }
+
+  handleDeleteTask(boardId: string, columnId: string, taskId: string) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = { boardId, columnId, taskId, entity: 'task' };
+    dialogConfig.panelClass = 'dialog-container';
+    dialogConfig.position = { top: '5%' };
+
+    this.dialog.open(ConfirmationModalComponent, dialogConfig);
+  }
 }

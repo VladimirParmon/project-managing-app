@@ -33,7 +33,7 @@ export enum ActionTypes {
 
   postNewTask = '[TASK] post a new task to server',
   storeNewTask = '[TASK] save a new task to store',
-  deleteTaskServer = '[TASK] delete a task from server',
-  deleteTaskStore = '[TASK] delete a task from store',
+  deleteTaskOnServer = '[TASK] delete a task from server',
+  deleteTaskInStore = '[TASK] delete a task from store',
   storeAllBoardTasks = '[TASK] store all tasks that are presented in the columns of opened board',
 }

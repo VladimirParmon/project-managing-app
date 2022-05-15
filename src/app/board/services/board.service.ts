@@ -65,4 +65,10 @@ export class BoardService {
       `${this.baseReqUrl}/${taskData.boardId}/${ApiPaths.columns}/${taskData.columnId}/${ApiPaths.tasks}`
     );
   }
+
+  deleteTask(boardId: string, columnId: string, taskId: string) {
+    return this.http.delete<TTasks>(
+      `${this.baseReqUrl}/${boardId}/${ApiPaths.columns}/${columnId}/${ApiPaths.tasks}/${taskId}`
+    );
+  }
 }

@@ -5,7 +5,7 @@ import { ActionTypes } from '../actions/action-types';
 import { BoardService } from 'src/app/board/services/board.service';
 import { Store } from '@ngrx/store';
 import { selectUserId } from '../selectors/user.selectors';
-import { TaskDataAction } from '../models/actions.model';
+import { TaskDataAction, TaskDeleteAction } from '../models/actions.model';
 import { throwAppError } from '../actions/app-error.actions';
 import { TColumns, TTasks } from '../models/store.model';
 
@@ -68,6 +68,18 @@ export class TaskEffects {
         arrayOfTaskArrays.forEach((singleArray) => (tasks = tasks.concat(singleArray)));
         return { type: ActionTypes.storeAllBoardTasks, tasks };
       })
+    )
+  );
+
+  deleteTask$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType<TaskDeleteAction>(ActionTypes.deleteTaskOnServer),
+      mergeMap(({ boardId, columnId, taskId }) =>
+        this.boardService.deleteTask(boardId, columnId, taskId).pipe(
+          map(() => ({ type: ActionTypes.deleteTaskInStore, taskId })),
+          catchError(async (err) => throwAppError({ err }))
+        )
+      )
     )
   );
 

@@ -19,11 +19,11 @@ export const storeAllBoardTasks = createAction(
 );
 
 export const deleteTaskOnServer = createAction(
-  ActionTypes.deleteTaskServer,
-  props<{ boardId: string; columnId: string }>()
+  ActionTypes.deleteTaskOnServer,
+  props<{ boardId: string; columnId: string; taskId: string }>()
 );
 
 export const deleteTaskInStore = createAction(
-  ActionTypes.deleteTaskStore,
-  props<{ boardId: string; columnId: string }>()
+  ActionTypes.deleteTaskInStore,
+  props<{ taskId: string }>()
 );

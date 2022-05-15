@@ -26,3 +26,9 @@ export interface ErrorAction extends Action {
 export interface TaskDataAction extends Action {
   taskData: ITaskCreate;
 }
+
+export interface TaskDeleteAction extends Action {
+  boardId: string;
+  columnId: string;
+  taskId: string;
+}
