@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSelectChange } from '@angular/material/select';
 import { Store } from '@ngrx/store';
 import { postNewTask } from 'src/app/redux/actions/task.actions';
-import { ITaskCreate } from 'src/app/shared/models/board.model';
+import { IDescriptionProps, ITaskCreate } from 'src/app/shared/models/board.model';
 
 @Component({
   selector: 'ma-create-task-dialog',
@@ -10,16 +11,17 @@ import { ITaskCreate } from 'src/app/shared/models/board.model';
   styleUrls: ['./create-task-dialog.component.scss'],
 })
 export class CreateTaskDialogComponent implements OnInit {
-  public descriptionProps = {
+  public descriptionProps: IDescriptionProps = {
     status: '',
     priority: '',
     deadline: new Date(),
+    actualDescription: '',
   };
 
   public taskData: ITaskCreate = {
     title: '',
     order: 0,
-    description: JSON.stringify(this.descriptionProps),
+    description: '',
     boardId: this.data.boardId,
     columnId: this.data.columnId,
   };
@@ -32,7 +34,7 @@ export class CreateTaskDialogComponent implements OnInit {
   ngOnInit(): void {}
 
   onClickingSave(): void {
-    this.store.dispatch(postNewTask({ taskData: this.taskData }));
+    this.store.dispatch(postNewTask({ taskData: this.prepareTaskData() }));
   }
 
   filterPastDays = (d: Date | null): boolean => {
@@ -44,4 +46,22 @@ export class CreateTaskDialogComponent implements OnInit {
       date.getDate() >= currentDate.getDate();
     return comparison;
   };
+
+  getDescriptionProps(): string {
+    return JSON.stringify(this.descriptionProps);
+  }
+
+  prepareTaskData(): ITaskCreate {
+    const description = this.getDescriptionProps();
+    const dataToBeSent = { ...this.taskData, description: description };
+    return dataToBeSent;
+  }
+
+  selectedValue(event: MatSelectChange) {
+    let selectedData = {
+      value: event.value,
+      text: event.source.triggerValue,
+    };
+    console.log(selectedData);
+  }
 }

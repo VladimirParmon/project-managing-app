@@ -15,3 +15,10 @@ export interface ITask extends IColumn {
 }
 
 export type ITaskCreate = Omit<ITask, 'id' | 'userId'>;
+
+export interface IDescriptionProps {
+  status: string;
+  priority: string;
+  deadline: Date | string;
+  actualDescription: string;
+}

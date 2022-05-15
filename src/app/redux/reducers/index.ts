@@ -8,6 +8,7 @@ import { boardsReducer } from './board.reducer';
 import { appErrorReducer } from './app-error.reducer';
 import { columnReducer } from './column.reducer';
 import { titleReducer } from './title.reducer';
+import { taskReducer } from './task.reducers';
 
 const reducers: ActionReducerMap<MAStore> = {
   [MAStoreKeys.user]: userReducer,
@@ -15,6 +16,7 @@ const reducers: ActionReducerMap<MAStore> = {
   [MAStoreKeys.boards]: boardsReducer,
   [MAStoreKeys.error]: appErrorReducer,
   [MAStoreKeys.currentBoardTitle]: titleReducer,
+  [MAStoreKeys.tasks]: taskReducer,
 };
 
 const metaReducers = {

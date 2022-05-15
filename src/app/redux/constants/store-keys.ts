@@ -4,6 +4,7 @@ export enum MAStoreKeys {
   boardInfo = 'boardInfo',
   boards = 'boards',
   currentBoardTitle = 'currentBoardTitle',
+  tasks = 'tasks',
 }
 
 export enum LStorageKeys {

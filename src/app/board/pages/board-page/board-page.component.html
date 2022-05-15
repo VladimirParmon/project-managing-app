@@ -11,11 +11,17 @@
 
             <button mat-stroked-button (click)="createTask(column.id)">{{ 'boardPage.addTask' | translate }}</button>
 
-            <!-- <ul class="tasks">
-              <li *ngFor="let task of column.tasks">
-                <span>{{task.title}}</span>
-              </li>
-            </ul> -->
+            <ng-container *ngFor="let task of tasks$ | async">
+              <ul class="list board-page__task" *ngIf="task.columnId === column.id">
+                <li>
+                  <h3><b>Title:</b> {{task.title}}</h3>
+                  <p>{{(parseJSON(task.description)).actualDescription}}</p>
+                  <p><b>Status:</b> {{(parseJSON(task.description)).status}}</p>
+                  <p><b>Priority:</b> {{(parseJSON(task.description)).priority}}</p>
+                  <p><b>Deadline:</b> {{(parseJSON(task.description)).deadline | date: 'longDate'}}</p>
+                </li>
+              </ul>
+            </ng-container>
 
             <button (click)="handleDeleteColumn(column.id)" class="button icon-close">
               <mat-icon>close</mat-icon>
