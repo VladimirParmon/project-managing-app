@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { interceptorProviders } from './core/interceptors';
 import { reducers, metaReducers, effects } from './redux';
 import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -29,6 +30,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     BrowserAnimationsModule,
     CoreModule,
+    SharedModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {

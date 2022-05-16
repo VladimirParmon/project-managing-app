@@ -21,6 +21,7 @@ export class HeaderComponent implements OnDestroy {
   private subscription = new Subscription();
 
   public isAbleToGoBack: boolean = false;
+  public isGreetingPage: boolean = false;
 
   constructor(private router: Router, private store: Store, private location: Location) {
     this.subscription.add(
@@ -36,6 +37,7 @@ export class HeaderComponent implements OnDestroy {
             this.isAbleToGoBack = !(
               removeForwardSlash === UrlPaths.board || removeForwardSlash === UrlPaths.greeting
             );
+            this.isGreetingPage = removeForwardSlash === UrlPaths.greeting;
           })
         )
         .subscribe()

@@ -2,7 +2,7 @@
 
 .header {
   display: flex;
-  position: sticky;
+  position: relative;
   justify-content: space-between;
   align-items: center;
   padding: 15px;
@@ -96,6 +96,10 @@
       cursor: pointer;
     }
   }
+}
+
+.sticky {
+  position: sticky;
 }
 
 @media  screen and (max-width: 620px) {

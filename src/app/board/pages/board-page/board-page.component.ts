@@ -7,7 +7,6 @@ import { Subscription } from 'rxjs';
 import { fetchBoardInfo, handleDragColumn } from 'src/app/redux/actions/column.actions';
 import { TColumns } from 'src/app/redux/models/store.model';
 import { selectColumns } from 'src/app/redux/selectors/board.selector';
-import { selectIsLoading } from 'src/app/redux/selectors/loading.selector';
 import { ConfirmationModalComponent } from 'src/app/shared/components/confirmation-modal/confirmation-modal.component';
 import { CreateBoardDialogComponent } from 'src/app/shared/components/create-board-dialog/create-board-dialog.component';
 import {
@@ -31,8 +30,6 @@ export class BoardPageComponent implements OnInit, OnDestroy {
   private boardId: string | null = '';
 
   public columns: TColumns = [];
-
-  public isLoading$ = this.store.select(selectIsLoading);
 
   private observer$: Subscription;
 

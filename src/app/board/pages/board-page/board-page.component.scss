@@ -4,12 +4,32 @@ $save-space: 110px;
 
 .board-page {
 
+  &__scrollable-container {
+    overflow-y: scroll;
+    width: 100%;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-left: 6px solid rgba(0, 0, 0, 0);
+      background-clip: padding-box;
+      border-radius: 9999px;
+      background-color: #AAAAAA;
+    }
+  }
+
   &__task {
     position: relative;
     @include styles.color(background-color, styles.$accent-palette, 100);
     padding: 0.5rem;
     border-radius: 1rem;
     width: 100%;
+
+    &:hover > .icon-close {
+      opacity: 1;
+    }
 
     & p {
       white-space: pre-line;
@@ -18,7 +38,7 @@ $save-space: 110px;
   }
 
   &__heading {
-    margin: 1rem;
+    padding-top: 1rem;
     text-align: center;
     font-size: 2rem;
 
@@ -34,9 +54,10 @@ $save-space: 110px;
 
   &__content {
     flex-direction: column;
-    padding-bottom: 1.5rem;
+    padding-bottom: 1rem;
     overflow-y: hidden;
     overflow-x: scroll;
+    border-radius: 10px;
 
     &::-webkit-scrollbar {
       width: 12px;
@@ -63,7 +84,7 @@ $save-space: 110px;
     @include styles.color(background-color, styles.$accent-palette, 50);
     border-radius: 0.5rem;
 
-    &:hover .icon-close {
+    &:hover > .icon-close {
       opacity: 1;
     }
 

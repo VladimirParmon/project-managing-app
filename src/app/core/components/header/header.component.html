@@ -1,4 +1,4 @@
-<mat-toolbar class="header header__opacity" color="primary" maHeaderScroll>
+<mat-toolbar class="header header__opacity" color="primary" maHeaderScroll [class.sticky]="isGreetingPage">
   <div class="header__nav-tools-container">
     <span class="header__logo-span header__logo-span_type_long" (click)="goHome()">{{ 'header.logo' | translate }}</span>
     <button *ngIf="isAbleToGoBack" mat-raised-button (click)="goBack()" class="header__button header__button_type_go-back_size_big">
