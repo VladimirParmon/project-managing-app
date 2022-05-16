@@ -53,7 +53,7 @@ export class BoardPageComponent implements OnInit, OnDestroy {
 
     dialogConfig.autoFocus = false;
     dialogConfig.position = { top: '5%' };
-    dialogConfig.panelClass = 'dialog-container';
+    dialogConfig.panelClass = ['dialog-container', 'small-creation-dialog'];
     dialogConfig.data = {
       title: DialogDataTitles.column,
       operation: DialogDataOperations.create,
@@ -86,7 +86,7 @@ export class BoardPageComponent implements OnInit, OnDestroy {
     const { boardId } = this;
 
     dialogConfig.data = { boardId, columnId, entity: DialogDataLabels.column };
-    dialogConfig.panelClass = 'dialog-container';
+    dialogConfig.panelClass = ['dialog-container', 'deletion-dialog'];
     dialogConfig.position = { top: '5%' };
 
     this.dialog.open(ConfirmationModalComponent, dialogConfig);
@@ -104,7 +104,7 @@ export class BoardPageComponent implements OnInit, OnDestroy {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data = { boardId, columnId, taskId, entity: 'task' };
-    dialogConfig.panelClass = 'dialog-container';
+    dialogConfig.panelClass = ['dialog-container', 'deletion-dialog'];
     dialogConfig.position = { top: '5%' };
 
     this.dialog.open(ConfirmationModalComponent, dialogConfig);

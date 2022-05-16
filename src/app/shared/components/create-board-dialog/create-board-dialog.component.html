@@ -6,7 +6,7 @@
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>{{ dialogData.label }} name</mat-label>
 
-        <input #name required formControlName="title" matInput />
+        <input #name required formControlName="title" matInput/>
       </mat-form-field>
 
       <p
@@ -24,14 +24,10 @@
       </p>
 
       <mat-dialog-actions>
-        <button mat-raised-button mat-dialog-close="true">Cancel</button>
+        <button mat-button [mat-dialog-close]>Cancel</button>
 
         <button mat-raised-button>Create {{ dialogData.label }}!</button>
       </mat-dialog-actions>
     </form>
   </ng-container>
-
-  <mat-button class="create-dialog__icon-close icon-close" mat-dialog-close="true">
-    <mat-icon>close</mat-icon>
-  </mat-button>
 </mat-dialog-content>

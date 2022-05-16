@@ -42,7 +42,7 @@ export class TaskEffects {
         let arr: Observable<TTasks>[] = [];
         for (let key in cols) {
           const columnId = cols[key].id;
-          const query = this.boardService.getAllTasks({ boardId: boardId, columnId: columnId });
+          const query = this.boardService.getAllTasks({ boardId, columnId });
           arr.push(query);
         }
         return forkJoin(arr);

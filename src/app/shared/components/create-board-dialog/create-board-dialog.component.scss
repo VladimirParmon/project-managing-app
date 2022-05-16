@@ -17,23 +17,3 @@
     }
   }
 }
-
-//! Вот это перекрашивает диалоговое окно создания таски
-::ng-deep .dialog-container {
-//   .mat-dialog-container {
-//     background-color: white;
-//     color: black;
-//   }
-
-//   .mat-form-field-flex {
-//     background-color: #f9f9f9;
-//   }
-
-  .mat-dialog-content {
-    overflow: initial;
-  }
-
-//   .mat-form-field-label {
-//     color: black;
-//   }
-}

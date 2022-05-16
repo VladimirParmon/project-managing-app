@@ -141,3 +141,19 @@ body {
     overflow: hidden;
   }
 }
+
+.small-creation-dialog,
+.deletion-dialog {
+  .mat-dialog-container {
+    background-color: white;
+    color: black;
+  }
+
+  .mat-dialog-content {
+    overflow: initial;
+  }
+
+  .mat-form-field-flex {
+    background-color: #f9f9f9;
+  }
+}
