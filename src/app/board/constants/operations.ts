@@ -1,0 +1,4 @@
+export enum OPERATIONS {
+  INCREMENT = 'INCREMENT',
+  DECREMENT = 'DECREMENT',
+}

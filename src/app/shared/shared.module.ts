@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // ================
 
 import { NgModule } from '@angular/core';
@@ -46,6 +47,7 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     MatNativeDateModule,
     TranslateModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     MatFormFieldModule,
@@ -61,6 +63,8 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     MatChipsModule,
     MatMenuModule,
     MatToolbarModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     MatSelectModule,
     MatDatepickerModule,

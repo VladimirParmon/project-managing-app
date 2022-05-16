@@ -10,8 +10,10 @@ import { columnReducer } from './column.reducer';
 import { titleReducer } from './title.reducer';
 import { titleMetaReducer } from './title.metareducer';
 import { taskReducer } from './task.reducers';
+import { loadingReducer } from './loading.reducer';
 
 const reducers: ActionReducerMap<MAStore> = {
+  [MAStoreKeys.isLoading]: loadingReducer,
   [MAStoreKeys.user]: userReducer,
   [MAStoreKeys.boardInfo]: columnReducer,
   [MAStoreKeys.boards]: boardsReducer,

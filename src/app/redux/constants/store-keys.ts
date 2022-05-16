@@ -1,4 +1,5 @@
 export enum MAStoreKeys {
+  isLoading = 'isLoading',
   user = 'user',
   error = 'appError',
   boardInfo = 'boardInfo',

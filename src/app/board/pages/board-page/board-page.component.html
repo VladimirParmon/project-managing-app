@@ -4,8 +4,12 @@
       <h1 class="heading board-page__heading">{{ currentBoardTitle$ | async }}</h1>
       <div class="content board-page__content" maHorizontalScroll>
 
-        <ul class="list board-page__column-list">
-          <li *ngFor="let column of columns" class="item board-page__column">
+        <ul class="list board-page__column-list"
+        cdkDropList
+        cdkDropListOrientation="horizontal"
+        (cdkDropListDropped)="handleDrop($event)"
+        >
+          <li *ngFor="let column of columns" class="item board-page__column" cdkDrag>
             <h3 class="heading board-page__heading_type_column">{{ column.title }}</h3>
             <hr class="board-page__hr">
 
@@ -26,20 +30,21 @@
               </ul>
             </ng-container>
 
-            <button (click)="handleDeleteColumn(column.id)" class="button icon-close">
-              <mat-icon>close</mat-icon>
-            </button>
-          </li>
+              <button (click)="handleDeleteColumn(column.id)" class="button icon-close">
+                <mat-icon>close</mat-icon>
+              </button>
+            </li>
 
           <li (click)="createColumn()" class="item board-page__column column_type_creator">
             <h3 class="heading board-page__heading">{{ 'boardPage.createColumn' | translate }}</h3>
 
-            <span class="icon icon_type_add-column" mat-button>
-              <mat-icon>plus_one</mat-icon>
-            </span>
-          </li>
-        </ul>
+              <span class="icon icon_type_add-column" mat-button>
+                <mat-icon>plus_one</mat-icon>
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
+

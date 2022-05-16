@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { IColumn } from 'src/app/shared/models/board.model';
 import { TColumns } from '../models/store.model';
 import { ActionTypes } from './action-types';
 
@@ -25,10 +26,45 @@ export const deleteColumn = createAction(ActionTypes.deleteColumn, props<{ colum
 
 export const handleFixColumnOrder = createAction(
   ActionTypes.handleFixColumnOrder,
-  props<{ boardId: string; columns: TColumns }>()
+  props<{ boardId: string; columns: TColumns; operation: string; dragColumn?: IColumn }>()
 );
 
 export const fixColumnOrder = createAction(
   ActionTypes.fixColumnOrder,
   props<{ columnId: string; newOrder: number }>()
+);
+
+export const handleDragColumn = createAction(
+  ActionTypes.handleDragColumn,
+  props<{
+    boardId: string;
+    fixableOrderColumns: TColumns;
+    currentDragColumn: IColumn;
+    currentIndex: number;
+    operation: string;
+  }>()
+);
+
+export const dragColumn = createAction(
+  ActionTypes.dragColumn,
+  props<{
+    columnId: string;
+    fixedOrder: number;
+  }>()
+);
+
+export const fixDragColumnOrder = createAction(
+  ActionTypes.fixDragColumnOrder,
+  props<{
+    boardId: string;
+    currentDragColumn: IColumn;
+    newOrder: number;
+  }>()
+);
+
+export const fixSortingByOrder = createAction(ActionTypes.fixSortingByOrder);
+
+export const fixOrderHelper = createAction(
+  ActionTypes.fixOrderHelper,
+  props<{ fixedColumns: TColumns; operation: string; boardId: string }>()
 );

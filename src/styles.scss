@@ -157,3 +157,16 @@ body {
     background-color: #f9f9f9;
   }
 }
+
+
+.spinner {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &::ng-deep .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: #e7a3bd;
+  }
+}

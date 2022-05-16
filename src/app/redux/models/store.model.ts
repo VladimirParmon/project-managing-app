@@ -19,6 +19,7 @@ export interface MAStore {
   tasks: TTasks;
   appError: StoreError;
   currentBoardTitle: string;
+  isLoading: TLoading;
 }
 
 export type TBoards = IBoard[];
@@ -26,3 +27,4 @@ export type TBoards = IBoard[];
 export type TColumns = IColumn[];
 
 export type TTasks = ITask[];
+export type TLoading = boolean;
