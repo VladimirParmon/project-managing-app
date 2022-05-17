@@ -1,9 +1,14 @@
 <form class="form" *ngIf="Form" [formGroup]="Form" (ngSubmit)="onFormSubmit()">
   <mat-form-field *ngIf="isRegistrationForm" appearance="outline" class="form__field">
     <mat-label>{{ 'auth.enter_your' | translate }} {{ 'auth.name' | translate }}</mat-label>
-    <input matInput placeholder="{{ 'auth.placeholders.name' | translate }}" [formControlName]="FormControls.name" required />
+    <input
+      matInput
+      placeholder="{{ 'auth.placeholders.name' | translate }}"
+      [formControlName]="FormControls.name"
+      required
+    />
     <mat-error *ngIf="isFieldInvalid(FormControls.name)">{{
-      getErrorMessageText(FormControls.name)! | translate: {value: minNameLength}
+      getErrorMessageText(FormControls.name)! | translate: { value: minNameLength }
     }}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline" class="form__field">
@@ -38,7 +43,7 @@
       <mat-icon>{{ isPassHidden ? 'visibility_off' : 'visibility' }}</mat-icon>
     </button>
     <mat-error *ngIf="isFieldInvalid(FormControls.pass)">{{
-      getErrorMessageText(FormControls.pass)! | translate: {value: minPasswordLength}
+      getErrorMessageText(FormControls.pass)! | translate
     }}</mat-error>
   </mat-form-field>
   <button

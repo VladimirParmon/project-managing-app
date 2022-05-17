@@ -19,6 +19,8 @@ export enum FormControls {
   name = 'name',
   login = 'login',
   pass = 'password',
+  currentPass = 'currentPassword',
+  newPass = 'newPassword',
 }
 
 export const ERROR_MESSAGES: ErrorsBase = {

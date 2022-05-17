@@ -12,6 +12,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { UserSettingsPageComponent } from './pages/user-settings-page/user-settings-page.component';
 import { AuthFormComponent } from './components/auth-form/auth-form.component';
 import { AuthFormBaseComponent } from './components/auth-form-base/auth-form-base.component';
+import { PassConfirmationComponent } from './components/pass-confirmation/pass-confirmation.component';
 // ================
 
 @NgModule({
@@ -20,6 +21,7 @@ import { AuthFormBaseComponent } from './components/auth-form-base/auth-form-bas
     UserSettingsPageComponent,
     AuthFormComponent,
     AuthFormBaseComponent,
+    PassConfirmationComponent,
   ],
   imports: [
     CommonModule,

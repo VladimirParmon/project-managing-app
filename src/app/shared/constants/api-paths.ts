@@ -1,7 +1,7 @@
 export enum ApiPaths {
   signUp = 'signup',
   signIn = 'signin',
-  getUsers = 'users',
+  users = 'users',
   boards = 'boards',
   columns = 'columns',
   auth = ':auth',
