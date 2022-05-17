@@ -6,6 +6,6 @@ import { TTasks } from '../models/store.model';
 export const taskReducer = createReducer(
   initialState.tasks,
   on(storeNewTask, (state, { fullTaskData }): TTasks => [...state, fullTaskData]),
-  on(storeAllBoardTasks, (_, { tasks }) => tasks),
+  on(storeAllBoardTasks, (_, { tasks }): TTasks => tasks),
   on(deleteTaskInStore, (state, { taskId }) => state.filter((task) => task.id !== taskId))
 );

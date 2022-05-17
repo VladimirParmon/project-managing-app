@@ -1,6 +1,6 @@
 <ma-header></ma-header>
 <div class="page-content">
-  <div class="page-content__view" *ngIf="!(isLoading$ | async)">
+  <div class="page-content__view" *ngIf="(isLoading$ | async) === false">
     <router-outlet></router-outlet>
   </div>
   <mat-spinner class="page-content__spinner" *ngIf="isLoading$ | async"></mat-spinner>

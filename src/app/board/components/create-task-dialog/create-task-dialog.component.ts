@@ -1,16 +1,19 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
 import { Store } from '@ngrx/store';
 import { postNewTask } from 'src/app/redux/actions/task.actions';
 import { IDescriptionProps, ITaskCreate } from 'src/app/shared/models/board.model';
+import { filterPastDays } from '../../utils/filter-past-days';
 
 @Component({
   selector: 'ma-create-task-dialog',
   templateUrl: './create-task-dialog.component.html',
   styleUrls: ['./create-task-dialog.component.scss'],
 })
-export class CreateTaskDialogComponent implements OnInit {
+export class CreateTaskDialogComponent {
+  readonly filter = filterPastDays;
+
   public descriptionProps: IDescriptionProps = {
     status: '',
     priority: '',
@@ -31,21 +34,9 @@ export class CreateTaskDialogComponent implements OnInit {
     private store: Store
   ) {}
 
-  ngOnInit(): void {}
-
   onClickingSave(): void {
     this.store.dispatch(postNewTask({ taskData: this.prepareTaskData() }));
   }
-
-  filterPastDays = (d: Date | null): boolean => {
-    const date = d || new Date();
-    const currentDate = new Date();
-    const comparison =
-      date.getFullYear() >= currentDate.getFullYear() &&
-      date.getMonth() >= currentDate.getMonth() &&
-      date.getDate() >= currentDate.getDate();
-    return comparison;
-  };
 
   getDescriptionProps(): string {
     return JSON.stringify(this.descriptionProps);
@@ -53,7 +44,7 @@ export class CreateTaskDialogComponent implements OnInit {
 
   prepareTaskData(): ITaskCreate {
     const description = this.getDescriptionProps();
-    const dataToBeSent = { ...this.taskData, description: description };
+    const dataToBeSent = { ...this.taskData, description };
     return dataToBeSent;
   }
 
@@ -65,6 +56,8 @@ export class CreateTaskDialogComponent implements OnInit {
         break;
       case 'priority':
         this.descriptionProps.priority = valueToEmit;
+        break;
+      default:
         break;
     }
   }

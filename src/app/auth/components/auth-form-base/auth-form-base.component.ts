@@ -36,6 +36,7 @@ export class AuthFormBaseComponent implements OnChanges, OnDestroy {
   public Form: FormGroup | null = null;
 
   public minPasswordLength: number = LoginFormLimits.passMinLen;
+
   public minNameLength: number = LoginFormLimits.nameMinLen;
 
   ngOnChanges(changes: SimpleChanges): void {

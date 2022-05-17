@@ -11,6 +11,7 @@ import { selectIsLoading } from './redux/selectors/loading.selector';
 })
 export class AppComponent {
   readonly title = 'project-managing-app';
+
   public isLoading$ = this.store.select(selectIsLoading);
 
   constructor(

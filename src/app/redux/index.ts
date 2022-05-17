@@ -1,5 +1,5 @@
-import { storeAppError, throwAppError } from './actions/app-error.actions';
-import {
+export { storeAppError, throwAppError } from './actions/app-error.actions';
+export {
   addFullUserData,
   onSignUpSubmit,
   onLogInSubmit,
@@ -7,29 +7,11 @@ import {
   addDataAfterSignIn,
   onLogOutSubmit,
 } from './actions/user-data.actions';
-import { effects } from './effects/index';
-import { reducers, metaReducers } from './reducers';
-import {
+export { effects } from './effects/index';
+export { reducers, metaReducers } from './reducers';
+export {
   selectUserAuthToken,
   selectUserId,
   selectAppErrorMessage,
   selectUserName,
 } from './selectors/user.selectors';
-
-export {
-  effects,
-  reducers,
-  metaReducers,
-  selectUserAuthToken,
-  selectUserId,
-  selectAppErrorMessage,
-  selectUserName,
-  storeAppError,
-  throwAppError,
-  addFullUserData,
-  onSignUpSubmit,
-  onLogInSubmit,
-  addPartUserData,
-  addDataAfterSignIn,
-  onLogOutSubmit,
-};

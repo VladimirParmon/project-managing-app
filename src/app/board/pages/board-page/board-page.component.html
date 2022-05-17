@@ -3,50 +3,65 @@
     <div class="board-page-container">
       <h1 class="heading board-page__heading">{{ currentBoardTitle$ | async }}</h1>
       <div class="content board-page__content">
-
-        <ul class="list board-page__column-list"
-        cdkDropList
-        cdkDropListOrientation="horizontal"
-        (cdkDropListDropped)="handleDrop($event)"
+        <ul
+          class="list board-page__column-list"
+          cdkDropList
+          cdkDropListOrientation="horizontal"
+          (cdkDropListDropped)="handleDrop($event)"
         >
-        <li *ngFor="let column of columns" class="item board-page__column" cdkDrag>
-          <h3 class="heading board-page__heading_type_column">{{ column.title }}</h3>
-          <hr class="board-page__hr">
+          <li *ngFor="let column of columns" class="item board-page__column" cdkDrag>
+            <h3 class="heading board-page__heading_type_column">{{ column.title }}</h3>
+            <hr class="board-page__hr" />
 
-          <button mat-stroked-button (click)="createTask(column.id)">{{ 'boardPage.addTask' | translate }}</button>
+            <button mat-stroked-button (click)="createTask(column.id)">
+              {{ 'boardPage.addTask' | translate }}
+            </button>
 
-          <div class="board-page__scrollable-container">
-            <ng-container *ngFor="let task of tasks$ | async">
-              <ul class="list board-page__task" *ngIf="task.columnId === column.id">
-                <button (click)="handleDeleteTask(task.boardId, task.columnId, task.id)" class="button icon-close">
-                  <mat-icon>close</mat-icon>
-                </button>
-                <li>
-                  <h3><b>{{ 'createTask.title' | translate }}:</b> {{task.title}}</h3>
-                  <p>{{(parseJSON(task.description)).actualDescription}}</p>
-                  <p *ngIf="(parseJSON(task.description)).status"><b>{{ 'createTask.status' | translate }}:</b> {{(parseJSON(task.description)).status}}</p>
-                  <p *ngIf="(parseJSON(task.description)).priority"><b>{{ 'createTask.priority' | translate }}:</b> {{(parseJSON(task.description)).priority}}</p>
-                  <p *ngIf="(parseJSON(task.description)).deadline"><b>{{ 'createTask.deadline' | translate }}:</b> {{(parseJSON(task.description)).deadline | date: 'shortDate'}}</p>
-                </li>
-              </ul>
-            </ng-container>
-          </div>
+            <div class="board-page__scrollable-container">
+              <ng-container *ngFor="let task of tasks$ | async">
+                <ul class="list board-page__task" *ngIf="task.columnId === column.id">
+                  <button
+                    (click)="handleDeleteTask(task.boardId, task.columnId, task.id)"
+                    class="button icon-close"
+                  >
+                    <mat-icon>close</mat-icon>
+                  </button>
+                  <li>
+                    <h3>
+                      <b>{{ 'createTask.title' | translate }}:</b> {{ task.title }}
+                    </h3>
+                    <p>{{ parseJSON(task.description).actualDescription }}</p>
+                    <p *ngIf="parseJSON(task.description).status">
+                      <b>{{ 'createTask.status' | translate }}:</b>
+                      {{ parseJSON(task.description).status }}
+                    </p>
+                    <p *ngIf="parseJSON(task.description).priority">
+                      <b>{{ 'createTask.priority' | translate }}:</b>
+                      {{ parseJSON(task.description).priority }}
+                    </p>
+                    <p *ngIf="parseJSON(task.description).deadline">
+                      <b>{{ 'createTask.deadline' | translate }}:</b>
+                      {{ parseJSON(task.description).deadline | date: 'shortDate' }}
+                    </p>
+                  </li>
+                </ul>
+              </ng-container>
+            </div>
 
-          <button (click)="handleDeleteColumn(column.id)" class="button icon-close">
-            <mat-icon>close</mat-icon>
-          </button>
-        </li>
+            <button (click)="handleDeleteColumn(column.id)" class="button icon-close">
+              <mat-icon>close</mat-icon>
+            </button>
+          </li>
 
           <li (click)="createColumn()" class="item board-page__column column_type_creator">
             <h3 class="heading board-page__heading">{{ 'boardPage.createColumn' | translate }}</h3>
 
-              <span class="icon icon_type_add-column" mat-button>
-                <mat-icon>plus_one</mat-icon>
-              </span>
-            </li>
-          </ul>
-        </div>
+            <span class="icon icon_type_add-column" mat-button>
+              <mat-icon>plus_one</mat-icon>
+            </span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-
+</div>

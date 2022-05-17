@@ -15,11 +15,11 @@ import {
   DialogDataTitles,
 } from 'src/app/shared/constants/dialog.constants';
 import { selectCurrentOpenedBoardTitle } from 'src/app/redux/selectors/title.selectors';
-import { CreateTaskDialogComponent } from '../../components/create-task-dialog/create-task-dialog.component';
 import { selectTasks } from 'src/app/redux/selectors/tasks.selector';
-import { IDescriptionProps } from 'src/app/shared/models/board.model';
 import { IColumn } from 'src/app/shared/models/board.model';
+import { CreateTaskDialogComponent } from '../../components/create-task-dialog/create-task-dialog.component';
 import { OPERATIONS } from '../../constants/operations';
+import { parseJSON } from '../../utils/parse-json';
 
 @Component({
   selector: 'ma-board-page',
@@ -27,6 +27,8 @@ import { OPERATIONS } from '../../constants/operations';
   styleUrls: ['./board-page.component.scss'],
 })
 export class BoardPageComponent implements OnInit, OnDestroy {
+  readonly parseJSON = parseJSON;
+
   private boardId: string | null = '';
 
   public columns: TColumns = [];
@@ -34,7 +36,9 @@ export class BoardPageComponent implements OnInit, OnDestroy {
   private observer$: Subscription;
 
   private columns$ = this.store.select(selectColumns);
+
   public currentBoardTitle$ = this.store.select(selectCurrentOpenedBoardTitle);
+
   public tasks$ = this.store.select(selectTasks);
 
   constructor(private store: Store, private route: ActivatedRoute, public dialog: MatDialog) {
@@ -82,6 +86,7 @@ export class BoardPageComponent implements OnInit, OnDestroy {
 
     this.dialog.open(CreateTaskDialogComponent, dialogConfig);
   }
+
   handleDrop(event: CdkDragDrop<IColumn[]>) {
     const { previousIndex, currentIndex } = event;
 
@@ -134,10 +139,6 @@ export class BoardPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.observer$.unsubscribe();
-  }
-
-  parseJSON(whatToParse: string): IDescriptionProps {
-    return JSON.parse(whatToParse);
   }
 
   handleDeleteTask(boardId: string, columnId: string, taskId: string) {

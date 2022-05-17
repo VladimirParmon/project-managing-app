@@ -7,7 +7,6 @@ import { ConfirmationModalComponent } from 'src/app/shared/components/confirmati
 import { fetchBoards, handleSaveOpenedBoardName } from 'src/app/redux/actions/board.actions';
 import { selectBoards } from 'src/app/redux/selectors/boards.selectors';
 import { MAStore, TBoards } from 'src/app/redux/models/store.model';
-import { BoardService } from '../../services/board.service';
 import {
   DialogDataLabels,
   DialogDataOperations,
@@ -16,6 +15,7 @@ import {
 import { CreateBoardDialogComponent } from 'src/app/shared/components/create-board-dialog/create-board-dialog.component';
 import { Router } from '@angular/router';
 import { UrlPaths } from 'src/app/shared/constants/url-paths';
+import { BoardService } from '../../services/board.service';
 
 @Component({
   selector: 'ma-main-page',

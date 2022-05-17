@@ -1,9 +1,10 @@
+/* eslint-disable ngrx/prefer-effect-callback-in-block-statement */
 import { Injectable } from '@angular/core';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { catchError, concatMap, forkJoin, map, mergeMap, Observable } from 'rxjs';
-import { ActionTypes } from '../actions/action-types';
 import { BoardService } from 'src/app/board/services/board.service';
 import { Store } from '@ngrx/store';
+import { ActionTypes } from '../actions/action-types';
 import { selectUserId } from '../selectors/user.selectors';
 import { TaskDataAction, TaskDeleteAction } from '../models/actions.model';
 import { throwAppError } from '../actions/app-error.actions';
