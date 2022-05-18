@@ -32,12 +32,15 @@ export class HeaderComponent implements OnDestroy {
           tap((data) => {
             const currentPageUrl = data.urlAfterRedirects;
             const removeForwardSlash = currentPageUrl.slice(1);
+
             if (!this.userName) {
               this.isAuthActionsVisible = !currentPageUrl.includes(UrlPaths.auth);
             }
+
             this.isAbleToGoBack = !(
               removeForwardSlash === UrlPaths.board || removeForwardSlash === UrlPaths.greeting
             );
+
             this.isGreetingPage = removeForwardSlash === UrlPaths.greeting;
           })
         )
@@ -47,6 +50,9 @@ export class HeaderComponent implements OnDestroy {
     this.subscription.add(
       this.userName$.subscribe((name) => {
         this.userName = name;
+        if (name === '') {
+          this.router.navigate([UrlPaths.greeting]);
+        }
       })
     );
   }
@@ -61,7 +67,6 @@ export class HeaderComponent implements OnDestroy {
 
   logOut(): void {
     this.store.dispatch(onLogOutSubmit());
-    this.router.navigate([UrlPaths.greeting]);
   }
 
   goHome(): void {
