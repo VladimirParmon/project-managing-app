@@ -73,6 +73,32 @@
     "addTask": "Add a task",
     "createColumn": "Create new column"
   },
+  "createBoard": {
+    "title": "Create new board",
+    "label": "Enter board name",
+    "warnings": {
+      "absent": "Please enter the board name!",
+      "tooLong": "The board name is too long",
+      "tooShort": "The board name is too short"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "create": "Create board!"
+    }
+  },
+  "createColumn": {
+    "title": "Create new column",
+    "label": "Enter column name",
+    "warnings": {
+      "absent": "Please enter the column name!",
+      "tooLong": "The column name is too long",
+      "tooShort": "The column name is too short"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "create": "Create column!"
+    }
+  },
   "createTask": {
     "createNew": "Create a new task",
     "title": "Task title",
@@ -107,5 +133,20 @@
     "confirm": "Confirm",
     "cancel": "Cancel",
     "question": "Do you really want to delete it?"
+  },
+  "userSettingsPage": {
+    "greeting": "Hi, {{value}}, have a nice day!",
+    "dangerZone": "Danger zone",
+    "changePassButton": "Change password",
+    "deleteAccButton": "Delete my account",
+    "login": "Your login:",
+    "name": "Your name:"
+  },
+  "confirmation": {
+    "confirm": "Confirm the edit by password",
+    "yourPass": "Enter your password",
+    "newPass": "Enter new password",
+    "cancel": "Cancel",
+    "ok": "Ok"
   }
 }

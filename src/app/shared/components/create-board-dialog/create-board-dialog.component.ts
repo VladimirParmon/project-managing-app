@@ -7,7 +7,11 @@ import { createColumn } from 'src/app/redux/actions/column.actions';
 import { Subscription } from 'rxjs';
 import { selectColumns } from 'src/app/redux/selectors/board.selector';
 import { DialogData } from '../../models/dialog.model';
-import { DialogDataTitles, DialogFormControls } from '../../constants/dialog.constants';
+import {
+  DialogDataLabels,
+  DialogDataTitles,
+  DialogFormControls,
+} from '../../constants/dialog.constants';
 
 @Component({
   selector: 'ma-create-board-dialog',
@@ -25,6 +29,9 @@ export class CreateBoardDialogComponent implements OnInit, OnDestroy {
 
   private observer$ = new Subscription();
 
+  public titles = DialogDataTitles;
+  public labels = DialogDataLabels;
+
   constructor(
     public dialog: MatDialog,
     private store: Store,
@@ -35,7 +42,7 @@ export class CreateBoardDialogComponent implements OnInit, OnDestroy {
       {
         [DialogFormControls.title]: new FormControl('', [
           Validators.minLength(3),
-          Validators.maxLength(100),
+          Validators.maxLength(25),
         ]),
       },
       {

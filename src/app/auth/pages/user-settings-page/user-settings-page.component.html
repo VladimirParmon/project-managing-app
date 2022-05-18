@@ -1,11 +1,11 @@
 <mat-card class="settings-card">
   <mat-card-title>
-    <h2 class="settings-card__title">Hi, {{ name }}, have a nice day!</h2>
+    <h2 class="settings-card__title">{{ 'userSettingsPage.greeting' | translate: { value: name } }}</h2>
   </mat-card-title>
   <mat-card-content>
     <ul *ngFor="let field of fields">
       <li class="property">
-        <h3 class="property__title">Your {{ field.key }}:</h3>
+        <h3 class="property__title">{{ (field.key === "name" ? 'userSettingsPage.login' : "userSettingsPage.name") | translate }}</h3>
         <ng-container *ngIf="!EditMode[field.key]">
           <div>
             <strong>{{ this[field.key] }}</strong>
@@ -48,9 +48,9 @@
       </li>
     </ul>
   </mat-card-content>
+  <h2 class="settings-card__title settings-card__title_danger-zone">{{ 'userSettingsPage.dangerZone' | translate }}</h2>
   <mat-card-actions class="settings-card__actions">
-    <h2 class="settings-card__title">Danger Zone</h2>
-    <button mat-stroked-button (click)="editFieldSubmit(SettingsKey.pass)">Change password</button>
-    <button mat-stroked-button color="warn" (click)="userDelete()">Delete My Account</button>
+    <button mat-stroked-button (click)="editFieldSubmit(SettingsKey.pass)">{{ 'userSettingsPage.changePassButton' | translate }}</button>
+    <button mat-stroked-button color="warn" (click)="userDelete()">{{ 'userSettingsPage.deleteAccButton' | translate }}</button>
   </mat-card-actions>
 </mat-card>

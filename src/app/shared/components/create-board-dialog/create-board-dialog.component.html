@@ -1,32 +1,48 @@
 <mat-dialog-content class="create-dialog__content">
-  <h2 mat-dialog-title>{{ dialogData.title }}</h2>
+  <!-- <h2 mat-dialog-title>{{ dialogData.title }}</h2> -->
+  <h2 mat-dialog-title>{{ (dialogData.title === titles.board ? "createBoard.title" : "createColumn.title") | translate }}</h2>
 
   <ng-container *ngIf="modelForm">
     <form [formGroup]="modelForm" (ngSubmit)="submit()" class="create-dialog__form">
       <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>{{ dialogData.label }} name</mat-label>
+        <!-- <mat-label>{{ dialogData.label }} name</mat-label> -->
+        <mat-label>{{ (dialogData.label === labels.board ? "createBoard.label" : "createColumn.label") | translate }}</mat-label>
 
         <input #name required formControlName="title" matInput/>
       </mat-form-field>
 
-      <p
+      <!-- <p
         *ngIf="(title?.errors?.['required'] && (title?.touched) || (title?.invalid && triedToSubmit))"
       >
         Please fill the {{ dialogData.label }} name!
+      </p> -->
+      <p
+        *ngIf="(title?.errors?.['required'] && (title?.touched) || (title?.invalid && triedToSubmit))"
+      >
+        {{ (dialogData.label === labels.board ? "createBoard.warnings.absent" : "createColumn.warnings.absent") | translate }}
       </p>
 
-      <p *ngIf="(title?.dirty) && title?.errors?.['minlength']">
+      <!-- <p *ngIf="(title?.dirty) && title?.errors?.['minlength']">
         The {{ dialogData.label }} name is too short!
+      </p> -->
+      <p *ngIf="(title?.dirty) && title?.errors?.['minlength']">
+        {{ (dialogData.label === labels.board ? "createBoard.warnings.tooShort" : "createColumn.warnings.tooShort") | translate }}
       </p>
 
-      <p *ngIf="title?.dirty && title?.errors?.['maxlength']">
+      <!-- <p *ngIf="title?.dirty && title?.errors?.['maxlength']">
         The {{ dialogData.label }} name is too long!
+      </p> -->
+      <p *ngIf="title?.dirty && title?.errors?.['maxlength']">
+        {{ (dialogData.label === labels.board ? "createBoard.warnings.tooLong" : "createColumn.warnings.tooLong") | translate }}
       </p>
 
-      <mat-dialog-actions>
-        <button mat-button [mat-dialog-close]>Cancel</button>
+      <mat-dialog-actions align="end">
+        <!-- <button mat-button [mat-dialog-close]>Cancel</button> -->
+        <button mat-button [mat-dialog-close]>{{ "createBoard.buttons.cancel" | translate }}</button>
 
-        <button mat-raised-button>Create {{ dialogData.label }}!</button>
+        <!-- <button mat-raised-button>Create {{ dialogData.label }}!</button> -->
+        <button mat-raised-button>{{ (dialogData.label === labels.board ? "createBoard.buttons.create" : "createColumn.buttons.create") | translate }}</button>
+
       </mat-dialog-actions>
     </form>
   </ng-container>

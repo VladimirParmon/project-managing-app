@@ -1,9 +1,9 @@
-<h1 mat-dialog-title>Confirm your edition by password</h1>
+<h1 mat-dialog-title>{{ 'confirmation.confirm' | translate }}</h1>
 <div mat-dialog-content>
   <ng-container *ngIf="confirmPassForm">
     <form [formGroup]="confirmPassForm" class="confirm-pass-form">
       <mat-form-field appearance="outline">
-        <mat-label>Enter Your Password</mat-label>
+        <mat-label>{{ 'confirmation.yourPass' | translate }}</mat-label>
         <input
           matInput
           [formControlName]="FormKey.currentPass"
@@ -25,7 +25,7 @@
       </mat-form-field>
       <ng-container *ngIf="confirmPassForm.controls[FormKey.newPass]">
         <mat-form-field appearance="outline">
-          <mat-label>Enter New Password</mat-label>
+          <mat-label>{{ 'confirmation.newPass' | translate }}</mat-label>
           <input
             matInput
             [formControlName]="FormKey.newPass"
@@ -50,6 +50,6 @@
   </ng-container>
 </div>
 <div mat-dialog-actions>
-  <button mat-stroked-button (click)="toCancel()">Cancel</button>
-  <button mat-stroked-button (click)="sendPassword()" cdkFocusInitial>Ok</button>
+  <button mat-stroked-button (click)="toCancel()">{{ 'confirmation.cancel' | translate }}</button>
+  <button mat-stroked-button (click)="sendPassword()" cdkFocusInitial>{{ 'confirmation.ok' | translate }}</button>
 </div>
