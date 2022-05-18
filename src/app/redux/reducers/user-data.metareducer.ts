@@ -13,7 +13,15 @@ export function storageMetaReducer(reducer: ActionReducer<any>): ActionReducer<a
 
     if (action.type === ActionTypes.logOutSubmit) {
       LocalStorageService.clearSavedState(LStorageKeys.user);
-      onInit = true;
+
+      const cleanUser = { ...state.user };
+      Object.keys(cleanUser).forEach((key) => {
+        cleanUser[key] = '';
+      });
+
+      const cleanFromUserState = { ...state, user: cleanUser };
+
+      return reducer(cleanFromUserState, action);
     }
 
     if (onInit) {
