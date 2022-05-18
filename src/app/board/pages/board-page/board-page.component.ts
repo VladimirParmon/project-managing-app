@@ -3,9 +3,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { filter, Subscription } from 'rxjs';
 import { fetchBoardInfo, handleDragColumn } from 'src/app/redux/actions/column.actions';
-import { TColumns } from 'src/app/redux/models/store.model';
+import { TColumns, TTasks } from 'src/app/redux/models/store.model';
 import { selectColumns } from 'src/app/redux/selectors/board.selector';
 import { ConfirmationModalComponent } from 'src/app/shared/components/confirmation-modal/confirmation-modal.component';
 import { CreateBoardDialogComponent } from 'src/app/shared/components/create-board-dialog/create-board-dialog.component';
@@ -137,6 +137,12 @@ export class BoardPageComponent implements OnInit, OnDestroy {
         })
       );
     }
+  }
+
+  handleTaskDrag(event: any) {
+    const { previousIndex, currentIndex } = event;
+    console.log(event);
+    //moveItemInArray(this.tasks$.pipe(filter((item) => item.columnId === event.previousContainer.data)), event.previousIndex, event.currentIndex);
   }
 
   handleDeleteColumn(columnId: string) {

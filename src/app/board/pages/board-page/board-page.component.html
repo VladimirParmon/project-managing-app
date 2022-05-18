@@ -17,9 +17,20 @@
               {{ 'boardPage.addTask' | translate }}
             </button>
 
-            <div class="board-page__scrollable-container">
+            <div
+              class="board-page__scrollable-container"
+              cdkDropList
+              cdkDropListOrientation="vertical"
+              [cdkDropListData]="column.id!"
+              (cdkDropListDropped)="handleTaskDrag($event)"
+            >
               <ng-container *ngFor="let task of tasks$ | async">
-                <ul class="list board-page__task" *ngIf="task.columnId === column.id">
+                <ul
+                  class="list board-page__task"
+                  *ngIf="task.columnId === column.id"
+                  cdkDrag
+                  [cdkDragData]="task"
+                >
                   <button
                     (click)="handleDeleteTask(task.boardId, task.columnId, task.id)"
                     class="button icon-close"
