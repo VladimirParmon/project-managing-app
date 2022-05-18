@@ -1,4 +1,4 @@
-export { storeAppError, throwAppError } from './actions/app-error.actions';
+export { storeAppError, throwAppError, clearAppError } from './actions/app-error.actions';
 export {
   addFullUserData,
   onSignUpSubmit,

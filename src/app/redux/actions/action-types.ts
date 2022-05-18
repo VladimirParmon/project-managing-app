@@ -15,6 +15,7 @@ export enum ActionTypes {
 
   throwAppError = '[ERROR] throw some error',
   newAppError = '[ERROR] save code and message of error',
+  clearAppError = '[ERROR] clear up error message from store',
 
   fetchBoards = '[BOARDS] fetch boards',
   boardsFetched = '[BOARDS SUCCEED] boards fetched',

@@ -7,4 +7,6 @@ const storeAppError = createAction(ActionTypes.newAppError, props<{ error: Store
 
 const throwAppError = createAction(ActionTypes.throwAppError, props<{ err: HttpErrorResponse }>());
 
-export { storeAppError, throwAppError };
+const clearAppError = createAction(ActionTypes.clearAppError);
+
+export { storeAppError, throwAppError, clearAppError };
