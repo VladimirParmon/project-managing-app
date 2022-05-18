@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from './core/services/language.service';
@@ -14,10 +14,15 @@ export class AppComponent {
 
   public isLoading$ = this.store.select(selectIsLoading);
 
+  ngAfterContentChecked() {
+    this.ref.detectChanges();
+  }
+
   constructor(
     private languageService: LanguageService,
     private translate: TranslateService,
-    private store: Store
+    private store: Store,
+    private ref: ChangeDetectorRef
   ) {
     this.languageService.language$.subscribe((lang) => {
       if (lang) {

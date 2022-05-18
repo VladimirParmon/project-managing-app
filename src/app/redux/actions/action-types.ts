@@ -47,5 +47,4 @@ export enum ActionTypes {
   fixSortingByOrder = '[COLUMN] fix sorting by order',
 
   setIsLoading = '[LOADING] set isLoading',
-  handleSetIsLoading = '[LOADING] handle set isLoading',
 }

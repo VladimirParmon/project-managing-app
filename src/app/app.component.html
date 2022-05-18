@@ -1,8 +1,11 @@
 <ma-header></ma-header>
 <div class="page-content">
-  <div class="page-content__view" *ngIf="(isLoading$ | async) === false">
+  <!-- <div class="page-content__view" *ngIf="(isLoading$ | async) === false"> -->
+  <div class="page-content__view">
     <router-outlet></router-outlet>
   </div>
-  <mat-spinner class="page-content__spinner" *ngIf="isLoading$ | async"></mat-spinner>
+  <div class="page-content__spinner-container" *ngIf="isLoading$ | async">
+    <mat-spinner class="page-content__spinner"></mat-spinner>
+  </div>
 </div>
 <ma-footer></ma-footer>

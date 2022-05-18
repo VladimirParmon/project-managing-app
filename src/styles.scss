@@ -43,6 +43,7 @@ app-footer {
 }
 
 .page-content {
+  position: relative;
   min-height: calc(100vh - ($header-height + $footer-height));
 }
 
@@ -159,12 +160,20 @@ body {
 }
 
 
-.page-content__spinner {
+.page-content__spinner-container {
   position: absolute;
-  top: 42vh;
-  left: 50vw;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background-color: white;
+  min-width: 100%;
+  min-height: 100%;
+}
 
+.page-content__spinner {
   &::ng-deep .mat-progress-spinner circle,
   .mat-spinner circle {
     stroke: #e7a3bd;
