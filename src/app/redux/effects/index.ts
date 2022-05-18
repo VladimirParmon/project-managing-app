@@ -6,6 +6,7 @@ import { ColumnEffects } from './column.effects';
 import { TaskEffects } from './task.effects';
 import { UserUpdateDataEffect } from './user-update-data.effects';
 import { UserDeleteEffect } from './user-delete.effects';
+import { loaderEffects } from './loader.effects';
 
 export const effects = [
   UserSignUpEffect,
@@ -16,4 +17,5 @@ export const effects = [
   TaskEffects,
   UserUpdateDataEffect,
   UserDeleteEffect,
+  loaderEffects,
 ];
