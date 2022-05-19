@@ -61,7 +61,7 @@ export class BoardService {
   }
 
   getAllTasks(taskData: ITaskCreate | { boardId: string; columnId: string }) {
-    return this.http.get<TTasks>(
+    return this.http.get<ITask[]>(
       `${this.baseReqUrl}/${taskData.boardId}/${ApiPaths.columns}/${taskData.columnId}/${ApiPaths.tasks}`
     );
   }
@@ -73,15 +73,31 @@ export class BoardService {
   }
 
   updateTask(taskData: ITask) {
+    const { id, boardId, columnId, ...task } = taskData;
     return this.http.put<ITask>(
-      `${this.baseReqUrl}/${taskData.boardId}/${ApiPaths.columns}/${taskData.columnId}/${ApiPaths.tasks}/${taskData.id}`,
+      `${this.baseReqUrl}/${boardId}/${ApiPaths.columns}/${columnId}/${ApiPaths.tasks}/${id}`,
       {
-        title: taskData.title,
-        order: taskData.order,
-        description: taskData.description,
-        userId: taskData.userId,
-        boardId: taskData.boardId,
-        columnId: taskData.columnId,
+        ...task,
+      }
+    );
+  }
+
+  updateTask2(
+    boardId: string,
+    columnId: string,
+    userId: string,
+    task: { id: string; title: string; description: string; order: number }
+  ) {
+    const { id, title, description, order } = task;
+    return this.http.put<ITask>(
+      `${this.baseReqUrl}/${boardId}/${ApiPaths.columns}/${columnId}/${ApiPaths.tasks}/${id}`,
+      {
+        title,
+        description,
+        order,
+        boardId,
+        columnId,
+        userId,
       }
     );
   }

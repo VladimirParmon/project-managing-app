@@ -1,3 +1,4 @@
+/* eslint-disable ngrx/prefer-effect-callback-in-block-statement */
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map } from 'rxjs';
@@ -5,7 +6,7 @@ import { ActionTypes } from '../actions/action-types';
 import { setIsLoading } from '../actions/loading.actions';
 
 @Injectable()
-export class loaderEffects {
+export class LoaderEffects {
   constructor(private actions$: Actions) {}
 
   loaderOn$ = createEffect(() =>
@@ -40,7 +41,7 @@ export class loaderEffects {
         ActionTypes.deleteBoard,
         ActionTypes.setNewColumn,
         ActionTypes.deleteColumn,
-        ActionTypes.storeAllBoardTasks,
+        ActionTypes.storeAllColumnTasks,
         ActionTypes.logOutSubmit,
         ActionTypes.addFullUserData,
         ActionTypes.addPartUserData,

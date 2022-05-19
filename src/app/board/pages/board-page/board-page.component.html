@@ -8,6 +8,7 @@
           cdkDropList
           cdkDropListOrientation="horizontal"
           (cdkDropListDropped)="handleDrop($event)"
+          cdkDropListGroup
         >
           <li *ngFor="let column of columns" class="item board-page__column" cdkDrag>
             <h3 class="heading board-page__heading_type_column">{{ column.title }}</h3>
@@ -17,39 +18,38 @@
               {{ 'boardPage.addTask' | translate }}
             </button>
 
-            <div class="board-page__scrollable-container">
-              <ng-container *ngFor="let task of tasks$ | async">
-                <ul class="list board-page__task" *ngIf="task.columnId === column.id">
-                  <button
-                    (click)="handleDeleteTask(task.boardId, task.columnId, task.id)"
-                    class="button icon-close"
-                  >
-                    <mat-icon>close</mat-icon>
-                  </button>
-
-                  <button (click)="handleEditTask(task)" class="button icon-edit">
-                    <mat-icon>edit</mat-icon>
-                  </button>
-                  <li>
-                    <h3>
-                      <b>{{ 'createTask.title' | translate }}:</b> {{ task.title }}
-                    </h3>
-                    <p>{{ getDescriptionField(task.description, 'actual') | translate }}</p>
-                    <p *ngIf="parseJSON(task.description).status">
-                      <b>{{ 'createTask.status' | translate }}:</b>
-                      {{ getDescriptionField(task.description, 'status') | translate }}
-                    </p>
-                    <p *ngIf="parseJSON(task.description).priority">
-                      <b>{{ 'createTask.priority' | translate }}:</b>
-                      {{ getDescriptionField(task.description, 'priority') | translate }}
-                    </p>
-                    <p *ngIf="parseJSON(task.description).deadline">
-                      <b>{{ 'createTask.deadline' | translate }}:</b>
-                      {{ parseJSON(task.description).deadline | date: 'shortDate' }}
-                    </p>
-                  </li>
-                </ul>
-              </ng-container>
+            <div
+              class="board-page__scrollable-container"
+              cdkDropList
+              [cdkDropListData]="column.id"
+              (cdkDropListDropped)="handleTaskDrag($event)"
+            >
+              <div class="board-page__task" cdkDrag *ngFor="let task of tasks[column.id]">
+                <button
+                  (click)="handleDeleteTask(task.boardId, task.columnId, task.id)"
+                  class="button icon-close"
+                >
+                  <mat-icon>close</mat-icon></button
+                ><button (click)="handleEditTask(task)" class="button icon-edit">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <h3>
+                  <b>{{ 'createTask.title' | translate }}:</b> {{ task.title }}
+                </h3>
+                <p>{{ getDescriptionField(task.description, 'actual') | translate }}</p>
+                <p *ngIf="parseJSON(task.description).status">
+                  <b>{{ 'createTask.status' | translate }}:</b>
+                  {{ getDescriptionField(task.description, 'status') | translate }}
+                </p>
+                <p *ngIf="parseJSON(task.description).priority">
+                  <b>{{ 'createTask.priority' | translate }}:</b>
+                  {{ getDescriptionField(task.description, 'priority') | translate }}
+                </p>
+                <p *ngIf="parseJSON(task.description).deadline">
+                  <b>{{ 'createTask.deadline' | translate }}:</b>
+                  {{ parseJSON(task.description).deadline | date: 'shortDate' }}
+                </p>
+              </div>
             </div>
 
             <button (click)="handleDeleteColumn(column.id)" class="button icon-close">

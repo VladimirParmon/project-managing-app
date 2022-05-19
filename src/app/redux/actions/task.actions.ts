@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { ITask, ITaskCreate, ITaskUpdate } from 'src/app/shared/models/board.model';
-import { TTasks } from '../models/store.model';
+import { OPERATIONS } from 'src/app/board/constants/operations';
 import { ActionTypes } from './action-types';
 
 export const postNewTask = createAction(
@@ -13,9 +13,9 @@ export const storeNewTask = createAction(
   props<{ fullTaskData: ITask }>()
 );
 
-export const storeAllBoardTasks = createAction(
-  ActionTypes.storeAllBoardTasks,
-  props<{ tasks: TTasks }>()
+export const storeAllColumnTasks = createAction(
+  ActionTypes.storeAllColumnTasks,
+  props<{ tasks: ITask[]; columnId: string }>()
 );
 
 export const deleteTaskOnServer = createAction(
@@ -25,7 +25,24 @@ export const deleteTaskOnServer = createAction(
 
 export const deleteTaskInStore = createAction(
   ActionTypes.deleteTaskInStore,
-  props<{ taskId: string }>()
+  props<{ taskId: string; columnId: string }>()
+);
+
+export const updateTaskData = createAction(ActionTypes.updateTaskData, props<{ task: ITask }>());
+
+export const handleDragTask = createAction(
+  ActionTypes.dragTask,
+  props<{ task: ITask; fixableOrderTasks: ITask[]; operation: OPERATIONS; currentIndex: number }>()
+);
+
+export const handleFixTaskOrder = createAction(
+  ActionTypes.handleFixTasksOrder,
+  props<{
+    boardId: string;
+    tasks: ITask[];
+    operation: OPERATIONS;
+    task: { id: string; title: string; description: string; order: number };
+  }>()
 );
 
 export const updateTaskOnServer = createAction(

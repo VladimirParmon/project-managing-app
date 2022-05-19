@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserSignUp, UserLogIn } from 'src/app/auth/models/auth.model';
+import { OPERATIONS } from 'src/app/board/constants/operations';
 import { ITask, ITaskCreate } from 'src/app/shared/models/board.model';
 import { StoreUser } from './store.model';
 
@@ -46,4 +47,22 @@ export interface UpdateUserDataType {
   login: string[];
   password: string;
   newPassword: string | undefined;
+}
+
+export interface UpdateTaskAction extends Action {
+  task: ITask;
+}
+
+export interface DragTaskAction extends Action {
+  task: ITask;
+  fixableOrderTasks: ITask[];
+  operation: OPERATIONS;
+  currentIndex: number;
+}
+
+export interface HandleFixTasksOrderAction extends Action {
+  boardId: string;
+  tasks: ITask[];
+  operation: string;
+  task: { id: string; title: string; description: string; order: number };
 }

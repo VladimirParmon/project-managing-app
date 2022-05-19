@@ -4,7 +4,7 @@ export const initialState: MAStore = {
   isLoading: false,
   boardInfo: [],
   boards: [],
-  tasks: [],
+  tasks: {},
   user: {
     id: '',
     name: '',

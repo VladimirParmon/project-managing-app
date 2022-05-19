@@ -26,5 +26,8 @@ export type TBoards = IBoard[];
 
 export type TColumns = IColumn[];
 
-export type TTasks = ITask[];
+export type TTasks = {
+  [columnId: string]: ITask[];
+};
+
 export type TLoading = boolean;
