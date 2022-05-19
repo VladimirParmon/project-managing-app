@@ -22,28 +22,25 @@ import {
   storeNewTask,
 } from '../actions/task.actions';
 import { OPERATIONS } from 'src/app/board/constants/operations';
+import { selectTasksState } from '../selectors/tasks.selector';
 
 @Injectable()
 export class TaskEffects {
   postNewTask$ = createEffect(() =>
     this.actions$.pipe(
       ofType<TaskDataAction>(ActionTypes.postNewTask),
-      mergeMap(({ taskData }) =>
-        this.boardService.getAllTasks(taskData).pipe(
-          map((getAllTasksResult) => {
-            const numberOfTasks = Object.keys(getAllTasksResult).length;
-            const newData = { ...taskData };
-            newData.order = numberOfTasks;
-            return newData;
-          }),
-          concatLatestFrom(() => this.store.select(selectUserId)),
-          mergeMap(([taskDataWithOrder, id]) => {
-            return this.boardService.createTask(taskDataWithOrder, id);
-          }),
-          map((fullTaskData) => storeNewTask({ fullTaskData })),
+      concatLatestFrom(() => [
+        this.store.select(selectTasksState),
+        this.store.select(selectUserId),
+      ]),
+      switchMap(([{ taskData }, tasks, userId]) => {
+        const { columnId } = taskData;
+        const newOrderedTask = { ...taskData, order: tasks[columnId].length };
+        return this.boardService.createTask(newOrderedTask, userId).pipe(
+          switchMap(async (fullTaskData) => storeNewTask({ fullTaskData })),
           catchError(async (err) => throwAppError({ err }))
-        )
-      )
+        );
+      })
     )
   );
 

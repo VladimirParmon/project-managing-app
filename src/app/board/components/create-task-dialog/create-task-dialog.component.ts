@@ -30,6 +30,7 @@ export class CreateTaskDialogComponent {
   };
 
   public statusValues;
+
   public priorityValues;
 
   constructor(
@@ -60,6 +61,7 @@ export class CreateTaskDialogComponent {
     return JSON.stringify(this.descriptionProps);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   getDescriptionOfTheTaskToBeUpdated(jsonString: string): IDescriptionProps {
     return JSON.parse(jsonString);
   }
