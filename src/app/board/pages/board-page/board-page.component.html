@@ -26,6 +26,10 @@
                   >
                     <mat-icon>close</mat-icon>
                   </button>
+
+                  <button (click)="handleEditTask()" class="button icon-edit">
+                    <mat-icon>edit</mat-icon>
+                  </button>
                   <li>
                     <h3>
                       <b>{{ 'createTask.title' | translate }}:</b> {{ task.title }}

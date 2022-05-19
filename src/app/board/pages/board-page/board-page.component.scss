@@ -27,13 +27,18 @@ $save-space: 110px;
     border-radius: 1rem;
     width: 100%;
 
-    &:hover > .icon-close {
+    &:hover > .icon-close,
+    &:hover > .icon-edit {
       opacity: 1;
     }
 
-    & p {
+    & p, h3 {
       white-space: pre-line;
       word-break: break-all;
+    }
+
+    & h3 {
+      padding-right: 3rem;
     }
   }
 

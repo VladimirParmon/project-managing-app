@@ -105,9 +105,9 @@ body {
 }
 
 .icon {
-  &-close {
+  &-close,
+  &-edit {
     position: absolute;
-    right: 0.5rem;
     opacity: 0;
     transition: 0.25s;
     cursor: pointer;
@@ -120,6 +120,14 @@ body {
       border: none;
       outline: none;
     }
+  }
+
+  &-close {
+    right: 0.5rem;
+  }
+
+  &-edit {
+    right: 2rem;
   }
 }
 

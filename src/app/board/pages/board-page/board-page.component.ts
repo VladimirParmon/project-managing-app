@@ -150,4 +150,6 @@ export class BoardPageComponent implements OnInit, OnDestroy {
 
     this.dialog.open(ConfirmationModalComponent, dialogConfig);
   }
+
+  handleEditTask() {}
 }
