@@ -1,9 +1,9 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { filter, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { fetchBoardInfo, handleDragColumn } from 'src/app/redux/actions/column.actions';
 import { TColumns, TTasks } from 'src/app/redux/models/store.model';
 import { selectColumns } from 'src/app/redux/selectors/board.selector';
@@ -17,6 +17,7 @@ import {
 import { selectCurrentOpenedBoardTitle } from 'src/app/redux/selectors/title.selectors';
 import { selectTasks } from 'src/app/redux/selectors/tasks.selector';
 import { IColumn, IDescriptionProps, ITask } from 'src/app/shared/models/board.model';
+import { handleDragTask } from 'src/app/redux';
 import { CreateTaskDialogComponent } from '../../components/create-task-dialog/create-task-dialog.component';
 import { OPERATIONS } from '../../constants/operations';
 import { parseJSON } from '../../utils/parse-json';
@@ -34,18 +35,28 @@ export class BoardPageComponent implements OnInit, OnDestroy {
 
   public columns: TColumns = [];
 
-  private observer$: Subscription;
+  public tasks: TTasks = {};
 
   private columns$ = this.store.select(selectColumns);
 
   public currentBoardTitle$ = this.store.select(selectCurrentOpenedBoardTitle);
 
-  public tasks$ = this.store.select(selectTasks);
+  private tasks$ = this.store.select(selectTasks);
+
+  private subscription = new Subscription();
 
   constructor(private store: Store, private route: ActivatedRoute, public dialog: MatDialog) {
-    this.observer$ = this.columns$.subscribe((columns) => {
-      this.columns = [...columns];
-    });
+    this.subscription.add(
+      this.columns$.subscribe((columns) => {
+        this.columns = [...columns];
+      })
+    );
+
+    this.subscription.add(
+      this.tasks$.subscribe((tasks) => {
+        this.tasks = { ...tasks };
+      })
+    );
   }
 
   ngOnInit(): void {
@@ -105,27 +116,18 @@ export class BoardPageComponent implements OnInit, OnDestroy {
     const { previousIndex, currentIndex } = event;
 
     if (previousIndex !== currentIndex) {
-      moveItemInArray(this.columns, event.previousIndex, event.currentIndex);
-
-      let operation = '';
-
-      const { columns } = this;
-
-      const fixableOrderColumns =
-        previousIndex < currentIndex
-          ? columns.filter(({ order }) => {
-              if (!operation) operation = OPERATIONS.DECREMENT;
-
-              return previousIndex + 1 < order && currentIndex + 1 >= order;
-            })
-          : columns.filter(({ order }) => {
-              if (!operation) operation = OPERATIONS.INCREMENT;
-              return currentIndex + 1 <= order && previousIndex + 1 > order;
-            });
-
       const boardId = this.boardId as string;
+      const isOrderDecreasing = previousIndex < currentIndex;
+      const operation = isOrderDecreasing ? OPERATIONS.DECREMENT : OPERATIONS.INCREMENT;
+      const prevIndexOnBackEnd = previousIndex + 1;
+      const currIndexOnBackEnd = currentIndex + 1;
+      const currentDragColumn = this.columns.find(({ order }) => order === prevIndexOnBackEnd)!;
 
-      const currentDragColumn = columns.find(({ order }) => order === previousIndex + 1)!;
+      const fixableOrderColumns = this.columns.filter(({ order }) =>
+        isOrderDecreasing
+          ? order > prevIndexOnBackEnd && order <= currIndexOnBackEnd
+          : order >= currIndexOnBackEnd && order < prevIndexOnBackEnd
+      );
 
       this.store.dispatch(
         handleDragColumn({
@@ -136,13 +138,39 @@ export class BoardPageComponent implements OnInit, OnDestroy {
           operation,
         })
       );
+
+      moveItemInArray(this.columns, previousIndex, currentIndex);
     }
   }
 
-  handleTaskDrag(event: any) {
+  handleTaskDrag(event: CdkDragDrop<string>) {
+    const prevColumnId = event.previousContainer.data;
+    const currentColumnId = event.container.data;
+    const currentTasks = [...this.tasks[currentColumnId]];
     const { previousIndex, currentIndex } = event;
-    console.log(event);
-    //moveItemInArray(this.tasks$.pipe(filter((item) => item.columnId === event.previousContainer.data)), event.previousIndex, event.currentIndex);
+    const isOrderDecreasing = previousIndex < currentIndex;
+    const operation = isOrderDecreasing ? OPERATIONS.DECREMENT : OPERATIONS.INCREMENT;
+
+    const fixableOrderTasks = this.tasks[currentColumnId].filter(({ order }) =>
+      isOrderDecreasing
+        ? order > previousIndex && order <= currentIndex
+        : order >= currentIndex && order < previousIndex
+    );
+
+    if (prevColumnId === currentColumnId) {
+      moveItemInArray(currentTasks, previousIndex, currentIndex);
+      const task = currentTasks.find((item) => item.order === previousIndex);
+
+      // if (task) {
+      //   this.store.dispatch(handleDragTask({ task, fixableOrderTasks, operation, currentIndex }));
+      // }
+
+      this.tasks[currentColumnId] = currentTasks;
+    } else {
+      const prevTasks = [...this.tasks[prevColumnId]];
+      transferArrayItem(prevTasks, currentTasks, previousIndex, currentIndex);
+      this.tasks = { ...this.tasks, [prevColumnId]: prevTasks, [currentColumnId]: currentTasks };
+    }
   }
 
   handleDeleteColumn(columnId: string) {
@@ -158,7 +186,7 @@ export class BoardPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.observer$.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   handleDeleteTask(boardId: string, columnId: string, taskId: string) {

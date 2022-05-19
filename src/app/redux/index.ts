@@ -18,3 +18,4 @@ export {
   selectUserName,
   selectUserLogin,
 } from './selectors/user.selectors';
+export { updateTaskData, handleDragTask } from './actions/task.actions';
