@@ -3,6 +3,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { UrlPaths } from 'src/app/shared/constants/url-paths';
 
 @Component({
   selector: 'ma-greeting-page',
@@ -12,9 +13,11 @@ import { Store } from '@ngrx/store';
 export class GreetingPageComponent {
   emailInputString: string = '';
 
-  constructor(private store: Store, router: Router) {}
+  constructor(private store: Store, private router: Router) {}
 
   submitEmailForRegistration(): void {
-    // TODO: submit for registration and redirect to login page
+    this.router.navigate([UrlPaths.auth, UrlPaths.login], {
+      state: { mail: this.emailInputString },
+    });
   }
 }

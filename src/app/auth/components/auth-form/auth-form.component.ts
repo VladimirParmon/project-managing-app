@@ -15,13 +15,17 @@ import { UserLogIn, UserSignUp } from '../../models/auth.model';
 export class AuthFormComponent implements OnInit, OnDestroy {
   readonly FormMode = FormMode;
 
+  public preWrittenEmail: string | null | undefined = null;
+
   public activeFormMode: FormMode = FormMode.login;
 
   private userId$ = this.store.select(selectUserId);
 
   private subscription = new Subscription();
 
-  constructor(private store: Store, private router: Router) {}
+  constructor(private store: Store, private router: Router) {
+    this.preWrittenEmail = this.router.getCurrentNavigation()?.extras.state?.['mail'];
+  }
 
   ngOnInit(): void {
     this.subscription.add(
@@ -32,6 +36,12 @@ export class AuthFormComponent implements OnInit, OnDestroy {
         }
       })
     );
+
+    if (this.preWrittenEmail === '' || this.preWrittenEmail) {
+      this.activeFormMode = FormMode.registration;
+    } else {
+      this.activeFormMode = FormMode.login;
+    }
   }
 
   selectFormMode(mode: FormMode): void {

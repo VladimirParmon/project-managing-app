@@ -12,6 +12,7 @@
       <mat-button-toggle
         class="auth-block__action"
         [value]="FormMode.registration"
+        [checked]="activeFormMode === FormMode.registration"
       >
         {{ 'auth.registration' | translate }}
       </mat-button-toggle>
@@ -21,7 +22,7 @@
     <h2 class="auth-block__header">{{ activeFormMode | translate }}</h2>
   </mat-card-title>
   <mat-card-content>
-    <ma-auth-form-base (formSubmit)="authFormSubmit($event)" [mode]="activeFormMode">
+    <ma-auth-form-base (formSubmit)="authFormSubmit($event)" [mode]="activeFormMode" [mail]="preWrittenEmail">
     </ma-auth-form-base>
   </mat-card-content>
 </mat-card>

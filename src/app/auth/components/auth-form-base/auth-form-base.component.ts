@@ -24,6 +24,7 @@ import { AuthFormsUtils } from '../../utils/auth-forms-utils';
 })
 export class AuthFormBaseComponent implements OnChanges, OnDestroy {
   @Input() mode: FormMode = FormMode.registration;
+  @Input() mail: string | null | undefined = '';
 
   @Output() formSubmit = new EventEmitter<UserSignUp | UserLogIn>();
 
@@ -45,7 +46,7 @@ export class AuthFormBaseComponent implements OnChanges, OnDestroy {
     this.isRegistrationForm = changes['mode'].currentValue === FormMode.registration;
 
     this.Form = new FormGroup({
-      [FormControls.login]: new FormControl('', [Validators.required, Validators.email]),
+      [FormControls.login]: new FormControl(this.mail, [Validators.required, Validators.email]),
       [FormControls.pass]: new FormControl('', [
         Validators.required,
         Validators.minLength(LoginFormLimits.passMinLen),
