@@ -71,4 +71,18 @@ export class BoardService {
       `${this.baseReqUrl}/${boardId}/${ApiPaths.columns}/${columnId}/${ApiPaths.tasks}/${taskId}`
     );
   }
+
+  updateTask(taskData: ITask) {
+    return this.http.put<ITask>(
+      `${this.baseReqUrl}/${taskData.boardId}/${ApiPaths.columns}/${taskData.columnId}/${ApiPaths.tasks}/${taskData.id}`,
+      {
+        title: taskData.title,
+        order: taskData.order,
+        description: taskData.description,
+        userId: taskData.userId,
+        boardId: taskData.boardId,
+        columnId: taskData.columnId,
+      }
+    );
+  }
 }

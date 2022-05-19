@@ -1,10 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSelectChange } from '@angular/material/select';
 import { Store } from '@ngrx/store';
-import { postNewTask } from 'src/app/redux/actions/task.actions';
-import { IDescriptionProps, ITaskCreate } from 'src/app/shared/models/board.model';
+import { postNewTask, updateTaskOnServer } from 'src/app/redux/actions/task.actions';
+import { IDescriptionProps, ITask, ITaskCreate } from 'src/app/shared/models/board.model';
 import { filterPastDays } from '../../utils/filter-past-days';
+import { statusOptionsValues, priorityOptionsValues } from '../../constants/operations';
 
 @Component({
   selector: 'ma-create-task-dialog',
@@ -25,40 +25,59 @@ export class CreateTaskDialogComponent {
     title: '',
     order: 0,
     description: '',
-    boardId: this.data.boardId,
-    columnId: this.data.columnId,
+    boardId: '',
+    columnId: '',
   };
 
+  public statusValues;
+  public priorityValues;
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { boardId: string; columnId: string },
+    @Inject(MAT_DIALOG_DATA)
+    public data: { task: ITask; taskIsCreatedAndNotUpdated: boolean },
     private store: Store
-  ) {}
+  ) {
+    if (!data.taskIsCreatedAndNotUpdated) {
+      this.taskData.title = data.task.title;
+      this.taskData.order = data.task.order;
+      this.descriptionProps = this.getDescriptionOfTheTaskToBeUpdated(this.data.task.description);
+    }
+    this.taskData.boardId = data.task.boardId;
+    this.taskData.columnId = data.task.columnId;
+    this.statusValues = statusOptionsValues;
+    this.priorityValues = priorityOptionsValues;
+  }
 
   onClickingSave(): void {
-    this.store.dispatch(postNewTask({ taskData: this.prepareTaskData() }));
+    if (this.data.taskIsCreatedAndNotUpdated) {
+      this.store.dispatch(postNewTask({ taskData: this.prepareTaskDataToCreateTask() }));
+    } else {
+      this.store.dispatch(updateTaskOnServer({ taskData: this.prepareTaskDataToUpdateTask() }));
+    }
   }
 
   getDescriptionProps(): string {
     return JSON.stringify(this.descriptionProps);
   }
 
-  prepareTaskData(): ITaskCreate {
+  getDescriptionOfTheTaskToBeUpdated(jsonString: string): IDescriptionProps {
+    return JSON.parse(jsonString);
+  }
+
+  prepareTaskDataToCreateTask(): ITaskCreate {
     const description = this.getDescriptionProps();
     const dataToBeSent = { ...this.taskData, description };
     return dataToBeSent;
   }
 
-  selectedValueHandler(event: MatSelectChange, selectorType: string): void {
-    const valueToEmit = event.source.triggerValue;
-    switch (selectorType) {
-      case 'status':
-        this.descriptionProps.status = valueToEmit;
-        break;
-      case 'priority':
-        this.descriptionProps.priority = valueToEmit;
-        break;
-      default:
-        break;
-    }
+  prepareTaskDataToUpdateTask(): ITask {
+    const description = this.getDescriptionProps();
+    const dataToBeSent = {
+      ...this.taskData,
+      description,
+      id: this.data.task.id,
+      userId: this.data.task.userId,
+    };
+    return dataToBeSent;
   }
 }

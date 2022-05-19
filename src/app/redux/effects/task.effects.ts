@@ -6,7 +6,7 @@ import { BoardService } from 'src/app/board/services/board.service';
 import { Store } from '@ngrx/store';
 import { ActionTypes } from '../actions/action-types';
 import { selectUserId } from '../selectors/user.selectors';
-import { TaskDataAction, TaskDeleteAction } from '../models/actions.model';
+import { TaskDataAction, TaskDeleteAction, TaskUpdateAction } from '../models/actions.model';
 import { throwAppError } from '../actions/app-error.actions';
 import { TColumns, TTasks } from '../models/store.model';
 
@@ -78,6 +78,18 @@ export class TaskEffects {
       mergeMap(({ boardId, columnId, taskId }) =>
         this.boardService.deleteTask(boardId, columnId, taskId).pipe(
           map(() => ({ type: ActionTypes.deleteTaskInStore, taskId })),
+          catchError(async (err) => throwAppError({ err }))
+        )
+      )
+    )
+  );
+
+  updateTask$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType<TaskUpdateAction>(ActionTypes.updateTaskOnServer),
+      mergeMap(({ taskData }) =>
+        this.boardService.updateTask(taskData).pipe(
+          map((task) => ({ type: ActionTypes.updateTaskInStore, task })),
           catchError(async (err) => throwAppError({ err }))
         )
       )

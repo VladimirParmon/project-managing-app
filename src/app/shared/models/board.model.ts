@@ -16,6 +16,8 @@ export interface ITask extends IColumn {
 
 export type ITaskCreate = Omit<ITask, 'id' | 'userId'>;
 
+export type ITaskUpdate = Omit<ITask, 'userId'>;
+
 export interface IDescriptionProps {
   status?: string;
   priority?: string;

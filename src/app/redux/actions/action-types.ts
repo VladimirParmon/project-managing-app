@@ -41,6 +41,9 @@ export enum ActionTypes {
   deleteTaskOnServer = '[TASK] delete a task from server',
   deleteTaskInStore = '[TASK] delete a task from store',
   storeAllBoardTasks = '[TASK] store all tasks that are presented in the columns of opened board',
+  updateTaskOnServer = '[TASK] update info of a single task on server',
+  updateTaskInStore = '[TASK] update info of a single task in store',
+
   handleDragColumn = '[COLUMN] handle drag column',
   dragColumn = '[COLUMN] drag column',
   fixOrderHelper = '[COLUMN] fix order helper',

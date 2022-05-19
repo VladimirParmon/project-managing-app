@@ -32,22 +32,21 @@
       <mat-select
         [(ngModel)]="descriptionProps.status"
         name="status"
-        (selectionChange)="selectedValueHandler($event, 'status')"
       >
-        <mat-option value="todo">{{ 'createTask.statusOptions.todo' | translate }}</mat-option>
-        <mat-option value="pending">{{
+        <mat-option [value]="statusValues.TODO">{{ 'createTask.statusOptions.todo' | translate }}</mat-option>
+        <mat-option [value]="statusValues.PENDING">{{
           'createTask.statusOptions.pending' | translate
         }}</mat-option>
-        <mat-option value="inProgress">{{
+        <mat-option [value]="statusValues.PROGRESS">{{
           'createTask.statusOptions.inProgress' | translate
         }}</mat-option>
-        <mat-option value="done">{{ 'createTask.statusOptions.done' | translate }}</mat-option>
-        <mat-option value="bug">{{ 'createTask.statusOptions.bug' | translate }}</mat-option>
-        <mat-option value="refactor">{{
+        <mat-option [value]="statusValues.DONE">{{ 'createTask.statusOptions.done' | translate }}</mat-option>
+        <mat-option [value]="statusValues.BUG">{{ 'createTask.statusOptions.bug' | translate }}</mat-option>
+        <mat-option [value]="statusValues.REFACTOR">{{
           'createTask.statusOptions.refactor' | translate
         }}</mat-option>
-        <mat-option value="ready">{{ 'createTask.statusOptions.ready' | translate }}</mat-option>
-        <mat-option value="issues">{{ 'createTask.statusOptions.issues' | translate }}</mat-option>
+        <mat-option [value]="statusValues.READY">{{ 'createTask.statusOptions.ready' | translate }}</mat-option>
+        <mat-option [value]="statusValues.ISSUES">{{ 'createTask.statusOptions.issues' | translate }}</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -56,13 +55,12 @@
       <mat-select
         [(ngModel)]="descriptionProps.priority"
         name="priority"
-        (selectionChange)="selectedValueHandler($event, 'priority')"
-      >
-        <mat-option value="low">{{ 'createTask.priorityOptions.low' | translate }}</mat-option>
-        <mat-option value="medium">{{
+        >
+        <mat-option [value]="priorityValues.LOW">{{ 'createTask.priorityOptions.low' | translate }}</mat-option>
+        <mat-option [value]="priorityValues.MEDIUM">{{
           'createTask.priorityOptions.medium' | translate
         }}</mat-option>
-        <mat-option value="high">{{ 'createTask.priorityOptions.high' | translate }}</mat-option>
+        <mat-option [value]="priorityValues.HIGH">{{ 'createTask.priorityOptions.high' | translate }}</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -78,16 +76,6 @@
       />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker disabled="false"></mat-datepicker>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="dialog-content__form-field">
-      <mat-label>Something </mat-label>
-      <input matInput class="input dialog-content__input" />
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="dialog-content__form-field">
-      <mat-label>Something 2</mat-label>
-      <input matInput class="input dialog-content__input" />
     </mat-form-field>
   </form>
 </mat-dialog-content>

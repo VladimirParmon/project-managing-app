@@ -16,10 +16,11 @@ import {
 } from 'src/app/shared/constants/dialog.constants';
 import { selectCurrentOpenedBoardTitle } from 'src/app/redux/selectors/title.selectors';
 import { selectTasks } from 'src/app/redux/selectors/tasks.selector';
-import { IColumn } from 'src/app/shared/models/board.model';
+import { IColumn, IDescriptionProps, ITask } from 'src/app/shared/models/board.model';
 import { CreateTaskDialogComponent } from '../../components/create-task-dialog/create-task-dialog.component';
 import { OPERATIONS } from '../../constants/operations';
 import { parseJSON } from '../../utils/parse-json';
+import { getPriorityTranslation, getStatusTranslation } from '../../utils/get-translations';
 
 @Component({
   selector: 'ma-board-page',
@@ -29,7 +30,7 @@ import { parseJSON } from '../../utils/parse-json';
 export class BoardPageComponent implements OnInit, OnDestroy {
   readonly parseJSON = parseJSON;
 
-  private boardId: string | null = '';
+  private boardId: string = '';
 
   public columns: TColumns = [];
 
@@ -48,7 +49,10 @@ export class BoardPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.boardId = this.route.snapshot.paramMap.get('id');
+    const idFromRouter: string | null = this.route.snapshot.paramMap.get('id');
+    if (idFromRouter) {
+      this.boardId = idFromRouter;
+    }
 
     if (this.boardId) {
       this.store.dispatch(fetchBoardInfo({ id: this.boardId }));
@@ -74,14 +78,24 @@ export class BoardPageComponent implements OnInit, OnDestroy {
   createTask(parentColumnId: string) {
     const dialogConfig = new MatDialogConfig();
 
+    const taskInfo: ITask = {
+      description: '',
+      userId: '',
+      columnId: parentColumnId,
+      boardId: this.boardId,
+      order: 0,
+      id: '',
+      title: '',
+    };
+
     dialogConfig.autoFocus = false;
     dialogConfig.position = { top: '5%' };
     dialogConfig.panelClass = 'dialog-container';
     dialogConfig.width = '100%';
     dialogConfig.maxWidth = '1000px';
     dialogConfig.data = {
-      boardId: this.boardId,
-      columnId: parentColumnId,
+      task: taskInfo,
+      taskIsCreatedAndNotUpdated: true,
     };
 
     this.dialog.open(CreateTaskDialogComponent, dialogConfig);
@@ -151,5 +165,35 @@ export class BoardPageComponent implements OnInit, OnDestroy {
     this.dialog.open(ConfirmationModalComponent, dialogConfig);
   }
 
-  handleEditTask() {}
+  handleEditTask(task: ITask) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.autoFocus = false;
+    dialogConfig.position = { top: '5%' };
+    dialogConfig.panelClass = 'dialog-container';
+    dialogConfig.width = '100%';
+    dialogConfig.maxWidth = '1000px';
+    dialogConfig.data = {
+      task: task,
+      taskIsCreatedANdNotUpdated: false,
+    };
+
+    this.dialog.open(CreateTaskDialogComponent, dialogConfig);
+  }
+
+  getDescriptionField(jsonString: string, field: string): string {
+    const description: IDescriptionProps = JSON.parse(jsonString);
+    let result = '';
+    switch (field) {
+      case 'actual':
+        result = description.actualDescription;
+        break;
+      case 'status':
+        result = getStatusTranslation(description.status);
+        break;
+      case 'priority':
+        result = getPriorityTranslation(description.priority);
+    }
+    return result;
+  }
 }
