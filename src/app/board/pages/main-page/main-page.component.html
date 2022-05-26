@@ -5,13 +5,20 @@
 
       <ul class="list main-page-boards__list">
         <li *ngFor="let board of boards" class="item main-page-boards__item">
-          <div class="main-page__clickable-container" (click)="handleRouting(board.title, board.id)">
+          <div
+            class="main-page__clickable-container"
+            (click)="handleRouting(board.title.split('***')[1], board.id)"
+          >
             <a class="link main-page-boards__link">
-              <h3 class="main-page-boards__item-heading">{{ board.title }}</h3>
+              <h3 class="main-page-boards__item-heading">{{ board.title.split('***')[1] }}</h3>
             </a>
           </div>
 
-          <button (click)="handleDeleteBoard(board.id)" class="button icon-close">
+          <button
+            (click)="handleDeleteBoard(board.id)"
+            class="button icon-close"
+            *ngIf="board.title.split('***')[0] !== 'example-board'"
+          >
             <mat-icon>close</mat-icon>
           </button>
         </li>
@@ -19,6 +26,6 @@
     </div>
   </div>
   <button mat-raised-button (click)="openDialog()" class="button main-page__button_type_new-board">
-    {{ 'mainPage.create_button' | translate}}
+    {{ 'mainPage.create_button' | translate }}
   </button>
 </div>

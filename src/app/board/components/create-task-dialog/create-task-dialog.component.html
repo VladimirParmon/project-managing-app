@@ -1,4 +1,8 @@
-<h2 mat-dialog-title>{{ 'createTask.createNew' | translate }}</h2>
+<h2 mat-dialog-title>
+  {{
+    (data.taskIsCreatedAndNotUpdated ? 'createTask.createNew' : 'createTask.editTask') | translate
+  }}
+</h2>
 <mat-dialog-content class="dialog-content">
   <form>
     <mat-form-field appearance="fill" class="dialog-content__form-field">
@@ -29,38 +33,46 @@
 
     <mat-form-field appearance="fill" class="dialog-content__form-field">
       <mat-label>{{ 'createTask.status' | translate }}</mat-label>
-      <mat-select
-        [(ngModel)]="descriptionProps.status"
-        name="status"
-      >
-        <mat-option [value]="statusValues.TODO">{{ 'createTask.statusOptions.todo' | translate }}</mat-option>
+      <mat-select [(ngModel)]="descriptionProps.status" name="status">
+        <mat-option [value]="statusValues.TODO">{{
+          'createTask.statusOptions.todo' | translate
+        }}</mat-option>
         <mat-option [value]="statusValues.PENDING">{{
           'createTask.statusOptions.pending' | translate
         }}</mat-option>
         <mat-option [value]="statusValues.PROGRESS">{{
           'createTask.statusOptions.inProgress' | translate
         }}</mat-option>
-        <mat-option [value]="statusValues.DONE">{{ 'createTask.statusOptions.done' | translate }}</mat-option>
-        <mat-option [value]="statusValues.BUG">{{ 'createTask.statusOptions.bug' | translate }}</mat-option>
+        <mat-option [value]="statusValues.DONE">{{
+          'createTask.statusOptions.done' | translate
+        }}</mat-option>
+        <mat-option [value]="statusValues.BUG">{{
+          'createTask.statusOptions.bug' | translate
+        }}</mat-option>
         <mat-option [value]="statusValues.REFACTOR">{{
           'createTask.statusOptions.refactor' | translate
         }}</mat-option>
-        <mat-option [value]="statusValues.READY">{{ 'createTask.statusOptions.ready' | translate }}</mat-option>
-        <mat-option [value]="statusValues.ISSUES">{{ 'createTask.statusOptions.issues' | translate }}</mat-option>
+        <mat-option [value]="statusValues.READY">{{
+          'createTask.statusOptions.ready' | translate
+        }}</mat-option>
+        <mat-option [value]="statusValues.ISSUES">{{
+          'createTask.statusOptions.issues' | translate
+        }}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="dialog-content__form-field">
       <mat-label>{{ 'createTask.priority' | translate }}</mat-label>
-      <mat-select
-        [(ngModel)]="descriptionProps.priority"
-        name="priority"
-        >
-        <mat-option [value]="priorityValues.LOW">{{ 'createTask.priorityOptions.low' | translate }}</mat-option>
+      <mat-select [(ngModel)]="descriptionProps.priority" name="priority">
+        <mat-option [value]="priorityValues.LOW">{{
+          'createTask.priorityOptions.low' | translate
+        }}</mat-option>
         <mat-option [value]="priorityValues.MEDIUM">{{
           'createTask.priorityOptions.medium' | translate
         }}</mat-option>
-        <mat-option [value]="priorityValues.HIGH">{{ 'createTask.priorityOptions.high' | translate }}</mat-option>
+        <mat-option [value]="priorityValues.HIGH">{{
+          'createTask.priorityOptions.high' | translate
+        }}</mat-option>
       </mat-select>
     </mat-form-field>
 
