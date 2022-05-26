@@ -13,7 +13,7 @@
 <h3 align="center">Our team</h3>
 <p align="center">
   <b>👨‍💻 Vladimir Parmon</b> (<a href="https://github.com/VladimirParmon">@VladimirParmon</a>)<br>
-  👨‍💻 Illia Skaryna (<a href="https://github.com/saratovkin">@Ilya758</a>)<br>
+  👨‍💻 Illia Skaryna (<a href="https://github.com/Ilya758">@Ilya758</a>)<br>
   👨‍💻 Yan Poleshko (<a href="https://github.com/shadowinhaze">@shadowinhaze</a>)
 </p>
 
