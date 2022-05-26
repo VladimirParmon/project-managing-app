@@ -22,7 +22,7 @@ $accent-color: mat-color($accent-palette);
 $warn-color: mat-color($warn-palette);
 
 $header-height: 65px;
-$footer-height: 65px;
+$footer-height: 120px;
 $bg-gradient: linear-gradient(153.03deg,
 rgba(209, 107, 165, 0.3) 18.23%,
 rgba(134, 168, 231, 0.3) 42.2%,
@@ -72,6 +72,12 @@ body {
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+a {
+  &:link {
+    color: $a-light;
+  }
 }
 
 .container {
