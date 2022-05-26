@@ -51,7 +51,7 @@ All information (users, boards, columns and tasks) is stored in a `PostgreSQL` O
 
 - Clone repo with FE and BE.
 - Read BE documentation and wiki-page for deploying DB version.
-- Open App folder, don't forget change address for your BE at /src/api/api.ts
+- Open App folder, don't forget change address for your BE at /src/environments files.
 - `npm i`
 - Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
