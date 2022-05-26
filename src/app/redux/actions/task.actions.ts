@@ -54,3 +54,8 @@ export const updateTaskInStore = createAction(
   ActionTypes.updateTaskInStore,
   props<{ task: ITask }>()
 );
+
+export const fixTasksHelper = createAction(
+  ActionTypes.fixTasksHelper,
+  props<{ fixedTasks: ITask[]; operation: string; boardId: string }>()
+);

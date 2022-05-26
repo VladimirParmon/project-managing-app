@@ -47,6 +47,7 @@ export enum ActionTypes {
   updateTaskData = '[TASK] update certain task data',
   dragTask = '[TASK] drag task',
   handleFixTasksOrder = '[TASK] fix drag column order',
+  fixTasksHelper = '[TASK] fix order helper',
 
   handleDragColumn = '[COLUMN] handle drag column',
   dragColumn = '[COLUMN] drag column',

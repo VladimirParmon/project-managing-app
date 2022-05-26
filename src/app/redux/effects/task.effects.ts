@@ -8,24 +8,26 @@ import { Store } from '@ngrx/store';
 import { ActionTypes } from '../actions/action-types';
 import { selectUserId } from '../selectors/user.selectors';
 import {
-  DragTaskAction,
-  HandleFixTasksOrderAction,
+  SetNewColumnAction,
   TaskDataAction,
   TaskDeleteAction,
   TaskUpdateAction,
 } from '../models/actions.model';
 import { throwAppError } from '../actions/app-error.actions';
-import {
-  deleteTaskInStore,
-  handleFixTaskOrder,
-  storeAllColumnTasks,
-  storeNewTask,
-} from '../actions/task.actions';
-import { OPERATIONS } from 'src/app/board/constants/operations';
+import { deleteTaskInStore, storeAllColumnTasks, storeNewTask } from '../actions/task.actions';
 import { selectTasksState } from '../selectors/tasks.selector';
 
 @Injectable()
 export class TaskEffects {
+  setNewColumn$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType<SetNewColumnAction>(ActionTypes.setNewColumn),
+      switchMap(async ({ id }) => {
+        return storeAllColumnTasks({ tasks: [], columnId: id });
+      })
+    )
+  );
+
   postNewTask$ = createEffect(() =>
     this.actions$.pipe(
       ofType<TaskDataAction>(ActionTypes.postNewTask),
@@ -84,56 +86,6 @@ export class TaskEffects {
       )
     )
   );
-
-  // updateTask$ = createEffect(() => {
-  //   this.actions$.pipe(
-  //     ofType<UpdateTaskAction>(ActionTypes.updateTaskData),
-  //     switchMap(({ task }) => {
-  //       const { boardId, columnId, userId, ...taskParams } = task;
-  //       return this.boardService.updateTask(boardId, columnId, userId, taskParams).pipe(
-  //         switchMap((data) => handleUpdateTaks({})),
-  //         catchError(async (err) => throwAppError({ err }))
-  //       );
-  //     })
-  //   );
-  // });
-
-  // handleDragTask$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType<DragTaskAction>(ActionTypes.dragTask),
-  //     switchMap(({ task, fixableOrderTasks, operation, currentIndex }) => {
-  //       const { userId, boardId, columnId, id, title, description } = task;
-
-  //       const fixNumber = operation === OPERATIONS.DECREMENT ? 1 : -1;
-
-  //       const newOrder = currentIndex + fixNumber;
-
-  //       const tasks = [...fixableOrderTasks];
-
-  //       const newTask = { id, title, description, order: newOrder };
-
-  //       return this.boardService.updateTask(boardId, columnId, userId, newTask).pipe(
-  //         map(() => handleFixTaskOrder({ boardId, tasks, operation, task: newTask })),
-  //         catchError(async (err) => throwAppError({ err }))
-  //       );
-  //     })
-  //   )
-  // );
-
-  // handleFixOrderColumn$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType<HandleFixTasksOrderAction>(ActionTypes.handleFixTasksOrder),
-  //     map(({ boardId, tasks, operation, task }) => {
-  //       const fixedTasks = operation === OPERATIONS.DECREMENT ? tasks : tasks.reverse();
-
-  //       if (dragColumn) {
-  //         fixedColumns.push(dragColumn);
-  //       }
-
-  //       return fixOrderHelper({ fixedColumns, operation, boardId });
-  //     })
-  //   )
-  // );
 
   constructor(
     private actions$: Actions,

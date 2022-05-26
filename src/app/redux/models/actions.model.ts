@@ -64,5 +64,11 @@ export interface HandleFixTasksOrderAction extends Action {
   boardId: string;
   tasks: ITask[];
   operation: string;
-  task: { id: string; title: string; description: string; order: number };
+  task: ITask;
+}
+
+export interface SetNewColumnAction extends Action {
+  id: string;
+  order: number;
+  title: string;
 }
