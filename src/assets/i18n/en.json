@@ -104,6 +104,7 @@
     "title": "Task title",
     "description": "Task description",
     "status": "Status",
+    "editTask": "Edit task",
     "statusOptions": {
       "todo": "🚀 Todo",
       "pending": "🛑 Pending",
