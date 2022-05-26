@@ -78,26 +78,8 @@ export class BoardService {
       `${this.baseReqUrl}/${boardId}/${ApiPaths.columns}/${columnId}/${ApiPaths.tasks}/${id}`,
       {
         ...task,
-      }
-    );
-  }
-
-  updateTask2(
-    boardId: string,
-    columnId: string,
-    userId: string,
-    task: { id: string; title: string; description: string; order: number }
-  ) {
-    const { id, title, description, order } = task;
-    return this.http.put<ITask>(
-      `${this.baseReqUrl}/${boardId}/${ApiPaths.columns}/${columnId}/${ApiPaths.tasks}/${id}`,
-      {
-        title,
-        description,
-        order,
         boardId,
         columnId,
-        userId,
       }
     );
   }
