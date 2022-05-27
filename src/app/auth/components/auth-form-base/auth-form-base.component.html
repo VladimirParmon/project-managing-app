@@ -1,0 +1,58 @@
+<form class="form" *ngIf="Form" [formGroup]="Form" (ngSubmit)="onFormSubmit()">
+  <mat-form-field *ngIf="isRegistrationForm" appearance="outline" class="form__field">
+    <mat-label>{{ 'auth.enter_your' | translate }} {{ 'auth.name' | translate }}</mat-label>
+    <input
+      matInput
+      placeholder="{{ 'auth.placeholders.name' | translate }}"
+      [formControlName]="FormControls.name"
+      required
+    />
+    <mat-error *ngIf="isFieldInvalid(FormControls.name)">{{
+      getErrorMessageText(FormControls.name)! | translate: { value: minNameLength }
+    }}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form__field">
+    <mat-label>{{ 'auth.enter_your' | translate }} {{ 'auth.login' | translate }}</mat-label>
+    <input
+      matInput
+      placeholder="{{ 'auth.placeholders.email' | translate }}"
+      [formControlName]="FormControls.login"
+      type="email"
+      required
+    />
+    <mat-error *ngIf="isFieldInvalid(FormControls.login)">{{
+      getErrorMessageText(FormControls.login)! | translate
+    }}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form__field">
+    <mat-label>{{ 'auth.enter_your' | translate }} {{ 'auth.password' | translate }}</mat-label>
+    <input
+      matInput
+      [type]="isPassHidden ? 'password' : 'text'"
+      [formControlName]="FormControls.pass"
+      required
+    />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="isPassHidden = !isPassHidden"
+      [attr.aria-label]="'isPassVisible password'"
+      [attr.aria-pressed]="isPassHidden"
+      type="button"
+    >
+      <mat-icon>{{ isPassHidden ? 'visibility_off' : 'visibility' }}</mat-icon>
+    </button>
+    <mat-error *ngIf="isFieldInvalid(FormControls.pass)">{{
+      getErrorMessageText(FormControls.pass)! | translate
+    }}</mat-error>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    class="form__submit"
+    color="primary"
+    type="submit"
+    [disabled]="this.Form.invalid"
+  >
+    {{ (this.isRegistrationForm ? 'auth.sign_up' : 'auth.log_in') | translate }}
+  </button>
+</form>

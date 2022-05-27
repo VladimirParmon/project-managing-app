@@ -1,0 +1,26 @@
+$auth-form-max-width: 350px;
+
+.auth-block {
+  max-width: $auth-form-max-width;
+  margin: 3em auto;
+
+  &__actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 2em;
+
+    &__group {
+      width: 100%;
+    }
+  }
+
+  &__action {
+    width: 50%;
+  }
+
+  &__header {
+    font-size: 25px;
+    text-transform: capitalize;
+  }
+}

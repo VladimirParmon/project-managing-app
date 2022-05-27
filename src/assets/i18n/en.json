@@ -1,0 +1,153 @@
+{
+  "greetingPage": {
+    "h1": "PROJECT MANAGING APP",
+    "emailForm": {
+      "button": "Registration",
+      "inputPlaceholder": "Email"
+    },
+    "greeting": "Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way your team works is unique — accomplish it all with our managing app.",
+    "screenshots_h2": "IT ALL STARTS TODAY WITH THE NEW TOOLS",
+    "screenshots_span": "Start with our unique board, lists, and cards. Customize and expand with more features as your teamwork grows. Manage projects, organize tasks, and build team spirit — all in one place.",
+    "closure_h2_lead": "Features to help your team succeed",
+    "closure_span": "Powering a productive team means using a powerful tool. From meetings and projects to events and goal setting, our project managing app's intuitive features give any team the ability to quickly set up and customize workflows for just about anything.",
+    "closure_h2_finisher": "Join us! There are no trial periods and no credit card is required"
+  },
+  "header": {
+    "logo": "Managing app",
+    "button_login": "Login",
+    "button_sign-up": "Sign up",
+    "button_go-back": "Previous page",
+    "user": {
+      "button_settings": "Settings",
+      "button_log-out": "Log out"
+    }
+  },
+  "page404": {
+    "sorry_message": "We are extremely sorry that something went wrong, but this page does not seem to exist",
+    "link_span": "Here's your link to the ",
+    "link": "main page"
+  },
+  "auth": {
+    "enter_your": "Enter your",
+    "name": "name",
+    "login": "login",
+    "password": "password",
+    "registration": "Registration",
+    "log_in": "Log in",
+    "sign_up": "Sign up",
+    "placeholders": {
+      "name": "John Doe",
+      "email": "example@gmail.com"
+    }
+  },
+  "error_messages": {
+    "name": {
+      "req": "Please enter your name",
+      "minLength": "The name must be at least {{value}} characters long",
+      "unknown": "There is a problem with your name"
+    },
+    "login": {
+      "req": "Please enter a login email",
+      "email": "Please enter a correct email address",
+      "unknown": "There is a problem with your login email"
+    },
+    "password": {
+      "req": "You must enter a valid password",
+      "minlength": "Your password must contain at least {{value}} symbols",
+      "pattern": "Some problem with pattern",
+      "weak": {
+        "base": "Your password isn't strong enough",
+        "digit": "Please add digit",
+        "upperCase": "Please add uppercase letter",
+        "lowerCase": "Please add lowercase letter",
+        "symbol": "Please add special symbol: -+_!@#$%^&*.,?"
+      },
+      "unknown": "There is a problem with your password"
+    }
+  },
+  "mainPage": {
+    "h1": "Your boards",
+    "create_button": "Create new board"
+  },
+  "boardPage": {
+    "addTask": "Add a task",
+    "createColumn": "Create new column"
+  },
+  "createBoard": {
+    "title": "Create new board",
+    "label": "Enter board name",
+    "warnings": {
+      "absent": "Please enter the board name!",
+      "tooLong": "The board name is too long",
+      "tooShort": "The board name is too short"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "create": "Create board!"
+    }
+  },
+  "createColumn": {
+    "title": "Create new column",
+    "label": "Enter column name",
+    "warnings": {
+      "absent": "Please enter the column name!",
+      "tooLong": "The column name is too long",
+      "tooShort": "The column name is too short"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "create": "Create column!"
+    }
+  },
+  "createTask": {
+    "createNew": "Create a new task",
+    "title": "Task title",
+    "description": "Task description",
+    "status": "Status",
+    "editTask": "Edit task",
+    "statusOptions": {
+      "todo": "🚀 Todo",
+      "pending": "🛑 Pending",
+      "inProgress": "⛏️ In Progress",
+      "done": "👍 Done",
+      "bug": "🐛 Bug / need help",
+      "refactor": "🔄 Refactor",
+      "ready": "🤞 Ready, needs approval",
+      "issues": "🤔 Works but has issues"
+    },
+    "priority": "Priority",
+    "priorityOptions": {
+      "low": "Low priority",
+      "medium": "Medium priority",
+      "high": "High priority"
+    },
+    "deadline": "Deadline",
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "errors": {
+      "titleLength": "The title must be at least 3 characters long"
+    }
+  },
+  "deletionDialog": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "question": "Do you really want to delete it?"
+  },
+  "userSettingsPage": {
+    "greeting": "Hi, {{value}}, have a nice day!",
+    "dangerZone": "Danger zone",
+    "changePassButton": "Change password",
+    "deleteAccButton": "Delete my account",
+    "login": "Your login:",
+    "name": "Your name:"
+  },
+  "confirmation": {
+    "confirm": "Confirm the edit by password",
+    "yourPass": "Enter your password",
+    "newPass": "Enter new password",
+    "cancel": "Cancel",
+    "ok": "Ok"
+  }
+}

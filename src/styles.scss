@@ -1,0 +1,193 @@
+@use '@angular/material' as mat;
+
+$custom-typography: mat.define-typography-config(
+  $font-family: '"Raleway", sans-serif',
+);
+
+$custom-theme: mat.define-light-theme(
+  (
+    typography: $custom-typography,
+  )
+);
+
+@include mat.core($custom-typography);
+@include mat.all-component-themes($custom-theme);
+
+@import '@angular/material/theming';
+$primary-palette: mat-palette($mat-pink, 700, 500, 900);
+$accent-palette: mat-palette($mat-blue-grey, A200, A100, A400);
+$warn-palette: mat-palette($mat-red);
+$primary-color: mat-color($primary-palette);
+$accent-color: mat-color($accent-palette);
+$warn-color: mat-color($warn-palette);
+
+$header-height: 65px;
+$footer-height: 120px;
+$bg-gradient: linear-gradient(153.03deg,
+rgba(209, 107, 165, 0.3) 18.23%,
+rgba(134, 168, 231, 0.3) 42.2%,
+rgba(95, 251, 241, 0.3) 84.95%);
+$d-black: #000000;
+$a-light: #ffffff;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+app-footer {
+  position: relative;
+  bottom: 0;
+  width: 100vw;
+}
+
+.page-content {
+  position: relative;
+  min-height: calc(100vh - ($header-height + $footer-height));
+}
+
+input {
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active
+  &:-webkit-autofill::first-line {
+    transition: background-color 5000s;
+    font-family: 'Raleway', sans-serif;
+    -webkit-text-fill-color: $a-light;
+  }
+}
+
+@mixin color($prop, $pallet, $inst) {
+  #{$prop}: mat.get-color-from-palette($pallet, $inst);
+}
+
+//font-family: 'Raleway', sans-serif;
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+a {
+  &:link {
+    color: $a-light;
+  }
+}
+
+.container {
+  max-width: 96vw;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.content {
+  display: flex;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.button {
+  background-color: initial;
+  border: none;
+}
+
+.icon {
+  &-close,
+  &-edit {
+    position: absolute;
+    opacity: 0;
+    transition: 0.25s;
+    cursor: pointer;
+
+    &:hover {
+      transform: rotate(10deg) scale(1.1);
+    }
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+
+  &-close {
+    right: 0.5rem;
+  }
+
+  &-edit {
+    right: 2rem;
+  }
+}
+
+input {
+  &.ng-invalid {
+    color: red;
+  }
+}
+
+.dialog-container {
+  .mat-dialog-content {
+    padding: 0;
+    margin: 0;
+  }
+
+  .mat-dialog-container {
+    padding: 1rem;
+    margin: 1rem;
+    overflow: hidden;
+  }
+}
+
+.small-creation-dialog,
+.deletion-dialog {
+  .mat-dialog-container {
+    background-color: white;
+    color: black;
+  }
+
+  .mat-dialog-content {
+    overflow: initial;
+  }
+
+  .mat-form-field-flex {
+    background-color: #f9f9f9;
+  }
+}
+
+.page-content__spinner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background-color: white;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.page-content__spinner {
+  &::ng-deep .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: #e7a3bd;
+  }
+}

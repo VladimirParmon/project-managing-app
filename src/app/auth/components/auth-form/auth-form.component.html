@@ -1,0 +1,28 @@
+<mat-card class="auth-block">
+  <mat-card-actions class="auth-block__actions">
+    <mat-button-toggle-group
+      name="authFormMode"
+      aria-label="Auth Form Mode"
+      (change)="selectFormMode($event.value)"
+      class="auth-block__actions__group"
+    >
+      <mat-button-toggle class="auth-block__action" [value]="FormMode.login" [checked]="activeFormMode === FormMode.login">
+        {{ 'auth.log_in' | translate }}
+      </mat-button-toggle>
+      <mat-button-toggle
+        class="auth-block__action"
+        [value]="FormMode.registration"
+        [checked]="activeFormMode === FormMode.registration"
+      >
+        {{ 'auth.registration' | translate }}
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-card-actions>
+  <mat-card-title>
+    <h2 class="auth-block__header">{{ activeFormMode | translate }}</h2>
+  </mat-card-title>
+  <mat-card-content>
+    <ma-auth-form-base (formSubmit)="authFormSubmit($event)" [mode]="activeFormMode" [mail]="preWrittenEmail">
+    </ma-auth-form-base>
+  </mat-card-content>
+</mat-card>

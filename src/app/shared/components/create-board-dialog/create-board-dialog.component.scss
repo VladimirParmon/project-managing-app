@@ -1,0 +1,19 @@
+.create-dialog {
+  &__content {
+    position: relative;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__icon {
+    &-close {
+      position: absolute;
+      right: 0.5rem;
+      top: 0;
+      opacity: 1;
+    }
+  }
+}
